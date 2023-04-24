@@ -34,8 +34,8 @@ def generate_gpt4_response(content, print_output=False):
   return completions.choices[0]['message']['content'] #I only want the first repsonses
 
 dx_dict = {}
-data_folder = '/Users/cl3720/Desktop/copilot-examples/GPT_Gene_Prioritization/Data/Original_data'
-hpo_name_folder = '/Users/cl3720/Desktop/copilot-examples/GPT_Gene_Prioritization/Data/HPO_names'
+data_folder = './Data/HPO_input/Original_data'
+hpo_name_folder = './Data/HPO_input/HPO_names'
 with open(os.path.join(data_folder, 'probe_info')) as f:
   for line in f:
     line = line.strip()
@@ -66,11 +66,11 @@ for file_path in list(dx_dict.keys()):
   folder_name = os.path.basename(os.path.dirname(file_path))
   for top_n in ['5', '10', '50']:
         
-    output_path = os.path.join('.', 'Data', 'GPT_response', 'top_' + top_n, folder_name, file_name)
-    output_error_path = os.path.join('.', 'Data', 'GPT_response', 'top_' + top_n, folder_name, file_name + '_error')
+    output_path = os.path.join('.', 'Data', 'HPO_input', 'GPT_response', 'top_' + top_n, folder_name, file_name)
+    output_error_path = os.path.join('.', 'Data', 'HPO_input', 'GPT_response', 'top_' + top_n, folder_name, file_name + '_error')
 
-    if not os.path.exists(os.path.join('.', 'Data', 'GPT_response', 'top_' + top_n, folder_name)):
-      os.makedirs(os.path.join('.', 'Data', 'GPT_response', 'top_' + top_n, folder_name))
+    if not os.path.exists(os.path.join('.', 'Data', 'HPO_input', 'GPT_response', 'top_' + top_n, folder_name)):
+      os.makedirs(os.path.join('.', 'Data', 'HPO_input', 'GPT_response', 'top_' + top_n, folder_name))
     # file exists
     if not os.path.exists(output_path):
       with open(file_path) as f:

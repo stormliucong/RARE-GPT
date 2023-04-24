@@ -37,35 +37,35 @@ def generate_gpt4_response(content, print_output=False):
 dx_dict = {}
 data_folder = './Data/free_text_input'
 
-free_text_df = pd.read_csv(os.path.join(data_folder, 'free_text_input.csv'))
+free_text_df = pd.read_csv(os.path.join(data_folder, 'free_text_pmid_input.csv'))
 
-free_text_df_subset = free_text_df.iloc[0:2]
+free_text_df_subset = free_text_df.iloc[0:2] # for test purpose.
 
 for index, row in free_text_df_subset.iterrows():
     free_text = row['Free-text']
     id = row['ID']
     dx_gene = row['Gene']
-    seq = row['Sequence']
+    seq = str(row['Sequence'])
     for top_n in ['5', '10', '50']:
         
-        output_path = os.path.join('.', 'Data', 'free_text_input','GPT_response', 'top_' + top_n, id, + '_' + seq)
-        output_error_path = os.path.join('.', 'Data', 'free_text_input','GPT_response', 'top_' + top_n, id, + '_' + seq + '_error')
+        output_path = os.path.join('.', 'Data', 'free_text_input','GPT_response', 'top_' + top_n, id + '_' + seq)
+        output_error_path = os.path.join('.', 'Data', 'free_text_input','GPT_response', 'top_' + top_n, id + '_' + seq + '_error')
 
-    if not os.path.exists(os.path.join('.', 'Data', 'free_text_input', 'GPT_response', 'top_' + top_n)):
-      os.makedirs(os.path.join('.', 'Data', 'free_text_input','GPT_response', 'top_' + top_n))
-    # file exists
-    if not os.path.exists(output_path):  
-        # call api to get gene prioritization
-        content = 'The phenotype desciprtion of the patient is {content}. Can you suggest a list of top {x} possible genes to test? Please return gene symbols as a comma separated list. Example: "ABC1,BRAC2,BRAC1"'.format(x = top_n, content = free_text)
-        print(content)
-        try:
-            gene_prioritization = generate_gpt4_response(content,print_output=True)
-            with open(output_path, 'w') as f:
-                f.write(gene_prioritization)
-        except Exception as e:
-            gene_prioritization = str(e)
-            with open(output_error_path, 'w') as f:
-                f.write(gene_prioritization)
-      
+        if not os.path.exists(os.path.join('.', 'Data', 'free_text_input', 'GPT_response', 'top_' + top_n)):
+          os.makedirs(os.path.join('.', 'Data', 'free_text_input','GPT_response', 'top_' + top_n))
+        # file exists
+        if not os.path.exists(output_path):  
+            # call api to get gene prioritization
+            content = 'The phenotype desciprtion of the patient is {content}. Can you suggest a list of top {x} possible genes to test? Please return gene symbols as a comma separated list. Example: "ABC1,BRAC2,BRAC1"'.format(x = top_n, content = free_text)
+            print(content)
+            try:
+                gene_prioritization = generate_gpt4_response(content,print_output=True)
+                with open(output_path, 'w') as f:
+                    f.write(gene_prioritization)
+            except Exception as e:
+                gene_prioritization = str(e)
+                with open(output_error_path, 'w') as f:
+                    f.write(gene_prioritization)
+          
     
 

@@ -3,7 +3,7 @@ import requests
 
 
 dx_dict = {}
-data_folder = '/Users/cl3720/Desktop/copilot-examples/GPT_Gene_Prioritization/Data/Original_data'
+data_folder = './Data/HPO_input/Data/Original_data'
 
 with open(os.path.join(data_folder, 'probe_info')) as f:
   for line in f:
@@ -48,8 +48,8 @@ for file_path in dx_dict.keys():
         hp_names.append(hp_name)
       
       hp_names_content = ','.join(hp_names)
-      if not os.path.exists(os.path.join('.', 'Data', 'HPO_names', folder_name)):
-        os.makedirs(os.path.join('.', 'Data', 'HPO_names', folder_name))
+      if not os.path.exists(os.path.join('.', 'Data', 'HPO_input', 'HPO_names', folder_name)):
+        os.makedirs(os.path.join('.', 'Data', 'HPO_input','HPO_names', folder_name))
 
       with open(output_path, 'w') as f:
         f.write(hp_names_content)

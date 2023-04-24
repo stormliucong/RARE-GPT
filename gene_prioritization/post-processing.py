@@ -27,7 +27,7 @@ def is_gene_line(line):
 
 
 dx_dict = {}
-data_folder = '/Users/cl3720/Desktop/copilot-examples/GPT_Gene_Prioritization/Data/Original_data'
+data_folder = './Data/HPO_input/Original_data'
 
 with open(os.path.join(data_folder, 'probe_info')) as f:
     for line in f:
@@ -64,8 +64,8 @@ for file_path in dx_dict.keys():
     for top_n in ['5', '10', '50']:
         result['predict_made_in_top_'+top_n] = 0
         result['predict_correct_in_top_'+top_n] = 0
-        output_path = os.path.join('.', 'Data', 'GPT_response', 'top_' + top_n, folder_name, file_name)
-        output_error_path = os.path.join('.', 'Data', 'GPT_response', 'top_' + top_n, folder_name, file_name + '_error')    
+        output_path = os.path.join('.', 'Data', 'HPO_input', 'GPT_response', 'top_' + top_n, folder_name, file_name)
+        output_error_path = os.path.join('.', 'Data', 'HPO_input', 'GPT_response', 'top_' + top_n, folder_name, file_name + '_error')    
 
         if os.path.exists(output_path):
             # open output_path
@@ -90,7 +90,7 @@ for file_path in dx_dict.keys():
 
 # convert dictionary to csv
 import csv
-with open('/Users/cl3720/Desktop/copilot-examples/GPT_Gene_Prioritization/Data/Results/GPT4_top_prediction.csv', 'w') as f:
+with open('/Data/HPO_input/Results/GPT4_top_prediction.csv', 'w') as f:
     writer = csv.DictWriter(f, fieldnames=['file_path', 'dx_gene', 'predict_made_in_top_5', 'predict_correct_in_top_5', 'predict_made_in_top_10', 'predict_correct_in_top_10', 'predict_made_in_top_50', 'predict_correct_in_top_50'])
     writer.writeheader()
     for result in results:
