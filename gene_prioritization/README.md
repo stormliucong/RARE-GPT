@@ -4,6 +4,25 @@ Research project for using ChatGPT for rare disease gene prioritization
 #### Getting started
 - python3.10 required for openai-0.27.
 - openai-0.27 required for this GPT-4.
+- You will need a open api key to run the program. Please put the following json into a `api_key.json` file.
+```json
+{"api_key": xxxxx}
+```
+- You will need a google service API key see [Google Sheets API instruction](https://developers.google.com/sheets/api/guides/concepts). Here is an example
+```json
+{
+  "type": "service_account",
+  "project_id": "peerless-clock-xxxxxx",
+  "private_key_id": "privatekeyid",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nprivatekey\n-----END PRIVATE KEY-----\n",
+  "client_email": "python@peerless-clock-xxxxxx.iam.gserviceaccount.com",
+  "client_id": "116xxxxxxxxxxxxxxxx",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/python%40peerless-clock-xxxxxx.iam.gserviceaccount.com"
+}
+```
 
 #### install python 3.10
 - Install the required dependency for adding custom PPAs.
@@ -44,23 +63,3 @@ Research project for using ChatGPT for rare disease gene prioritization
  - make sure the google sheet is shared with the service account email.
 
 
-#### running program
-- You will need a open api key to run the program. Please put the following json into a `api_key.json` file.
-```json
-{"api_key": xxxxx}
-```
-- You will need a google service API key see [Google Sheets API instruction](https://developers.google.com/sheets/api/guides/concepts). Here is an example
-```json
-{
-  "type": "service_account",
-  "project_id": "peerless-clock-xxxxxx",
-  "private_key_id": "privatekeyid",
-  "private_key": "-----BEGIN PRIVATE KEY-----\nprivatekey\n-----END PRIVATE KEY-----\n",
-  "client_email": "python@peerless-clock-xxxxxx.iam.gserviceaccount.com",
-  "client_id": "116xxxxxxxxxxxxxxxx",
-  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
-  "token_uri": "https://oauth2.googleapis.com/token",
-  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
-  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/python%40peerless-clock-xxxxxx.iam.gserviceaccount.com"
-}
-```

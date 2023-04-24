@@ -22,9 +22,12 @@ def is_gene_line(line):
         return True
     else:
         return False
-    return False       
+    return False
 
-
+def find_all_possible_gene_names(text):
+    gene_regex = r'\b[A-Z]{2,}\d?\b'
+    gene_list = re.findall(gene_regex, text)
+    return gene_list
 
 dx_dict = {}
 data_folder = './Data/HPO_input/Original_data'
@@ -90,7 +93,7 @@ for file_path in dx_dict.keys():
 
 # convert dictionary to csv
 import csv
-with open('/Data/HPO_input/Results/GPT4_top_prediction.csv', 'w') as f:
+with open('./Data/HPO_input/Results/GPT4_top_prediction.csv', 'w') as f:
     writer = csv.DictWriter(f, fieldnames=['file_path', 'dx_gene', 'predict_made_in_top_5', 'predict_correct_in_top_5', 'predict_made_in_top_10', 'predict_correct_in_top_10', 'predict_made_in_top_50', 'predict_correct_in_top_50'])
     writer.writeheader()
     for result in results:

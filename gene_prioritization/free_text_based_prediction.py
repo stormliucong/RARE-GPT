@@ -40,6 +40,7 @@ data_folder = './Data/free_text_input'
 free_text_df = pd.read_csv(os.path.join(data_folder, 'free_text_pmid_input.csv'))
 
 free_text_df_subset = free_text_df.iloc[0:2] # for test purpose.
+free_text_df_subset = free_text_df # for test purpose.
 
 for index, row in free_text_df_subset.iterrows():
     free_text = row['Free-text']
