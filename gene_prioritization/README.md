@@ -63,3 +63,12 @@ Research project for using ChatGPT for rare disease gene prioritization
  - make sure the google sheet is shared with the service account email.
 
 
+#### Explain of each script
+
+- `get_hpo_names.py` will get hpo names by calling hpo jax api
+- `hpo_based_prediction.py` and `free_text_based_prediction` will make prediction by calling openai's API
+- `simulate_patients_hpo.py` will create decoy patients
+- `post-processing-*.py` will identify gene names and parse GPT predicted results
+- `summary-*` will summarize the results and generate the tables
+
+

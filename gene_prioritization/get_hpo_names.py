@@ -3,7 +3,7 @@ import requests
 
 
 dx_dict = {}
-data_folder = './Data/HPO_input/Data/Original_data'
+data_folder = './Data/HPO_input/Original_data'
 
 with open(os.path.join(data_folder, 'probe_info')) as f:
   for line in f:
@@ -25,17 +25,20 @@ with open(os.path.join(data_folder, 'probe_info')) as f:
     # add to dict. key: file name, value: gene
     dx_dict[file_path] = gene
 
+input_folder = 'HPO_input'
+input_folder = 'simulated_pt_input'
+
 # go over all files in a directory
 results = []
 for file_path in dx_dict.keys():
-  if 'TAF1' in file_path:
-    # get file name and folder
-    print(file_path)
-    file_name = os.path.basename(file_path)
-    folder_name = os.path.basename(os.path.dirname(file_path))
-    output_path = os.path.join('.', 'Data', 'HPO_names', folder_name, file_name)
-    # result_json = {}
-    # read file
+  # get file name and folder
+  print(file_path)
+  file_name = os.path.basename(file_path)
+  folder_name = os.path.basename(os.path.dirname(file_path))
+  output_path = os.path.join('.', 'Data', input_folder,'HPO_names', folder_name, file_name)
+  # result_json = {}
+  # read file
+  if not os.path.isfile(output_path):
     with open(file_path) as f:
       HP_IDs = f.read().splitlines()
       HP_content = ','.join(HP_IDs)
@@ -48,8 +51,8 @@ for file_path in dx_dict.keys():
         hp_names.append(hp_name)
       
       hp_names_content = ','.join(hp_names)
-      if not os.path.exists(os.path.join('.', 'Data', 'HPO_input', 'HPO_names', folder_name)):
-        os.makedirs(os.path.join('.', 'Data', 'HPO_input','HPO_names', folder_name))
+      if not os.path.exists(os.path.join('.', 'Data', input_folder, 'HPO_names', folder_name)):
+        os.makedirs(os.path.join('.', 'Data', input_folder,'HPO_names', folder_name))
 
       with open(output_path, 'w') as f:
         f.write(hp_names_content)
