@@ -3,7 +3,7 @@ import requests
 import re
 
 def find_all_possible_gene_names(text):
-    gene_regex = r'\b[A-Z]{2,}\d?\b'
+    gene_regex = r'\b[A-Z0-9]{2,}\b'
     gene_list = re.findall(gene_regex, text)
     return gene_list
 
