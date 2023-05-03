@@ -23,6 +23,10 @@ if not os.path.isfile(os.path.join(data_output_path, 'hp_id_list.txt')):
         f.write('\n'.join(hp_id_list))
 
 else:
+    with open(os.path.join(data_output_path,'hp_id_list.txt'), 'w') as f:
+        hp_id_list = [i.strip() for i in f.readlines()]
+    
+    # iterative all the old files and create new simulated files
     for root, directories, files in os.walk(data_input_path):
         if root == data_input_path:
             # If it is, skip to the next iteration
@@ -39,7 +43,8 @@ else:
                 hp_list = [i.strip() for i in f.readlines()]
                 hp_list_length = len(hp_list)
                 if hp_list_length > 1:
-                    sampled_items = random.sample(hp_list, hp_list_length)
+                    # sample same length of hp_ids from hp_id_list (overall hp dictionary)
+                    sampled_items = random.sample(hp_id_list, hp_list_length)
                     new_file_path = os.path.join(new_directory, file)
                     # Copy the file to the new path with the modified prefix
                     with open(new_file_path, 'w') as f:
