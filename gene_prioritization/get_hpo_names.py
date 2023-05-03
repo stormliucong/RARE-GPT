@@ -32,14 +32,15 @@ input_folder = 'simulated_pt_input'
 results = []
 for file_path in dx_dict.keys():
   # get file name and folder
-  print(file_path)
   file_name = os.path.basename(file_path)
   folder_name = os.path.basename(os.path.dirname(file_path))
+  input_path = os.path.join('.', 'Data', input_folder,'Original_data', folder_name, file_name)
   output_path = os.path.join('.', 'Data', input_folder,'HPO_names', folder_name, file_name)
   # result_json = {}
   # read file
   if not os.path.isfile(output_path):
-    with open(file_path) as f:
+    with open(input_path) as f:
+      print(f"Input: {input_path}")
       HP_IDs = f.read().splitlines()
       HP_content = ','.join(HP_IDs)
 
@@ -53,6 +54,7 @@ for file_path in dx_dict.keys():
       hp_names_content = ','.join(hp_names)
       if not os.path.exists(os.path.join('.', 'Data', input_folder, 'HPO_names', folder_name)):
         os.makedirs(os.path.join('.', 'Data', input_folder,'HPO_names', folder_name))
-
+      
+      print(f"Output: {output_path}")
       with open(output_path, 'w') as f:
         f.write(hp_names_content)
