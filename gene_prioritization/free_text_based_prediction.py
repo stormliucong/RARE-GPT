@@ -8,7 +8,7 @@ import pandas as pd
 # read json file
 with open('./api_key.json') as f:
   data = json.load(f)
-  openai.api_key = data['api_key']
+  openai.api_key = data['openai_token']
 
 def generate_gpt4_response(content, print_output=False):
   '''
