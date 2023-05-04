@@ -68,7 +68,8 @@ for file_path in list(dx_dict.keys()):
   file_name = os.path.basename(file_path)
   folder_name = os.path.basename(os.path.dirname(file_path))
   for top_n in ['5', '10', '50']:
-        
+
+    input_path = os.path.join('.', 'Data', input_folder, 'HPO_names', folder_name, file_name)    
     output_path = os.path.join('.', 'Data', input_folder, 'GPT_response', 'top_' + top_n, folder_name, file_name)
     output_error_path = os.path.join('.', 'Data', input_folder, 'GPT_response', 'top_' + top_n, folder_name, file_name + '_error')
 
@@ -76,11 +77,11 @@ for file_path in list(dx_dict.keys()):
       os.makedirs(os.path.join('.', 'Data', input_folder, 'GPT_response', 'top_' + top_n, folder_name))
     # file exists
     if not os.path.exists(output_path):
-      with open(file_path) as f:
+      with open(input_path) as f:
+        print(input_path)
         hpo_content = f.read()
         # call api to get gene prioritization
         content = 'The phenotype desciprtion of the patient is {content}. Can you suggest a list of top {x} possible genes to test? Please return gene symbols as a comma separated list. Example: "ABC1,BRAC2,BRAC1"'.format(x = top_n, content = hpo_content)
-        print(content)
         try:
           gene_prioritization = generate_gpt4_response(content,print_output=True)
           with open(output_path, 'w') as f:
@@ -89,6 +90,6 @@ for file_path in list(dx_dict.keys()):
           gene_prioritization = str(e)
           with open(output_error_path, 'w') as f:
             f.write(gene_prioritization)
-      
+        # print(content)
     
 
