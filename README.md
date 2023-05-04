@@ -2,6 +2,11 @@
 
 RARE-GPT is a machine learning model based on the GPT architecture by OpenAI, which provides support for diagnosing rare diseases. With the help of artificial intelligence and machine learning, we aim to provide accurate and timely diagnoses for patients with rare diseases.
 
+## HuggineFace API
+[api inference](https://huggingface.co/docs/api-inference/index)
+
+
+
 ## Features
 
 - A GPT-based machine learning model that analyzes patient data to provide accurate diagnoses for rare diseases.
