@@ -18,7 +18,7 @@ def evaluate_fulfillment(gpt_response):
   '''
   pass
 
-def get_gpt_response(sample,top_n, prompt, gpt_version, iteration):
+def get_gpt_response(sample,top_n, prompt, gpt_version, input_type, iteration):
   pass
 
 def get_true_gene_symbol(sample):
@@ -29,6 +29,7 @@ def main():
   prompt_list = ['a', 'b']
   gpt_version = ['3.5', '4']
   iteration_list = ['1','2','3']
+  input_type_list = ['hpo', free_text']
   mega_table_list = []
   for sample in sample_list:
     true_gene_symbol = get_true_gene_symbol(sample)
@@ -36,15 +37,16 @@ def main():
       for prompt in prompt_list:
         for gpt_version in gpt_version_list:
           for iteration in iteration_list:
-            gpt_response = get_gpt_response(sample,top_n, prompt, gpt_version, iteration)
-            m = evaluate_meaningfulness(gpt_response)
-            if m == 1:
-              a = evaluate_accuracy(gpt_response, true_gene_symbol)
-              f = evaluate_fulfillment(gpt_response)
-            else:
-              a = None
-              f = None
-            mega_table_list.append((sample,top_n, prompt, gpt_version, iteration, m, a, f ))
+            for input_type in input_type_list:
+              gpt_response = get_gpt_response(sample,top_n, prompt, gpt_version, input_type, iteration)
+              m = evaluate_meaningfulness(gpt_response)
+              if m == 1:
+                a = evaluate_accuracy(gpt_response, true_gene_symbol)
+                f = evaluate_fulfillment(gpt_response)
+              else:
+                a = None
+                f = None
+              mega_table_list.append((sample,top_n, prompt, gpt_version, iteration, m, a, f ))
   mega_df = pd.DataFrame(mega_table_list)
   
     
