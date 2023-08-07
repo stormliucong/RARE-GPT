@@ -1,0 +1,54 @@
+As an AI language model, I don't have access to real-time data or the ability to perform genetic testing. However, I can suggest a list of genes associated with the given phenotype based on the knowledge available up to my last update in September 2021. Please note that this list is not exhaustive, and genetic testing should be carried out by a qualified healthcare professional or geneticist. Here is a comma-separated list of possible genes to test:
+
+1. SCN1A
+2. CDKL5
+3. STXBP1
+4. SCN2A
+5. ARX
+6. SLC2A1
+7. KCNQ2
+8. FOXG1
+9. MECP2
+10. SLC9A6
+11. GRIN2A
+12. GRIN2B
+13. SPTAN1
+14. ARID1B
+15. PCDH19
+16. TSC1
+17. TSC2
+18. STX1B
+19. DEPDC5
+20. KCNQ3
+21. UBE3A
+22. GABRB3
+23. SYNGAP1
+24. GRIN1
+25. MEF2C
+26. NRXN1
+27. PIGA
+28. RHOBTB2
+29. KMT2A
+30. FOXG1
+31. SATB2
+32. TCF4
+33. DYNC1H1
+34. EHMT1
+35. SHANK3
+36. CHD2
+37. ADNP
+38. MED13L
+39. HIVEP2
+40. CACNA1A
+41. WDR45
+42. GRIN2D
+43. GABRA1
+44. GABRB1
+45. GABRG2
+46. DNM1
+47. PRRT2
+48. SLC6A1
+49. HNRNPU
+50. KCNT1
+
+Again, it is essential to consult with a geneticist or medical professional for accurate genetic testing and interpretation of results.
