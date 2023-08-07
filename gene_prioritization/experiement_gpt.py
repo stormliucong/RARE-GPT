@@ -1,8 +1,19 @@
 import os
+import openai
+import pandas as pd
+import logging
 
-def query_gpt(prompt, gpt_version, test):
+# add time stamp to logging
+logging.basicConfig(level=logging.ERROR,
+                    format='%(asctime)s %(levelname)s %(message)s',
+                    datefmt='%Y-%m-%d %H:%M:%S')
+
+def query_gpt(prompt, gpt_version, test, print_output = False):
+  logging.info(f'querying gpt {gpt_version} with prompt {prompt}')
   if test:
     return prompt + '.test'
+  
+  openai.api_key = 'xxxx' #enter your API key
   completions = openai.ChatCompletion.create( #a method that allows you to generate text-based chatbot responses using a pre-trained GPT language model.
       model=gpt_version, 
       temperature = 0, #controls the level of randomness or creativity in the generated text; . A higher temperature value will result in a more diverse and creative output, as it increases the probability of sampling lower probability tokens. 
@@ -25,7 +36,7 @@ def query_gpt(prompt, gpt_version, test):
 
 
 def save_results(gpt_response, file_name):
-  
+  logging.info(f'saving results to {file_name}')
   try:
     with open(file_name, 'w') as f:
         f.write(gpt_response)
@@ -34,27 +45,36 @@ def save_results(gpt_response, file_name):
     with open(file_name + '.err', 'w') as f:
         f.write(gene_prioritization)
 
-def get_file_name(output_dir, sample,top_n, prompt, gpt_version, iteration):
-  file_name = '_'.join([sample['sample_id'], top_n, prompt, gpt_version, iteration]) + '.gpt.response'
-  return os.path.join('output_dir', file_name)
+def get_file_name(output_dir, sample,top_n, prompt, gpt_version, input_type, iteration):
+  logging.info(f'getting file name for {sample}')
+  file_name = '_'.join([sample['sample_id'], top_n, prompt, gpt_version, input_type, iteration]) + '.gpt.response'
+  return os.path.join(output_dir, file_name)
 
 def get_prompts(top_n, prompt, sample):
+  logging.info(f'getting prompts for {sample}')
   clinical_description = sample['content']
   if prompt == "a":
-    content = f'xxx prompt a. clinical features is {clinical_description}. please return {top_n} gene'. # edit this part
+    content = f'xxx prompt a. clinical features is {clinical_description}. please return {top_n} gene' # edit this part
   
   if prompt == "b":
-    content = f'xxprompt b. clinical features is {clinical_description}. please return {top_n} gene'. # edit this part
-
+    content = f'xxprompt b. clinical features is {clinical_description}. please return {top_n} gene' # edit this part
+  
+  if prompt == 'c':
+    content = f'xxprompt c. clinical features is {clinical_description}. please return {top_n} gene'
+    
+  if prompt == 'd':
+    content = f'xxprompt d. clinical features is {clinical_description}. please return {top_n} gene'
   return content
 
 
 def get_sample_list(input_type):
+  logging.info(f'getting sample list for {input_type}')
   # sample_list = [{"sample_id": 123, "true_gene": "ABC", "content": "muscular dystropy"}]
   # sample_list = [{"sample_id": 123, "true_gene": "ABC", "content": "patient diagnosed with muscular dystropy"}]
   if input_type == 'hpo_concepts':
     # get sample list for hpo input
     data_folder = './Data/HPO_input/Original_data'
+    sample_list_hpo = []
     with open(os.path.join(data_folder, 'probe_info')) as f:
       for line in f:
           line = line.strip()
@@ -73,12 +93,12 @@ def get_sample_list(input_type):
           sample_list_hpo.append({"sample_id": sample_id, "true_gene": true_gene})
 
     for sample in sample_list_hpo:
-      folder_name, file_name = sample['sample_id'].split('\.')
+      folder_name, file_name = sample['sample_id'].split('.')
       input_path = os.path.join('.', 'Data', 'HPO_input', 'HPO_names', folder_name, file_name)
       with open(input_path) as f:
         print(input_path)
         hpo_content = f.read()
-        sample['hpo_concepts'] = hpo_content.replace('\n',';')
+        sample['content'] = hpo_content.replace('\n',';')
     return sample_list_hpo
   
   if input_type == 'free_text':
@@ -86,8 +106,8 @@ def get_sample_list(input_type):
     data_folder = './Data/free_text_input'
 
     free_text_df = pd.read_csv(os.path.join(data_folder, 'free_text_pmid_input.csv'))
-
-    for index, row in free_text_df_subset.iterrows():
+    sample_list_free_text = []
+    for index, row in free_text_df.iterrows():
       free_text = row['Free-text']
       id = row['ID']
       true_gene = row['Gene']
@@ -98,23 +118,23 @@ def get_sample_list(input_type):
   
 
 
-def main():
+if __name__ == '__main__':
   output_dir = './Data/experiment'
-  top_n_list = ['10', '50']
-  prompt_list = ['a', 'b']
-  gpt_version = ['gpt-3.5', 'gpt-4']
+  top_n_list = ['5', '50']
+  prompt_list = ['a', 'b', 'c', 'd']
+  gpt_version_list = ['gpt-3.5', 'gpt-4']
   iteration_list = ['1','2','3']
   input_type_list = ['hpo_concepts', 'free_text']
   for iteration in iteration_list:
     for input_type in input_type_list:
       sample_list = get_sample_list(input_type)
       for top_n in top_n_list:
-        for prompt in prompt_list:
+        for prompt_id in prompt_list:
           for gpt_version in gpt_version_list:
             for sample in sample_list:
-              prompt = get_prompts(top_n, input_type, prompt, sample)
-              file_name = get_file_name(output_dir, sample,top_n, prompt, gpt_version, input_type, iteration)
-              gpt_response = query_gpt(prompt, gpt_version, test = True)
+              prompt = get_prompts(top_n, prompt_id, sample)
+              file_name = get_file_name(output_dir, sample,top_n, prompt_id, gpt_version, input_type, iteration)
+              gpt_response = query_gpt(prompt, gpt_version, test = True, print_output = False)
               save_results(gpt_response, file_name)
     
 
