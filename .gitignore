@@ -2,6 +2,9 @@
 __pycache__/
 *.py[cod]
 *$py.class
+*.log
+./Experiment/*
+*/Data/experiment/*
 
 *key*
 # google sheet API key

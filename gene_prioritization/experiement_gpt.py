@@ -5,13 +5,14 @@ import logging
 
 # add time stamp to logging
 logging.basicConfig(level=logging.ERROR,
+                    filename='experiment_gpt.log',
                     format='%(asctime)s %(levelname)s %(message)s',
                     datefmt='%Y-%m-%d %H:%M:%S')
 
 def query_gpt(prompt, gpt_version, test, print_output = False):
   logging.info(f'querying gpt {gpt_version} with prompt {prompt}')
   if test:
-    return prompt + '.test'
+    return prompt + '.test.response'
   
   openai.api_key = 'xxxx' #enter your API key
   completions = openai.ChatCompletion.create( #a method that allows you to generate text-based chatbot responses using a pre-trained GPT language model.
@@ -42,8 +43,11 @@ def save_results(gpt_response, file_name):
         f.write(gpt_response)
   except Exception as e:
     gene_prioritization = str(e)
+    logging.error(f'error saving results to {file_name}')
+    logging.error(f'error message: {gene_prioritization}')
     with open(file_name + '.err', 'w') as f:
         f.write(gene_prioritization)
+        logging.error(f'writing error to {file_name}.err')
 
 def get_file_name(output_dir, sample,top_n, prompt, gpt_version, input_type, iteration):
   logging.info(f'getting file name for {sample}')
@@ -54,13 +58,13 @@ def get_prompts(top_n, prompt, sample):
   logging.info(f'getting prompts for {sample}')
   clinical_description = sample['content']
   if prompt == "a":
-    content = f'xxx prompt a. clinical features is {clinical_description}. please return {top_n} gene' # edit this part
+    content = f'prompt a. clinical features is {clinical_description}. please return {top_n} gene' # edit this part
   
   if prompt == "b":
-    content = f'xxprompt b. clinical features is {clinical_description}. please return {top_n} gene' # edit this part
+    content = f'prompt b. clinical features is {clinical_description}. please return {top_n} gene' # edit this part
   
   if prompt == 'c':
-    content = f'xxprompt c. clinical features is {clinical_description}. please return {top_n} gene'
+    content = f'prompt c. clinical features is {clinical_description}. please return {top_n} gene'
     
   if prompt == 'd':
     content = f'xxprompt d. clinical features is {clinical_description}. please return {top_n} gene'
