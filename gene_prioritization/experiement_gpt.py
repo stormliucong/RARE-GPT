@@ -57,17 +57,17 @@ def get_file_name(output_dir, sample,top_n, prompt, gpt_version, input_type, ite
 def get_prompts(top_n, prompt, sample):
   logging.info(f'getting prompts for {sample}')
   clinical_description = sample['content']
-  if prompt == "a":
+  if prompt == "original":
     content = f'prompt a. clinical features is {clinical_description}. please return {top_n} gene' # edit this part
   
-  if prompt == "b":
+  if prompt == "original+role":
     content = f'prompt b. clinical features is {clinical_description}. please return {top_n} gene' # edit this part
   
-  if prompt == 'c':
+  if prompt == 'original+instruction':
     content = f'prompt c. clinical features is {clinical_description}. please return {top_n} gene'
-    
-  if prompt == 'd':
-    content = f'xxprompt d. clinical features is {clinical_description}. please return {top_n} gene'
+  
+  if prompt == 'original+role+instruction':
+    content = f'prompt d. clinical features is {clinical_description}. please return {top_n} gene'
   return content
 
 
@@ -123,9 +123,9 @@ def get_sample_list(input_type):
 
 
 if __name__ == '__main__':
-  output_dir = './Data/experiment'
+  output_dir = './Experiment'
   top_n_list = ['5', '50']
-  prompt_list = ['a', 'b', 'c', 'd']
+  prompt_list = ['original', 'original+role', 'original+instruction','original+role+instruction']
   gpt_version_list = ['gpt-3.5', 'gpt-4']
   iteration_list = ['1','2','3']
   input_type_list = ['hpo_concepts', 'free_text']
