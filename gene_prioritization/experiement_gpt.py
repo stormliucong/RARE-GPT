@@ -64,10 +64,10 @@ def get_prompts(top_n, prompt, sample):
     content = f'prompt b. Consider you are a genetic counselor. The phenotype description of the patient is {clinical_description}. Can you suggest a list of {top_n} possible genes to test? Please return gene symbols as a comma-separated list. Example: "ABC1, BRAC2, BRAC1" or "X" if you can not provide the result.' # edit this part
   
   if prompt == 'original+instruction':
-    content = f'prompt c. The phenotype description of the patient is {clinical_description}. Can you suggest a list of {top_n} possible genes to test? Please use the knowledge you've trained. No need to access the real-time database to generate outcomes. Also, please return gene symbols as a comma-separated list. Example: "ABC1, BRAC2, BRAC1" or "X" if you can not provide the result.'
+    content = f'prompt c. The phenotype description of the patient is {clinical_description}. Can you suggest a list of {top_n} possible genes to test? Please use the knowledge you have trained. No need to access the real-time database to generate outcomes. Also, please return gene symbols as a comma-separated list. Example: "ABC1, BRAC2, BRAC1" or "X" if you can not provide the result.'
   
   if prompt == 'original+role+instruction':
-    content = f'prompt d. Consider you are a genetic counselor. The phenotype description of the patient is {clinical_description}. Can you suggest a list of {top_n} possible genes to test? Please use the knowledge you've trained. No need to access the real-time database to generate outcomes. Also, please return gene symbols as a comma-separated list. Example: "ABC1, BRAC2, BRAC1" or "X" if you can not provide the result.'
+    content = f'prompt d. Consider you are a genetic counselor. The phenotype description of the patient is {clinical_description}. Can you suggest a list of {top_n} possible genes to test? Please use the knowledge you have trained. No need to access the real-time database to generate outcomes. Also, please return gene symbols as a comma-separated list. Example: "ABC1, BRAC2, BRAC1" or "X" if you can not provide the result.'
   return content
 
 
