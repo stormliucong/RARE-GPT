@@ -5,7 +5,7 @@ __pycache__/
 *.log
 ./Experiment/*
 */Data/experiment/*
-
+gene_prioritization/Experiment/
 *key*
 # google sheet API key
 *peerless*
