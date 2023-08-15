@@ -4,7 +4,7 @@ import pandas as pd
 import logging
 
 # add time stamp to logging
-logging.basicConfig(level=logging.ERROR,
+logging.basicConfig(level=logging.DEBUG,
                     filename='experiment_gpt.log',
                     format='%(asctime)s %(levelname)s %(message)s',
                     datefmt='%Y-%m-%d %H:%M:%S')
@@ -29,7 +29,7 @@ def query_gpt(prompt, gpt_version, test, print_output = False):
 
   # Displaying the output can be helpful if things go wrong
   if print_output:
-      print(completions)
+      logging.info(completions)
 
   gpt_response = completions.choices[0]['message']['content']
   # Return the first choice's text
@@ -100,7 +100,6 @@ def get_sample_list(input_type):
       folder_name, file_name = sample['sample_id'].split('.')
       input_path = os.path.join('.', 'Data', 'HPO_input', 'HPO_names', folder_name, file_name)
       with open(input_path) as f:
-        print(input_path)
         hpo_content = f.read()
         sample['content'] = hpo_content.replace('\n',';')
     return sample_list_hpo
@@ -125,7 +124,7 @@ def get_sample_list(input_type):
 if __name__ == '__main__':
   output_dir = './Experiment'
   top_n_list = ['5', '50']
-  prompt_list = ['original', 'original+role', 'original+instruction','original+role+instruction']
+  prompt_list = ['a', 'b', 'c','d']
   gpt_version_list = ['gpt-3.5', 'gpt-4']
   iteration_list = ['1','2','3']
   input_type_list = ['hpo_concepts', 'free_text']
@@ -138,6 +137,9 @@ if __name__ == '__main__':
             for sample in sample_list:
               prompt = get_prompts(top_n, prompt_id, sample)
               file_name = get_file_name(output_dir, sample,top_n, prompt_id, gpt_version, input_type, iteration)
+              if os.path.exists(file_name) or os.path.exists(file_name + '.err'):
+                logging.info(f'file {file_name} already exists, skipping')
+                continue
               gpt_response = query_gpt(prompt, gpt_version, test = True, print_output = False)
               save_results(gpt_response, file_name)
     
