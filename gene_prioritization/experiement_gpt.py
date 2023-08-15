@@ -51,23 +51,23 @@ def save_results(gpt_response, file_name):
 
 def get_file_name(output_dir, sample,top_n, prompt, gpt_version, input_type, iteration):
   logging.info(f'getting file name for {sample}')
-  file_name = '_'.join([sample['sample_id'], top_n, prompt, gpt_version, input_type, iteration]) + '.gpt.response'
+  file_name = '__'.join([sample['sample_id'], sample['true_gene'], top_n, prompt, gpt_version, input_type, iteration]) + '.gpt.response'
   return os.path.join(output_dir, file_name)
 
 def get_prompts(top_n, prompt, sample):
   logging.info(f'getting prompts for {sample}')
   clinical_description = sample['content']
-  if prompt == "original":
-    content = f'prompt a. clinical features is {clinical_description}. please return {top_n} gene' # edit this part
+  if prompt == "a":
+    content = f'prompt original. clinical features is {clinical_description}. please return {top_n} gene' # edit this part
   
-  if prompt == "original+role":
-    content = f'prompt b. clinical features is {clinical_description}. please return {top_n} gene' # edit this part
+  if prompt == "b":
+    content = f'prompt original+role. clinical features is {clinical_description}. please return {top_n} gene' # edit this part
   
-  if prompt == 'original+instruction':
-    content = f'prompt c. clinical features is {clinical_description}. please return {top_n} gene'
+  if prompt == 'c':
+    content = f'prompt original+instruction. clinical features is {clinical_description}. please return {top_n} gene'
   
-  if prompt == 'original+role+instruction':
-    content = f'prompt d. clinical features is {clinical_description}. please return {top_n} gene'
+  if prompt == 'd':
+    content = f'prompt original+role+instruction. clinical features is {clinical_description}. please return {top_n} gene'
   return content
 
 
