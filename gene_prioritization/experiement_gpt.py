@@ -58,16 +58,16 @@ def get_prompts(top_n, prompt, sample):
   logging.info(f'getting prompts for {sample}')
   clinical_description = sample['content']
   if prompt == "a":
-    content = f'prompt original. clinical features is {clinical_description}. please return {top_n} gene' # edit this part
+    content = f'prompt a. The phenotype description of the patient is {clinical_description}. Can you suggest a list of {top_n} possible genes to test? Please return gene symbols as a comma-separated list. Example: "ABC1, BRAC2, BRAC1" or "X" if you can not provide the result.' # edit this part
   
   if prompt == "b":
-    content = f'prompt original+role. clinical features is {clinical_description}. please return {top_n} gene' # edit this part
+    content = f'prompt b. Consider you are a genetic counselor. The phenotype description of the patient is {clinical_description}. Can you suggest a list of {top_n} possible genes to test? Please return gene symbols as a comma-separated list. Example: "ABC1, BRAC2, BRAC1" or "X" if you can not provide the result.' # edit this part
   
   if prompt == 'c':
-    content = f'prompt original+instruction. clinical features is {clinical_description}. please return {top_n} gene'
+    content = f'prompt c. The phenotype description of the patient is {clinical_description}. Can you suggest a list of {top_n} possible genes to test? Please use the knowledge you have trained. No need to access the real-time database to generate outcomes. Also, please return gene symbols as a comma-separated list. Example: "ABC1, BRAC2, BRAC1" or "Not Applicable" if you can not provide the result.'
   
   if prompt == 'd':
-    content = f'prompt original+role+instruction. clinical features is {clinical_description}. please return {top_n} gene'
+    content = f'prompt d. Consider you are a genetic counselor. The phenotype description of the patient is {clinical_description}. Can you suggest a list of {top_n} possible genes to test? Please use the knowledge you have trained. No need to access the real-time database to generate outcomes. Also, please return gene symbols as a comma-separated list. Example: "ABC1, BRAC2, BRAC1" or "Not Applicable" if you can not provide the result.'
   return content
 
 
