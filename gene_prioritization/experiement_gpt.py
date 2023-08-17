@@ -2,6 +2,8 @@ import os
 import openai
 import pandas as pd
 import logging
+import random
+import config
 
 # add time stamp to logging
 logging.basicConfig(level=logging.DEBUG,
@@ -14,7 +16,7 @@ def query_gpt(prompt, gpt_version, test, print_output = False):
   if test:
     return prompt + '.test.response'
   
-  openai.api_key = 'xxxx' #enter your API key
+  openai.api_key = config.OPENAI_API_KEY
   completions = openai.ChatCompletion.create( #a method that allows you to generate text-based chatbot responses using a pre-trained GPT language model.
       model=gpt_version, 
       temperature = 0, #controls the level of randomness or creativity in the generated text; . A higher temperature value will result in a more diverse and creative output, as it increases the probability of sampling lower probability tokens. 
@@ -35,20 +37,6 @@ def query_gpt(prompt, gpt_version, test, print_output = False):
   # Return the first choice's text
   return gpt_response
 
-
-def save_results(gpt_response, file_name):
-  logging.info(f'saving results to {file_name}')
-  try:
-    with open(file_name, 'w') as f:
-        f.write(gpt_response)
-  except Exception as e:
-    gene_prioritization = str(e)
-    logging.error(f'error saving results to {file_name}')
-    logging.error(f'error message: {gene_prioritization}')
-    with open(file_name + '.err', 'w') as f:
-        f.write(gene_prioritization)
-        logging.error(f'writing error to {file_name}.err')
-
 def get_file_name(output_dir, sample,top_n, prompt, gpt_version, input_type, iteration):
   logging.info(f'getting file name for {sample}')
   file_name = '__'.join([sample['sample_id'], sample['true_gene'], top_n, prompt, gpt_version, input_type, iteration]) + '.gpt.response'
@@ -58,16 +46,19 @@ def get_prompts(top_n, prompt, sample):
   logging.info(f'getting prompts for {sample}')
   clinical_description = sample['content']
   if prompt == "a":
-    content = f'prompt a. The phenotype description of the patient is {clinical_description}. Can you suggest a list of {top_n} possible genes to test? Please return gene symbols as a comma-separated list. Example: "ABC1, BRAC2, BRAC1" or "X" if you can not provide the result.' # edit this part
+    # Original
+    content = f'The phenotype description of the patient is {clinical_description}. Can you suggest a list of {top_n} possible genes to test? Please return gene symbols as a comma-separated list. Example: "ABC1, BRAC2, BRAC1" or "Not Applicable" if you can not provide the result.'
   
   if prompt == "b":
-    content = f'prompt b. Consider you are a genetic counselor. The phenotype description of the patient is {clinical_description}. Can you suggest a list of {top_n} possible genes to test? Please return gene symbols as a comma-separated list. Example: "ABC1, BRAC2, BRAC1" or "X" if you can not provide the result.' # edit this part
+    # Original + Role
+    content = f'Consider you are a genetic counselor. The phenotype description of the patient is {clinical_description}. Can you suggest a list of {top_n} possible genes to test? Please return gene symbols as a comma-separated list. Example: "ABC1, BRAC2, BRAC1" or "Not Applicable" if you can not provide the result.'
   
   if prompt == 'c':
-    content = f'prompt c. The phenotype description of the patient is {clinical_description}. Can you suggest a list of {top_n} possible genes to test? Please use the knowledge you have trained. No need to access the real-time database to generate outcomes. Also, please return gene symbols as a comma-separated list. Example: "ABC1, BRAC2, BRAC1" or "Not Applicable" if you can not provide the result.'
+    # Original + Instruction
+    content = f'The phenotype description of the patient is {clinical_description}. Can you suggest a list of {top_n} possible genes to test? Please consider the phenotype gene relationship, and use the knowledge you have trained on. No need to access the real-time database to generate outcomes. Please return gene symbols as a comma-separated list. Example: "ABC1, BRAC2, BRAC1" or "Not Applicable" if you can not provide the result.'
   
   if prompt == 'd':
-    content = f'prompt d. Consider you are a genetic counselor. The phenotype description of the patient is {clinical_description}. Can you suggest a list of {top_n} possible genes to test? Please use the knowledge you have trained. No need to access the real-time database to generate outcomes. Also, please return gene symbols as a comma-separated list. Example: "ABC1, BRAC2, BRAC1" or "Not Applicable" if you can not provide the result.'
+    content = f'Consider you are a genetic counselor. The phenotype description of the patient is {clinical_description}. Can you suggest a list of {top_n} possible genes to test? Please consider the phenotype gene relationship, and use the knowledge you have trained on. No need to access the real-time database to generate outcomes. Please return gene symbols as a comma-separated list. Example: "ABC1, BRAC2, BRAC1" or "Not Applicable" if you can not provide the result.'
   return content
 
 
@@ -122,10 +113,15 @@ def get_sample_list(input_type):
 
 
 if __name__ == '__main__':
-  output_dir = './Experiment'
+  # Probability of getting 1
+  probability_of_1 = 0.001
+
+  # List of choices (1 or 0)
+  choices = [1, 0]
+  output_dir = './Experiment_001subset'
   top_n_list = ['5', '50']
   prompt_list = ['a', 'b', 'c','d']
-  gpt_version_list = ['gpt-3.5', 'gpt-4']
+  gpt_version_list = ['gpt-3.5-turbo', 'gpt-4']
   iteration_list = ['1','2','3']
   input_type_list = ['hpo_concepts', 'free_text']
   for iteration in iteration_list:
@@ -140,8 +136,18 @@ if __name__ == '__main__':
               if os.path.exists(file_name) or os.path.exists(file_name + '.err'):
                 logging.info(f'file {file_name} already exists, skipping')
                 continue
-              gpt_response = query_gpt(prompt, gpt_version, test = True, print_output = False)
-              save_results(gpt_response, file_name)
-    
+              random_flag = random.choices(choices, [probability_of_1, 1 - probability_of_1])[0]
+              if random_flag == 1:
+                try:
+                  with open(file_name, 'w') as f:
+                    gpt_response = query_gpt(prompt, gpt_version, test = False, print_output = False)
+                    f.write(gpt_response)
+                except Exception as e:
+                  logging.error(f'error saving results to {file_name}')
+                  logging.error(f'error message: {str(e)}')
+                  with open(file_name + '.err', 'w') as f:
+                    f.write(str(e))
+                    logging.error(f'writing error to {file_name}.err')
+  
 
  

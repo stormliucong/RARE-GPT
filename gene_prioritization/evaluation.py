@@ -10,20 +10,20 @@ logging.basicConfig(level=logging.DEBUG,
                     format='%(asctime)s %(levelname)s %(message)s',
                     datefmt='%Y-%m-%d %H:%M:%S')
 
-def evaluate_completeness(gpt_response, hgnc_complete_list):
+def evaluate_completeness(gpt_response, hgnc_complete_list, top_n):
   '''
   Try to grep a GENE SYMBOL (using regular expression)
   [A-Z0-9]+
   '''
   logging.debug('gpt_response: {}'.format(gpt_response))
-  pattern = r'[ ,.!?]+'
+  pattern = r'[ ,.!?\n]+'
   tokens = re.split(pattern, gpt_response)
   tokens = [token.strip() for token in tokens if len(token) > 1]
   logging.debug('tokens: {}'.format(tokens))
   overlapped_genes = set(tokens) & set(hgnc_complete_list)
   logging.debug('overlapped_genes: {}'.format(overlapped_genes))
   
-  if len(overlapped_genes) > 1:
+  if len(overlapped_genes) > int(int(top_n)/2):
     return 1
   else:
     return 0
@@ -54,14 +54,9 @@ def evaluate_fulfillment(gpt_response, top_n):
     is_na_format = False
   else:
     is_na_format = True
-  
-  if top_n == '5':
-    # 5*(2+1)
-    gene_regex = rf'[A-Z0-9|,\s]{{15,}}'
-  elif top_n == '50':
-    # 50*(2+1) = 150
-    gene_regex = rf'[A-Z0-9|,\s]{{150,}}'
-    
+      
+  gene_regex = rf'[\w|-]+(?:,\s*[\w|-]+)+'
+
   gene_list = re.findall(gene_regex, gpt_response)
   if len(gene_list) == 0:
     is_gene_list_format = False
@@ -98,9 +93,9 @@ def get_hgnc_complete_list(symbol_json_file='./hgnc_complete_set_2020-10-01.json
 
 
 def main():
-  output_dir = './Experiment_test'
+  output_dir = './Experiment_001subset'
   hgnc_complete_list = get_hgnc_complete_list()
-  mega_table_list = []
+  mega_table_list = [["sample_id", "true_gene", "top_n", "prompt", "gpt_version", "input_type", "iteration", "gpt_response_error", "completeness", "accuracy", "structural_compliance"]]
   for file in os.listdir(output_dir):
     error, c, a, f = None, None, None, None
     if file.endswith('.gpt.response') or file.endswith('.gpt.response.err'):
@@ -110,7 +105,7 @@ def main():
       if file.endswith('.gpt.response'):
         error = 0
         gpt_response = get_gpt_response(os.path.join(output_dir,file))
-        c = evaluate_completeness(gpt_response, hgnc_complete_list)
+        c = evaluate_completeness(gpt_response, hgnc_complete_list, top_n)
         if c == 1:
           a = evaluate_accuracy(gpt_response, true_gene)
         f = evaluate_fulfillment(gpt_response, top_n)
@@ -118,7 +113,7 @@ def main():
         error = 1         
     mega_table_list.append([sample_id, true_gene, top_n, prompt, gpt_version, input_type, iteration, error, c, a, f])
   mega_df = pd.DataFrame(mega_table_list)
-  mega_df.to_csv('mega_eval_table.csv', index=False, header=False)
+  mega_df.to_csv('Experiment_001subset_eval_table.csv', index=False, header=False)
   
 if __name__ == '__main__':
   main()
