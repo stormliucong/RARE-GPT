@@ -114,11 +114,12 @@ def get_sample_list(input_type):
 
 if __name__ == '__main__':
   # Probability of getting 1
-  probability_of_1 = 0.001
+  probability_of_1 = 0.005
 
   # List of choices (1 or 0)
   choices = [1, 0]
-  output_dir = './Experiment_001subset'
+  output_dir = './Experiment_002subset'
+  previous_dir = './Experiment_001subset'
   top_n_list = ['5', '50']
   prompt_list = ['a', 'b', 'c','d']
   gpt_version_list = ['gpt-3.5-turbo', 'gpt-4']
@@ -133,7 +134,8 @@ if __name__ == '__main__':
             for sample in sample_list:
               prompt = get_prompts(top_n, prompt_id, sample)
               file_name = get_file_name(output_dir, sample,top_n, prompt_id, gpt_version, input_type, iteration)
-              if os.path.exists(file_name) or os.path.exists(file_name + '.err'):
+              history_file = get_file_name(previous_dir, sample,top_n, prompt_id, gpt_version, input_type, iteration)
+              if os.path.exists(history_file) or os.path.exists(history_file + '.err'):
                 logging.info(f'file {file_name} already exists, skipping')
                 continue
               random_flag = random.choices(choices, [probability_of_1, 1 - probability_of_1])[0]

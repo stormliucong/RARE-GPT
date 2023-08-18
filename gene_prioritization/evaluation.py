@@ -33,7 +33,7 @@ def evaluate_accuracy(gpt_response, true_gene_symbol):
   Match greped GENE SYMBOL with true_gene_symbol
   '''
   logging.debug('gpt_response: {}'.format(gpt_response))
-  pattern = r'[ ,.!?]+'
+  pattern = r'[ ,.!?\n]+'
   tokens = re.split(pattern, gpt_response)
   tokens = [token.strip() for token in tokens if len(token) > 1]
   logging.debug('tokens: {}'.format(tokens))
@@ -93,7 +93,7 @@ def get_hgnc_complete_list(symbol_json_file='./hgnc_complete_set_2020-10-01.json
 
 
 def main():
-  output_dir = './Experiment_001subset'
+  output_dir = './Experiment_002subset'
   hgnc_complete_list = get_hgnc_complete_list()
   mega_table_list = [["sample_id", "true_gene", "top_n", "prompt", "gpt_version", "input_type", "iteration", "gpt_response_error", "completeness", "accuracy", "structural_compliance"]]
   for file in os.listdir(output_dir):
@@ -113,7 +113,7 @@ def main():
         error = 1         
     mega_table_list.append([sample_id, true_gene, top_n, prompt, gpt_version, input_type, iteration, error, c, a, f])
   mega_df = pd.DataFrame(mega_table_list)
-  mega_df.to_csv('Experiment_001subset_eval_table.csv', index=False, header=False)
+  mega_df.to_csv('Experiment_002subset_eval_table.csv', index=False, header=False)
   
 if __name__ == '__main__':
   main()
