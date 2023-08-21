@@ -4,15 +4,17 @@ import pandas as pd
 import logging
 import random
 import config
+import re
+from multiprocessing import pool, active_children
 
 # add time stamp to logging
-logging.basicConfig(level=logging.DEBUG,
+logging.basicConfig(level=logging.INFO,
                     filename='experiment_gpt.log',
                     format='%(asctime)s %(levelname)s %(message)s',
                     datefmt='%Y-%m-%d %H:%M:%S')
 
 def query_gpt(prompt, gpt_version, test, print_output = False):
-  logging.info(f'querying gpt {gpt_version} with prompt {prompt}')
+  logging.info(f'querying gpt {gpt_version}')
   if test:
     return prompt + '.test.response'
   
@@ -31,7 +33,7 @@ def query_gpt(prompt, gpt_version, test, print_output = False):
 
   # Displaying the output can be helpful if things go wrong
   if print_output:
-      logging.info(completions)
+      logging.debug(completions)
 
   gpt_response = completions.choices[0]['message']['content']
   # Return the first choice's text
@@ -110,14 +112,42 @@ def get_sample_list(input_type):
       sample_list_free_text.append({"sample_id": sample_id, "true_gene": true_gene, 'content': free_text})
     return sample_list_free_text
   
-
+def gpt_master(file_list):
+  mypool = pool.Pool(processes=16)
+  results = mypool.map(gpt_worker, file_list)
+    # forcefully close all worker processes
+  mypool.close()
+  # wait a moment
+  mypool.join()
+  # report a message
+  logging.info('Main all done.')
+  # report the number of child processes that are still active
+  children = active_children()
+  logging.info(f'Active children: {len(children)}')
+  
+def gpt_worker(file_name):
+  # get file name from a file path.
+  m = re.match(r'(.+?).gpt.response*', os.path.basename(file_name))
+  sample_id, true_gene, top_n, prompt_id, gpt_version, input_type, iteration = m.group(1).split('__')
+  try:
+    prompt = get_prompts(top_n, prompt_id, sample)
+    with open(file_name, 'w') as f:
+      gpt_response = query_gpt(prompt, gpt_version, test = False, print_output = False)
+      f.write(gpt_response)
+  except Exception as e:
+    logging.error(f'error saving results to {file_name}')
+    logging.error(f'error message: {str(e)}')
+    with open(file_name + '.err', 'w') as f:
+      f.write(str(e))
+      logging.error(f'writing error to {file_name}.err')
 
 if __name__ == '__main__':
   # Probability of getting 1
-  probability_of_1 = 0.005
+  probability_of_1 = 0.001
 
   # List of choices (1 or 0)
   choices = [1, 0]
+  file_list = []
   output_dir = './Experiment_002subset'
   previous_dir = './Experiment_001subset'
   top_n_list = ['5', '50']
@@ -132,7 +162,6 @@ if __name__ == '__main__':
         for prompt_id in prompt_list:
           for gpt_version in gpt_version_list:
             for sample in sample_list:
-              prompt = get_prompts(top_n, prompt_id, sample)
               file_name = get_file_name(output_dir, sample,top_n, prompt_id, gpt_version, input_type, iteration)
               history_file = get_file_name(previous_dir, sample,top_n, prompt_id, gpt_version, input_type, iteration)
               if os.path.exists(history_file) or os.path.exists(history_file + '.err'):
@@ -140,16 +169,12 @@ if __name__ == '__main__':
                 continue
               random_flag = random.choices(choices, [probability_of_1, 1 - probability_of_1])[0]
               if random_flag == 1:
-                try:
-                  with open(file_name, 'w') as f:
-                    gpt_response = query_gpt(prompt, gpt_version, test = False, print_output = False)
-                    f.write(gpt_response)
-                except Exception as e:
-                  logging.error(f'error saving results to {file_name}')
-                  logging.error(f'error message: {str(e)}')
-                  with open(file_name + '.err', 'w') as f:
-                    f.write(str(e))
-                    logging.error(f'writing error to {file_name}.err')
+                file_list.append(file_name)
+
+  logging.info(f'number of files to be processed: {len(file_list)}')
+  gpt_master(file_list)
+                
+                
   
 
  
