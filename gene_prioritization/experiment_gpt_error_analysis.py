@@ -9,14 +9,14 @@ from multiprocessing import pool, active_children
 import time 
 # add time stamp to logging
 logging.basicConfig(level=logging.INFO,
-                    filename='experiment_gpt.log',
+                    filename='experiment_gpt_error_analysis.log',
                     format='%(asctime)s %(levelname)s %(message)s',
                     datefmt='%Y-%m-%d %H:%M:%S')
 
 def query_gpt(prompt, gpt_version, test, print_output = False):
   logging.debug(f'querying gpt {gpt_version}')
   if test:
-    return prompt + '.test.response'
+    return prompt
   
   openai.api_key = config.OPENAI_API_KEY
   completions = openai.ChatCompletion.create( #a method that allows you to generate text-based chatbot responses using a pre-trained GPT language model.
@@ -137,7 +137,7 @@ def gpt_worker(file):
     time.sleep(random_int)
     prompt = get_prompts(top_n, prompt_id, sample)
     with open(file_name, 'w') as f:
-      gpt_response = query_gpt(prompt, gpt_version, test = False, print_output = False)
+      gpt_response = query_gpt(prompt, gpt_version, test = True, print_output = False)
       f.write(gpt_response)
   except Exception as e:
     logging.error(f'error saving results to {file_name}')
@@ -148,13 +148,13 @@ def gpt_worker(file):
 
 if __name__ == '__main__':
   # Probability of getting 1
-  probability_of_1 = 1
+  probability_of_1 = 0.001
 
   # List of choices (1 or 0)
   choices = [1, 0]
   file_list = []
-  output_dir = './Experiment_002subset'
-  previous_dir = './Experiment_001subset'
+  output_dir = './Experiment_003subset'
+  previous_dir = output_dir
   top_n_list = ['10', '50']
   prompt_list = ['a', 'b', 'c','d']
   gpt_version_list = ['gpt-3.5-turbo', 'gpt-4']
@@ -175,6 +175,7 @@ if __name__ == '__main__':
               # random_flag = random.choices(choices, [probability_of_1, 1 - probability_of_1])[0]
               random_flag = 1
               if random_flag == 1:
+                logging.info(f"adding {file_name} to file list")
                 file_list.append({"file_name": file_name, "sample": sample})
 
   logging.info(f'number of files to be processed: {len(file_list)}')

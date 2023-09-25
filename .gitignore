@@ -8,6 +8,7 @@ __pycache__/
 gene_prioritization/Experiment/
 gene_prioritization/Experiment_001subset/
 gene_prioritization/Experiment_002subset/
+gene_prioritization/Experiment_*
 gene_prioritization/Experiment_test/
 config.py
 
