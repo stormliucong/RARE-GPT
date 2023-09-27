@@ -93,7 +93,7 @@ def get_hgnc_complete_list(symbol_json_file='./hgnc_complete_set_2020-10-01.json
 
 
 def main():
-  output_dir = './Experiment_001subset'
+  output_dir = './Experiment_003subset'
   hgnc_complete_list = get_hgnc_complete_list()
   mega_table_list = [["sample_id", "true_gene", "top_n", "prompt", "gpt_version", "input_type", "iteration", "gpt_response_error", "completeness", "accuracy", "structural_compliance"]]
   for file in os.listdir(output_dir):
@@ -115,7 +115,7 @@ def main():
       logging.error(file)    
     mega_table_list.append([sample_id, true_gene, top_n, prompt, gpt_version, input_type, iteration, error, c, a, f])
   mega_df = pd.DataFrame(mega_table_list)
-  mega_df.to_csv('Experiment_001subset_eval_table.csv', index=False, header=False)
+  mega_df.to_csv('Experiment_003subset_eval_table.csv', index=False, header=False)
   
 if __name__ == '__main__':
   main()

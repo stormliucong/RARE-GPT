@@ -136,8 +136,8 @@ def gpt_worker(file):
     random_int = random.randint(1, 3)
     time.sleep(random_int)
     prompt = get_prompts(top_n, prompt_id, sample)
+    gpt_response = query_gpt(prompt, gpt_version, test = False, print_output = False)
     with open(file_name, 'w') as f:
-      gpt_response = query_gpt(prompt, gpt_version, test = False, print_output = False)
       f.write(gpt_response)
   except Exception as e:
     logging.error(f'error saving results to {file_name}')
@@ -148,13 +148,13 @@ def gpt_worker(file):
 
 if __name__ == '__main__':
   # Probability of getting 1
-  probability_of_1 = 1
+  probability_of_1 = 0.01
 
   # List of choices (1 or 0)
   choices = [1, 0]
   file_list = []
-  output_dir = './Experiment_002subset'
-  previous_dir = './Experiment_001subset'
+  output_dir = './Experiment_004subset'
+  previous_dir = './Experiment_003subset'
   top_n_list = ['10', '50']
   prompt_list = ['a', 'b', 'c','d']
   gpt_version_list = ['gpt-3.5-turbo', 'gpt-4']
@@ -172,8 +172,8 @@ if __name__ == '__main__':
               if os.path.exists(history_file) or os.path.exists(history_file + '.err'):
                 logging.debug(f'file {file_name} already exists, skipping')
                 continue
-              # random_flag = random.choices(choices, [probability_of_1, 1 - probability_of_1])[0]
-              random_flag = 1
+              random_flag = random.choices(choices, [probability_of_1, 1 - probability_of_1])[0]
+              # random_flag = 1
               if random_flag == 1:
                 file_list.append({"file_name": file_name, "sample": sample})
 
