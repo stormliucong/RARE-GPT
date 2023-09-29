@@ -148,7 +148,7 @@ def gpt_worker(file):
 
 if __name__ == '__main__':
   # Probability of getting 1
-  probability_of_1 = 0.01
+  probability_of_1 = 1
 
   # List of choices (1 or 0)
   choices = [1, 0]
