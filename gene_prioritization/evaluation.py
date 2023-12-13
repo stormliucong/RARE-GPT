@@ -10,7 +10,7 @@ logging.basicConfig(level=logging.ERROR,
                     format='%(asctime)s %(levelname)s %(message)s',
                     datefmt='%Y-%m-%d %H:%M:%S')
 
-def evaluate_completeness(gpt_response, hgnc_complete_list, top_n):
+def evaluate_completeness(gpt_response, all_symbol_list, top_n):
   '''
   Try to grep a GENE SYMBOL (using regular expression)
   [A-Z0-9]+
@@ -20,7 +20,8 @@ def evaluate_completeness(gpt_response, hgnc_complete_list, top_n):
   tokens = re.split(pattern, gpt_response)
   tokens = [token.strip() for token in tokens if len(token) > 1]
   logging.debug('tokens: {}'.format(tokens))
-  overlapped_genes = set(tokens) & set(hgnc_complete_list)
+  
+  overlapped_genes = set(tokens) & set(all_symbol_list)
   logging.debug('overlapped_genes: {}'.format(overlapped_genes))
   
   if len(overlapped_genes) > int(int(top_n)/2):
@@ -28,7 +29,7 @@ def evaluate_completeness(gpt_response, hgnc_complete_list, top_n):
   else:
     return 0
 
-def evaluate_accuracy(gpt_response, true_gene_symbol):
+def evaluate_accuracy(gpt_response, true_gene_alias):
   '''
   Match greped GENE SYMBOL with true_gene_symbol
   '''
@@ -37,11 +38,11 @@ def evaluate_accuracy(gpt_response, true_gene_symbol):
   tokens = re.split(pattern, gpt_response)
   tokens = [token.strip() for token in tokens if len(token) > 1]
   logging.debug('tokens: {}'.format(tokens))
-  logging.debug('true_gene_symbol: {}'.format(true_gene_symbol))
-  if true_gene_symbol in set(tokens):
-    return 1
-  else:
-    return 0
+  for true_gene_symbol in true_gene_alias:
+    logging.debug('true_gene_symbol: {}'.format(true_gene_symbol))
+    if true_gene_symbol in set(tokens):
+      return 1
+  return 0
 
 def evaluate_fulfillment(gpt_response, top_n):
   '''
@@ -78,8 +79,21 @@ def get_hgnc_complete_list(symbol_json_file='./hgnc_complete_set_2020-10-01.json
   if not os.path.exists(symbol_json_file):
     logging.info('Downloading HGNC complete list')
     url = "https://ftp.ebi.ac.uk/pub/databases/genenames/hgnc/archive/quarterly/json/hgnc_complete_set_2020-10-01.json"
-    gene_list_json = requests.get(url).json()
-    symbol_list = [doc['symbol'] for doc in gene_list_json['response']['docs']]
+    gene_list_json = requests.get(url).json()['response']['docs']
+    symbol_list = []
+    for item in gene_list_json:
+      
+      symbol = item.get("symbol", "").upper().replace(" ", "")
+      alias_symbol = item.get("alias_symbol", [])
+      alias_symbol = [alias.upper().replace(" ", "") for alias in alias_symbol]
+      prev_symbol = item.get("prev_symbol", [])
+      prev_symbol = [prev.upper().replace(" ", "") for prev in prev_symbol]      
+      if symbol != '': 
+        symbol_list.append({"symbol": symbol, "other": symbol})
+        for alias in alias_symbol:
+          symbol_list.append({"symbol": symbol, "other": alias})
+        for prev in prev_symbol:
+          symbol_list.append({"symbol": symbol, "other": prev})
     logging.info('HGNC complete list downloaded')
     logging.info('length of HGNC complete list: {}'.format(len(symbol_list)))
     with open(symbol_json_file, 'w') as f:
@@ -95,6 +109,8 @@ def get_hgnc_complete_list(symbol_json_file='./hgnc_complete_set_2020-10-01.json
 def main():
   output_dir = './Experiment_003subset'
   hgnc_complete_list = get_hgnc_complete_list()
+  hgnc_complete_df = pd.DataFrame(hgnc_complete_list)
+  
   mega_table_list = [["sample_id", "true_gene", "top_n", "prompt", "gpt_version", "input_type", "iteration", "gpt_response_error", "completeness", "accuracy", "structural_compliance"]]
   for file in os.listdir(output_dir):
     error, c, a, f = None, None, None, None
@@ -102,18 +118,32 @@ def main():
       logging.debug(file.split('__'))
       m = re.match(r'(.+?).gpt.response*', file)
       sample_id, true_gene, top_n, prompt, gpt_version, input_type, iteration = m.group(1).split('__')
+      true_gene = true_gene.upper()
+      true_gene = true_gene.replace(" ", "")
+      if true_gene == 'R566X':
+        true_gene = 'SCNN1B'
+      if true_gene == 'NPR-C':
+        true_gene = 'NPR3' 
+      if (true_gene not in hgnc_complete_df['symbol'].values) and (true_gene not in hgnc_complete_df['other'].values):
+        logging.error('true_gene: {} not in HGNC complete list'.format(true_gene))
+        continue
+      else:
+        true_gene_symbol = hgnc_complete_df[hgnc_complete_df['other'] == true_gene]['symbol'].values[0]
+        true_gene_alias = hgnc_complete_df[hgnc_complete_df['symbol'] == true_gene_symbol]['other'].values
+          
       if file.endswith('.gpt.response'):
         error = 0
         gpt_response = get_gpt_response(os.path.join(output_dir,file))
-        c = evaluate_completeness(gpt_response, hgnc_complete_list, top_n)
+        all_symbol_list = list(set(hgnc_complete_df['other'].values))
+        c = evaluate_completeness(gpt_response, all_symbol_list, top_n)
         if c == 1:
-          a = evaluate_accuracy(gpt_response, true_gene)
+          a = evaluate_accuracy(gpt_response, true_gene_alias)
         f = evaluate_fulfillment(gpt_response, top_n)
       else:
         error = 1     
     else:
       logging.error(file)    
-    mega_table_list.append([sample_id, true_gene, top_n, prompt, gpt_version, input_type, iteration, error, c, a, f])
+    mega_table_list.append([sample_id, true_gene_symbol, top_n, prompt, gpt_version, input_type, iteration, error, c, a, f])
   mega_df = pd.DataFrame(mega_table_list)
   mega_df.to_csv('Experiment_003subset_eval_table.csv', index=False, header=False)
   
