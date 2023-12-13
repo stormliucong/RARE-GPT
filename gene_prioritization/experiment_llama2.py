@@ -17,20 +17,20 @@ logging.basicConfig(level=logging.INFO,
                     format='%(asctime)s %(levelname)s %(message)s',
                     datefmt='%Y-%m-%d %H:%M:%S')
 
-def query_llama2(prompt, test):
-  logging.debug(f'querying llama2')
-  if test:
-    return prompt + '.test.response'
-  
-  model = "meta-llama/Llama-2-7b-chat-hf"
-  tokenizer = AutoTokenizer.from_pretrained(model,use_auth_token = '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')
+def get_llama2_pipeline(model):
+  tokenizer = AutoTokenizer.from_pretrained(model)
   pipeline = transformers.pipeline(
     "text-generation",
     model=model,
     torch_dtype=torch.float16,
     device_map="auto"
   )
+  return pipeline, tokenizer
 
+def query_llama2(prompt, pipeline, tokenizer, test):
+  logging.debug(f'querying llama2')
+  if test:
+    return prompt + '.test.response'
   sequences = pipeline(
     prompt,
     do_sample=True,
@@ -41,11 +41,6 @@ def query_llama2(prompt, test):
   )
   llama2_response = sequences[0]['generated_text']
   return llama2_response
-
-
-
-  
-
 
 def query_gpt(prompt, gpt_version, test, print_output = False):
   logging.debug(f'querying gpt {gpt_version}')
@@ -148,7 +143,7 @@ def get_sample_list(input_type):
     return sample_list_free_text
   
 def gpt_master(file_list):
-  mypool = pool.Pool(processes=16)
+  mypool = pool.Pool(processes=8)
   results = mypool.map(gpt_worker, file_list)
     # forcefully close all worker processes
   mypool.close()
@@ -170,7 +165,8 @@ def gpt_worker(file):
     random_int = random.randint(1, 3)
     time.sleep(random_int)
     prompt = get_prompts(top_n, prompt_id, sample)
-    gpt_response = query_gpt(prompt, gpt_version, test = False, print_output = False)
+    # gpt_response = query_gpt(prompt, gpt_version, test = False, print_output = False)
+    gpt_response = query_llama2(prompt, pipeline, tokenizer, test = False)
     with open(file_name, 'w') as f:
       f.write(gpt_response)
   except Exception as e:
@@ -181,41 +177,42 @@ def gpt_worker(file):
       logging.error(f'writing error to {file_name}.err')
 
 if __name__ == '__main__':
+  pipeline, tokenizer = get_llama2_pipeline('llama2-7b')
   # # Probability of getting 1
-  # probability_of_1 = 1
+  probability_of_1 = 1
 
-  # # List of choices (1 or 0)
-  # choices = [1, 0]
-  # file_list = []
-  # output_dir = './Experiment_004subset'
-  # previous_dir = './Experiment_003subset'
-  # top_n_list = ['10', '50']
-  # prompt_list = ['a', 'b', 'c','d']
-  # gpt_version_list = ['gpt-3.5-turbo', 'gpt-4']
-  # iteration_list = ['1','2','3']
-  # input_type_list = ['hpo_concepts', 'free_text']
-  # for iteration in iteration_list:
-  #   for input_type in input_type_list:
-  #     sample_list = get_sample_list(input_type)
-  #     for top_n in top_n_list:
-  #       for prompt_id in prompt_list:
-  #         for gpt_version in gpt_version_list:
-  #           for sample in sample_list:
-  #             file_name = get_file_name(output_dir, sample,top_n, prompt_id, gpt_version, input_type, iteration)
-  #             history_file = get_file_name(previous_dir, sample,top_n, prompt_id, gpt_version, input_type, iteration)
-  #             if os.path.exists(history_file) or os.path.exists(history_file + '.err'):
-  #               logging.debug(f'file {file_name} already exists, skipping')
-  #               continue
-  #             random_flag = random.choices(choices, [probability_of_1, 1 - probability_of_1])[0]
-  #             # random_flag = 1
-  #             if random_flag == 1:
-  #               file_list.append({"file_name": file_name, "sample": sample})
+  # List of choices (1 or 0)
+  choices = [1, 0]
+  file_list = []
+  output_dir = './Experiment_004subset'
+  previous_dir = './Experiment_003subset'
+  top_n_list = ['10', '50']
+  prompt_list = ['a', 'b', 'c','d']
+  gpt_version_list = ['llama2-7b']
+  iteration_list = ['1','2','3']
+  input_type_list = ['hpo_concepts', 'free_text']
+  for iteration in iteration_list:
+    for input_type in input_type_list:
+      sample_list = get_sample_list(input_type)
+      for top_n in top_n_list:
+        for prompt_id in prompt_list:
+          for gpt_version in gpt_version_list:
+            for sample in sample_list:
+              file_name = get_file_name(output_dir, sample,top_n, prompt_id, gpt_version, input_type, iteration)
+              history_file = get_file_name(previous_dir, sample,top_n, prompt_id, gpt_version, input_type, iteration)
+              if os.path.exists(history_file) or os.path.exists(history_file + '.err'):
+                logging.debug(f'file {file_name} already exists, skipping')
+                continue
+              random_flag = random.choices(choices, [probability_of_1, 1 - probability_of_1])[0]
+              # random_flag = 1
+              if random_flag == 1:
+                file_list.append({"file_name": file_name, "sample": sample})
 
-  # logging.info(f'number of files to be processed: {len(file_list)}')
-  # gpt_master(file_list)
-  prompt = "tell me something"
-  response = query_llama2(prompt, test=False)
-  print(response)
+  logging.info(f'number of files to be processed: {len(file_list)}')
+  gpt_master(file_list)
+  # prompt = "tell me something"
+  # response = query_llama2(prompt, test=False)
+  # print(response)
                 
                 
   
