@@ -4,11 +4,9 @@ import re
 import pandas as pd
 import logging
 import json
+import argparse
 
-logging.basicConfig(level=logging.ERROR,
-                    filename='eval.log',
-                    format='%(asctime)s %(levelname)s %(message)s',
-                    datefmt='%Y-%m-%d %H:%M:%S')
+
 
 def evaluate_completeness(gpt_response, all_symbol_list, top_n):
   '''
@@ -106,8 +104,22 @@ def get_hgnc_complete_list(symbol_json_file='./hgnc_complete_set_2020-10-01.json
   return symbol_list
 
 
-def main():
-  output_dir = './Experiment_003subset'
+if __name__ == '__main__':
+  
+  # parse argument
+  parser = argparse.ArgumentParser()
+  parser.add_argument('--input_dir', type=str, default='./Experiment_003subset', help='input directory. output directory from experiment_*.py')
+  parser.add_argument('--output_file', type=str, default='./Experiment_003subset_eval_table.csv', help='output file')
+  parser.add_argument('--log_file_name', type=str, default='evaluation.log', help='log file name')
+  args = parser.parse_args()
+   
+  # add time stamp to logging
+  logging.basicConfig(level=logging.INFO,
+                    filename=args['log_file_name'],
+                    format='%(asctime)s %(levelname)s %(message)s',
+                    datefmt='%Y-%m-%d %H:%M:%S')
+  
+  output_dir = args['input_dir']
   hgnc_complete_list = get_hgnc_complete_list()
   hgnc_complete_df = pd.DataFrame(hgnc_complete_list)
   
@@ -120,6 +132,7 @@ def main():
       sample_id, true_gene, top_n, prompt, gpt_version, input_type, iteration = m.group(1).split('__')
       true_gene = true_gene.upper()
       true_gene = true_gene.replace(" ", "")
+      # special case. fix some bugs due to the unofficial gene name used in collecting data.
       if true_gene == 'R566X':
         true_gene = 'SCNN1B'
       if true_gene == 'NPR-C':
@@ -145,7 +158,4 @@ def main():
       logging.error(file)    
     mega_table_list.append([sample_id, true_gene_symbol, top_n, prompt, gpt_version, input_type, iteration, error, c, a, f])
   mega_df = pd.DataFrame(mega_table_list)
-  mega_df.to_csv('Experiment_003subset_eval_table.csv', index=False, header=False)
-  
-if __name__ == '__main__':
-  main()
+  mega_df.to_csv(args['output_file'], index=False, header=False) # change this to your output file name

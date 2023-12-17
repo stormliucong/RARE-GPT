@@ -1,0 +1,636 @@
+---
+title: "New_Statistical_test&Figure"
+author: "JK4529"
+date: "2023-10-06"
+output: html_document
+---
+
+```{r, include=FALSE}
+library(Hmisc)
+library(prettyR)
+library(rcompanion)
+library(dplyr)
+library(ggplot2)
+library(TukeyC)
+library(tidyr)
+```
+
+# Statistical Test
+```{r}
+df <- read.csv('C:/Users/cptas/Downloads/Experiment_003subset_eval_table.csv')
+head(df)
+```
+
+## Test for prompt and completeness
+```{r}
+# Create a contingency table
+pc_contingency <- table(df$prompt, df$completeness)
+
+pc_contingency
+pc_contingency_proportions <- prop.table(pc_contingency, margin = 1)
+contingency_table_proportions
+# Perform the chi-squared test
+pc_result <- chisq.test(pc_contingency)
+print(pc_result)
+```
+
+## post hoc analysis (between prompts)
+```{r}
+pc_pairwise <- pairwiseNominalIndependence(pc_contingency, fisher = FALSE, gtest  = FALSE, chisq  = TRUE, method = "bonferroni")
+print(pc_pairwise)
+```
+we can conclude there is all differences between each prompt.  
+
+## Test for prompt and stuctural_compliance
+```{r}
+# Create a contingency table
+ps_contingency <- table(df$prompt, df$structural_compliance)
+
+ps_contingency
+ps_contingency_proportions <- prop.table(ps_contingency, margin = 1)
+ps_contingency_proportions
+# Perform the chi-squared test
+ps_result <- chisq.test(ps_contingency)
+print(ps_result)
+```
+
+
+## post hoc analysis (between prompts)
+```{r}
+ps_pairwise <- pairwiseNominalIndependence(ps_contingency, fisher = FALSE, gtest  = FALSE, chisq  = TRUE, method = "bonferroni")
+print(ps_pairwise)
+```
+
+we can conclude there is all differences between each prompt.  
+
+## Test for prompts and accuracy
+```{r}
+df_comp1 <- df %>% filter(completeness == 1)
+pa <- df_comp1 %>% select(prompt, accuracy) %>%
+  group_by(prompt) %>%
+  summarise(n = n(),
+            acc = sum(accuracy == 1, na.rm = TRUE),
+            acc_ratio = acc/n)
+pa
+prop.test(pa$acc, pa$n)
+```
+
+## total accuracy rate
+```{r}
+df %>% filter(completeness == 1) %>%
+  select(accuracy) %>%
+  summarise(n = n(),
+            acc = sum(accuracy == 1, na.rm = TRUE),
+            acc_ration = acc/n)
+```
+
+## Test for gpt_version and completeness
+```{r}
+# Create a contingency table
+gc_contingency <- table(df$gpt_version, df$completeness)
+
+gc_contingency
+gc_contingency_proportions <- prop.table(gc_contingency, margin = 1)
+gc_contingency_proportions
+# Perform the chi-squared test
+gc_result <- chisq.test(gc_contingency)
+print(gc_result)
+```
+
+
+## Test for gpt_version and structural_compliance
+```{r}
+# Create a contingency table
+gs_contingency <- table(df$gpt_version, df$structural_compliance)
+
+gs_contingency
+gs_contingency_proportions <- prop.table(gs_contingency, margin = 1)
+gs_contingency_proportions
+# Perform the chi-squared test
+gs_result <- chisq.test(gs_contingency)
+print(gs_result)
+```
+
+
+## Test for gpt_version and accuracy
+```{r}
+ga <- df_comp1 %>% select(gpt_version, accuracy) %>%
+  group_by(gpt_version) %>%
+  summarise(n = n(),
+            acc = sum(accuracy == 1, na.rm = TRUE),
+            acc_ratio = acc/n)
+ga
+prop.test(ga$acc, ga$n)
+```
+
+
+## Test for top_k and completeness
+```{r}
+# Create a contingency table
+tc_contingency <- table(df$top_n, df$completeness)
+
+tc_contingency
+tc_contingency_proportions <- prop.table(tc_contingency, margin = 1)
+tc_contingency_proportions
+# Perform the chi-squared test
+tc_result <- chisq.test(tc_contingency)
+print(tc_result)
+```
+
+## Test for top_k and structural_compliance
+```{r}
+# Create a contingency table
+ts_contingency <- table(df$top_n, df$structural_compliance)
+
+ts_contingency
+ts_contingency_proportions <- prop.table(ts_contingency, margin = 1)
+ts_contingency_proportions
+# Perform the chi-squared test
+ts_result <- chisq.test(ts_contingency)
+print(ts_result)
+```
+
+## Test for top_k and accuracy
+```{r}
+ta <- df_comp1 %>% select(top_n, accuracy) %>%
+  group_by(top_n) %>%
+  summarise(n = n(),
+            acc = sum(accuracy == 1, na.rm = TRUE),
+            acc_ratio = acc/n)
+ta
+prop.test(ta$acc, ta$n)
+```
+
+
+
+
+## Test for input and completeness
+```{r}
+# Create a contingency table
+ic_contingency <- table(df$input_type, df$completeness)
+
+ic_contingency
+ic_contingency_proportions <- prop.table(ic_contingency, margin = 1)
+ic_contingency_proportions
+# Perform the chi-squared test
+ic_result <- chisq.test(ic_contingency)
+print(ic_result)
+```
+
+
+## Test for input and structural_compliance
+```{r}
+# Create a contingency table
+is_contingency <- table(df$input_type, df$structural_compliance)
+
+is_contingency
+is_contingency_proportions <- prop.table(is_contingency, margin = 1)
+is_contingency_proportions
+# Perform the chi-squared test
+is_result <- chisq.test(is_contingency)
+print(is_result)
+```
+
+
+## Test for input and accuracy
+```{r}
+ia <- df_comp1 %>% select(input_type, accuracy) %>%
+  group_by(input_type) %>%
+  summarise(n = n(),
+            acc = sum(accuracy == 1, na.rm = TRUE),
+            acc_ratio = acc/n)
+ia
+prop.test(ia$acc, ia$n)
+```
+# Gene analysis
+## Odds Ratio
+```{r}
+# gene number
+length(sort(unique(df$true_gene)))
+
+# Odds Ratio
+M <- dim(df)[1]
+K <- dim(df %>% filter(accuracy == 1))[1]
+or <- df %>% group_by(true_gene) %>%
+  summarise(m = n(),
+            k = sum(accuracy == 1, na.rm = TRUE),
+            K = K,
+            M = M,
+            OR = (k / K) / (m / M)) %>%
+  arrange(desc(OR))
+  
+or
+
+# Supplementary table
+tr_or <- or %>%
+  select(true_gene, OR)
+head(tr_or)
+write.csv(tr_or,file="supplementary.csv")
+
+# number of genes that larger than 2
+dim(or%>%filter(OR > 2))[1]
+```
+
+## gene appearance
+```{r}
+zero_accuracy_genes <- or %>% filter(k == 0)
+zero_accuracy_genelist <- zero_accuracy_genes$true_gene
+zero_accuracy_genenumber <- length(zero_accuracy_genelist)
+zero_accuracy_genenumber
+
+#half_OR_genes <- or %>% filter(OR < 0.5)
+#half_OR_genelist <- half_OR_genes$true_gene
+#half_OR_genenumber <- length(half_OR_genelist)
+#half_OR_genenumber
+```
+
+## Gene Counts
+```{r}
+count_df <- read.csv('C:/Users/cptas/Documents/n_count_df.csv')
+#dim(count_df %>% filter(top50_count > 0 | top10_count > 0))[1]
+#dim(count_df %>% filter(true_gene_count > 0))[1]
+#count_df %>% filter(true_gene_count > 0)
+
+count_df0 <- count_df %>%
+  filter(true_gene_count == 0)
+dim(count_df0)[1]
+
+count_df50 <- count_df %>%
+  select(top50_count, true_gene_count) %>%
+  filter(top50_count > 0 & true_gene_count == 0)
+dim(count_df50)[1]
+
+count_df10 <- count_df %>%
+  select(top10_count, true_gene_count) %>%
+  filter(top10_count > 0 & true_gene_count == 0)
+dim(count_df10)[1]
+
+count_df <- count_df %>%
+  arrange(desc(top10_count))
+head(count_df)
+```
+
+
+## Institution
+
+```{r}
+df$institution <- sub('\\..*', '', df$sample_id)
+
+group_completeness <- df %>% filter(input_type == 'hpo_concepts') %>%
+  select(institution, completeness) %>%
+  group_by(institution) %>%
+  summarise(n = n(),
+            rate = sum(completeness == 1) / n)
+
+group_compliance <- df %>% filter(input_type == 'hpo_concepts') %>%
+  select(institution, structural_compliance) %>%
+  group_by(institution) %>%
+  summarise(n = n(),
+            rate = sum(structural_compliance == 1) / n)
+
+group_accuracy <- df %>% filter(input_type == 'hpo_concepts'& completeness == 1) %>% 
+  select(institution, accuracy) %>%
+  group_by(institution) %>%
+  summarise(n = n(),
+            rate = sum(accuracy == 1,na.rm = TRUE) / sum(!is.na(accuracy)))
+
+group_completeness
+group_compliance
+group_accuracy
+```
+
+## Test for institution and completeness
+```{r}
+df_inst <- df %>% filter(input_type == 'hpo_concepts')
+# Create a contingency table
+ic_contingency <- table(df_inst$institution, df_inst$completeness)
+
+ic_contingency
+ic_contingency_proportions <- prop.table(ic_contingency, margin = 2)
+ic_contingency_proportions
+
+# Perform the chi-squared test
+ic_result <- chisq.test(ic_contingency)
+print(ic_result)
+```
+
+# post hoc analysis (between prompts)
+```{r}
+ic_pairwise <- pairwiseNominalIndependence(ic_contingency, fisher = FALSE, gtest  = FALSE, chisq  = TRUE, method = "bonferroni")
+print(ic_pairwise)
+```
+
+
+## Test for institution and stuctural_compliance
+```{r}
+# Create a contingency table
+is_contingency <- table(df_inst$institution, df_inst$structural_compliance)
+
+is_contingency
+is_contingency_proportions <- prop.table(is_contingency, margin = 1)
+is_contingency_proportions
+# Perform the chi-squared test
+is_result <- chisq.test(is_contingency)
+print(is_result)
+```
+
+
+# post hoc analysis (between institutions)
+```{r}
+is_pairwise <- pairwiseNominalIndependence(is_contingency, fisher = FALSE, gtest  = FALSE, chisq  = TRUE, method = "bonferroni")
+print(is_pairwise)
+```
+
+we can conclude there is all differences between each prompt.  
+
+## Test for institution and accuracy
+```{r}
+df_inst_comp1 <- df_inst %>% filter(completeness == 1)
+ia <- df_inst_comp1 %>% select(institution, accuracy) %>%
+  group_by(institution) %>%
+  summarise(n = n(),
+            acc = sum(accuracy == 1, na.rm = TRUE),
+            acc_ratio = acc/n)
+ia
+prop.test(ia$acc, ia$n)
+```
+
+# post hoc analysis (between institutions)
+```{r}
+pairwise.prop.test(ia$acc, ia$n, p.adjust.method = "bonferroni")
+```
+
+# Plots  
+
+## Completeness 
+```{r}
+top_10_hpo_com_df <- df %>%
+  filter(top_n == 10 & input_type == 'hpo_concepts') %>% 
+  select(prompt, gpt_version, iteration, completeness)
+
+summarized_top_10_hpo_com <- top_10_hpo_com_df %>% 
+  group_by(prompt, gpt_version, iteration) %>%
+  summarise(completeness_rate = sum(completeness == 1) / n()) %>% 
+  group_by(prompt, gpt_version) %>% 
+  summarise(median_c = median(completeness_rate),
+            min_c = min(completeness_rate),
+            max_c = max(completeness_rate))
+
+summarized_top_10_hpo_com %>% ggplot(aes(x = gpt_version, y = median_c, group = prompt, color = prompt)) +
+  geom_bar(stat='identity', position = position_dodge(width=0.8), width=0.6, aes(fill=prompt)) + 
+  geom_errorbar(aes(ymin=min_c, ymax=max_c, width = 0.2),position = position_dodge(width=0.8)) + 
+  labs(x = "",y = "Completeness Rate", title = "(A)") +
+  theme(legend.position = "none")
+
+top_10_ft_com_df <- df %>%
+  filter(top_n == 10 & input_type == 'free_text') %>% 
+  select(prompt, gpt_version, iteration, completeness)
+
+summarized_top_10_ft_com <- top_10_ft_com_df %>% 
+  group_by(prompt, gpt_version, iteration) %>%
+  summarise(completeness_rate = sum(completeness == 1) / n()) %>% 
+  group_by(prompt, gpt_version) %>% 
+  summarise(median_c = median(completeness_rate),
+            min_c = min(completeness_rate),
+            max_c = max(completeness_rate))
+
+summarized_top_10_ft_com %>% ggplot(aes(x = gpt_version, y = median_c, group = prompt, color = prompt)) +
+  geom_bar(stat='identity', position = position_dodge(width=0.8), width=0.6, aes(fill=prompt)) + 
+  geom_errorbar(aes(ymin=min_c, ymax=max_c, width = 0.2),position = position_dodge(width=0.8)) + 
+  labs(x = "",y = "Completeness Rate", title = "(B)")+
+  theme(legend.position = "none")
+
+top_50_hpo_com_df <- df %>%
+  filter(top_n == 50 & input_type == 'hpo_concepts') %>% 
+  select(prompt, gpt_version, iteration, completeness)
+
+summarized_top_50_hpo_com <- top_50_hpo_com_df %>% 
+  group_by(prompt, gpt_version, iteration) %>%
+  summarise(completeness_rate = sum(completeness == 1) / n()) %>% 
+  group_by(prompt, gpt_version) %>% 
+  summarise(median_c = median(completeness_rate),
+            min_c = min(completeness_rate),
+            max_c = max(completeness_rate))
+
+summarized_top_50_hpo_com %>% ggplot(aes(x = gpt_version, y = median_c, group = prompt, color = prompt)) +
+  geom_bar(stat='identity', position = position_dodge(width=0.8), width=0.6, aes(fill=prompt)) + 
+  geom_errorbar(aes(ymin=min_c, ymax=max_c, width = 0.2),position = position_dodge(width=0.8)) + 
+  labs(x = "",y = "Completeness Rate", title = "(C)")+
+  theme(legend.position = "none")
+
+top_50_ft_com_df <- df %>%
+  filter(top_n == 50 & input_type == 'free_text') %>% 
+  select(prompt, gpt_version, iteration, completeness)
+
+summarized_top_50_ft_com <- top_50_ft_com_df %>% 
+  group_by(prompt, gpt_version, iteration) %>%
+  summarise(completeness_rate = sum(completeness == 1) / n()) %>% 
+  group_by(prompt, gpt_version) %>% 
+  summarise(median_c = median(completeness_rate),
+            min_c = min(completeness_rate),
+            max_c = max(completeness_rate))
+
+summarized_top_50_ft_com %>% ggplot(aes(x = gpt_version, y = median_c, group = prompt, color = prompt)) +
+  geom_bar(stat='identity', position = position_dodge(width=0.8), width=0.6, aes(fill=prompt)) + 
+  geom_errorbar(aes(ymin=min_c, ymax=max_c, width = 0.2),position = position_dodge(width=0.8)) + 
+  labs(x = "",y = "Completeness Rate", title = "(D)")+
+  theme(legend.position = "none")
+```
+
+
+
+## Structural_Compliance 
+```{r}
+top_10_hpo_str_df <- df %>%
+  filter(top_n == 10 & input_type == 'hpo_concepts') %>% 
+  select(prompt, gpt_version, iteration, structural_compliance)
+
+summarized_top_10_hpo_str <- top_10_hpo_str_df %>% 
+  group_by(prompt, gpt_version, iteration) %>%
+  summarise(structural_compliance_rate = sum(structural_compliance == 1) / n()) %>% 
+  group_by(prompt, gpt_version) %>% 
+  summarise(median_c = median(structural_compliance_rate),
+            min_c = min(structural_compliance_rate),
+            max_c = max(structural_compliance_rate))
+
+summarized_top_10_hpo_str %>% ggplot(aes(x = gpt_version, y = median_c, group = prompt, color = prompt)) +
+  geom_bar(stat='identity', position = position_dodge(width=0.8), width=0.6, aes(fill=prompt)) + 
+  geom_errorbar(aes(ymin=min_c, ymax=max_c, width = 0.2),position = position_dodge(width=0.8)) + 
+  labs(x = "",y = "Structural Compliance Rate", Color = "Prompt", title = "(A)")+
+  theme(legend.position = "none")
+
+top_10_ft_str_df <- df %>%
+  filter(top_n == 10 & input_type == 'free_text') %>% 
+  select(prompt, gpt_version, iteration, structural_compliance)
+
+summarized_top_10_ft_str <- top_10_ft_str_df %>% 
+  group_by(prompt, gpt_version, iteration) %>%
+  summarise(structural_compliance_rate = sum(structural_compliance == 1) / n()) %>% 
+  group_by(prompt, gpt_version) %>% 
+  summarise(median_c = median(structural_compliance_rate),
+            min_c = min(structural_compliance_rate),
+            max_c = max(structural_compliance_rate))
+
+summarized_top_10_ft_str %>% ggplot(aes(x = gpt_version, y = median_c, group = prompt, color = prompt)) +
+  geom_bar(stat='identity', position = position_dodge(width=0.8), width=0.6, aes(fill=prompt)) + 
+  geom_errorbar(aes(ymin=min_c, ymax=max_c, width = 0.2),position = position_dodge(width=0.8)) + 
+  labs(x = "",y = "Structural Compliance Rate", Color = "Prompt", title = "(B)")+
+  theme(legend.position = "none")
+
+top_50_hpo_str_df <- df %>%
+  filter(top_n == 50 & input_type == 'hpo_concepts') %>% 
+  select(prompt, gpt_version, iteration, structural_compliance)
+
+summarized_top50_hpo_str <- top_50_hpo_str_df %>% 
+  group_by(prompt, gpt_version, iteration) %>%
+  summarise(structural_compliance_rate = sum(structural_compliance == 1) / n()) %>% 
+  group_by(prompt, gpt_version) %>% 
+  summarise(median_c = median(structural_compliance_rate),
+            min_c = min(structural_compliance_rate),
+            max_c = max(structural_compliance_rate))
+
+summarized_top50_hpo_str %>% ggplot(aes(x = gpt_version, y = median_c, group = prompt, color = prompt)) +
+  geom_bar(stat='identity', position = position_dodge(width=0.8), width=0.6, aes(fill=prompt)) + 
+  geom_errorbar(aes(ymin=min_c, ymax=max_c, width = 0.2),position = position_dodge(width=0.8)) + 
+  labs(x = "",y = "Structure Compliance Rate", Color = "Prompt", title = "(C)")+
+  theme(legend.position = "none")
+
+top_50_ft_str_df <- df %>%
+  filter(top_n == 50 & input_type == 'free_text') %>% 
+  select(prompt, gpt_version, iteration, structural_compliance)
+
+summarized_top_50_ft_str <- top_50_ft_str_df %>% 
+  group_by(prompt, gpt_version, iteration) %>%
+  summarise(structural_compliance_rate = sum(structural_compliance == 1) / n()) %>% 
+  group_by(prompt, gpt_version) %>% 
+  summarise(median_c = median(structural_compliance_rate),
+            min_c = min(structural_compliance_rate),
+            max_c = max(structural_compliance_rate))
+
+summarized_top_50_ft_str %>% ggplot(aes(x = gpt_version, y = median_c, group = prompt, color = prompt)) +
+  geom_bar(stat='identity', position = position_dodge(width=0.8), width=0.6, aes(fill=prompt)) + 
+  geom_errorbar(aes(ymin=min_c, ymax=max_c, width = 0.2),position = position_dodge(width=0.8)) + 
+  labs(x = "",y = "Structural Compliance Rate", Color = "Prompt", title = "(D)")+
+  theme(legend.position = "none")
+```
+
+
+## Accuracy
+```{r}
+top_10_hpo_acc_df <- df %>%
+  filter(top_n == 10 & input_type == 'hpo_concepts'& completeness == 1) %>% 
+  select(prompt, gpt_version, iteration, accuracy, completeness)
+
+summarized_top_10_hpo_acc <- top_10_hpo_acc_df %>% 
+  group_by(prompt, gpt_version, iteration) %>%
+  summarise(accuracy_rate = sum(accuracy == 1,na.rm = TRUE) / sum(!is.na(accuracy))) %>% 
+  group_by(prompt, gpt_version) %>% 
+  summarise(median_c = median(accuracy_rate),
+            min_c = min(accuracy_rate),
+            max_c = max(accuracy_rate))
+
+summarized_top_10_hpo_acc %>% ggplot(aes(x = gpt_version, y = median_c, group = prompt, color = prompt)) +
+  geom_bar(stat='identity', position = position_dodge(width=0.8), width=0.6, aes(fill=prompt)) + 
+  geom_errorbar(aes(ymin=min_c, ymax=max_c, width = 0.2),position = position_dodge(width=0.8)) + 
+  labs(x = "",y = "Accuracy Rate", Color = "Prompt", title = "(A)")+
+  theme(legend.position = "none")
+
+top_10_ft_acc_df <- df %>%
+  filter(top_n == 10 & input_type == 'free_text' & completeness == 1) %>% 
+  select(prompt, gpt_version, iteration, accuracy, completeness)
+
+summarized_top_10_ft_acc <- top_10_ft_acc_df %>% 
+  group_by(prompt, gpt_version, iteration) %>%
+  summarise(accuracy_rate = sum(accuracy == 1,na.rm = TRUE) / sum(!is.na(accuracy))) %>% 
+  group_by(prompt, gpt_version) %>% 
+  summarise(median_c = median(accuracy_rate),
+            min_c = min(accuracy_rate),
+            max_c = max(accuracy_rate))
+
+summarized_top_10_ft_acc %>% ggplot(aes(x = gpt_version, y = median_c, group = prompt, color = prompt)) +
+  geom_bar(stat='identity', position = position_dodge(width=0.8), width=0.6, aes(fill=prompt)) + 
+  geom_errorbar(aes(ymin=min_c, ymax=max_c, width = 0.2),position = position_dodge(width=0.8)) + 
+  labs(x = "",y = "Accuracy Rate", Color = "Prompt", title = "(B)")+
+  theme(legend.position = "none")
+
+top_50_hpo_acc_df <- df %>%
+  filter(top_n == 50 & input_type == 'hpo_concepts' & completeness == 1) %>% 
+  select(prompt, gpt_version, iteration, accuracy, completeness)
+
+summarized_top_50_hpo_acc <- top_50_hpo_acc_df %>% 
+  group_by(prompt, gpt_version, iteration) %>%
+  summarise(accuracy_rate = sum(accuracy == 1,na.rm = TRUE) / sum(!is.na(accuracy))) %>% 
+  group_by(prompt, gpt_version) %>% 
+  summarise(median_c = median(accuracy_rate),
+            min_c = min(accuracy_rate),
+            max_c = max(accuracy_rate))
+
+summarized_top_50_hpo_acc %>% ggplot(aes(x = gpt_version, y = median_c, group = prompt, color = prompt)) +
+  geom_bar(stat='identity', position = position_dodge(width=0.8), width=0.6, aes(fill=prompt)) + 
+  geom_errorbar(aes(ymin=min_c, ymax=max_c, width = 0.2),position = position_dodge(width=0.8)) + 
+  labs(x = "",y = "Accuracy Rate", Color = "Prompt", title = "(C)")+
+  theme(legend.position = "none")
+
+top_50_ft_acc_df <- df %>%
+  filter(top_n == 50 & input_type == 'free_text' & completeness == 1) %>% 
+  select(prompt, gpt_version, iteration, accuracy, completeness)
+
+summarized_top_50_ft_acc <- top_50_ft_acc_df %>% 
+  group_by(prompt, gpt_version, iteration) %>%
+  summarise(accuracy_rate = sum(accuracy == 1,na.rm = TRUE) / sum(!is.na(accuracy))) %>% 
+  group_by(prompt, gpt_version) %>% 
+  summarise(median_c = median(accuracy_rate),
+            min_c = min(accuracy_rate),
+            max_c = max(accuracy_rate))
+
+summarized_top_50_ft_acc %>% ggplot(aes(x = gpt_version, y = median_c, group = prompt, color = prompt)) +
+  geom_bar(stat='identity', position = position_dodge(width=0.8), width=0.6, aes(fill=prompt)) + 
+  geom_errorbar(aes(ymin=min_c, ymax=max_c, width = 0.2),position = position_dodge(width=0.8)) + 
+  labs(x = "",y = "Accuracy Rate", Color = "Prompt", title = "(D)")+
+  theme(legend.position = "none")
+```
+
+## institution plot
+```{r}
+# Bar chart for completeness rates
+ggplot(group_completeness, aes(x = institution, y = rate)) +
+  geom_bar(stat = "identity", aes(fill=institution)) +
+  labs(title = "Completeness Rates by Institution", x = "Institution", y = "Completeness Rate")
+
+# Bar chart for compliance rates
+ggplot(group_compliance, aes(x = institution, y = rate)) +
+  geom_bar(stat = "identity", aes(fill=institution)) +
+  labs(title = "Structural Compliance Rates by Institution", x = "Institution", y = "Compliance Rate")
+
+# Bar chart for accuracy rates
+ggplot(group_accuracy, aes(x = institution, y = rate)) +
+  geom_bar(stat = "identity", aes(fill=institution)) +
+  labs(title = "Accuracy Rates by Institution", x = "Institution", y = "Accuracy Rate")
+
+```
+
+
+```{r}
+count_df_10 <- count_df[1:10,]
+count_df_10$label <- ifelse(count_df_10$true_gene_count == 0, paste(count_df_10$gene, "*", sep = ""), count_df_10$gene)
+
+gene_data_long <- count_df_10 %>%
+  pivot_longer(cols = c(top50_count, top10_count, true_gene_count), names_to = "count_type", values_to = "count")
+gene_data_long$gene <- factor(gene_data_long$gene, levels = count_df_10$gene)
+
+ggplot(gene_data_long, aes(x = gene, y = count, fill = count_type)) +
+  geom_bar(stat = "identity", position = position_dodge(width = 0.8)) +
+  scale_fill_manual(values = c("top50_count" = "lightblue", "top10_count" = "lightgreen", "true_gene_count" = "pink")) +
+  theme_minimal() +
+  theme(axis.text.x = element_text(size = 8, angle = 45, hjust = 1)) + # Adjust the size as needed
+  geom_text(aes(label = ifelse(count_type == "true_gene_count" & count == 0, "*", "")), 
+            position = position_dodge(width = 0.8), vjust = -0.5, size = 4)+
+  theme(legend.position = "none") +
+  labs(y = NULL)
+```
+
+
+
+
+
+

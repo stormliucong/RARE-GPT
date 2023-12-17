@@ -1,21 +1,16 @@
 import os
-import openai
 import pandas as pd
 import logging
 import random
-import config
 import re
 from multiprocessing import pool, active_children
 import time 
 from transformers import AutoTokenizer
 import transformers
 import torch
+import argparse
 
-# add time stamp to logging
-logging.basicConfig(level=logging.INFO,
-                    filename='experiment_gpt.log',
-                    format='%(asctime)s %(levelname)s %(message)s',
-                    datefmt='%Y-%m-%d %H:%M:%S')
+
 
 def get_llama2_pipeline(model):
   tokenizer = AutoTokenizer.from_pretrained(model)
@@ -37,36 +32,13 @@ def query_llama2(prompt, pipeline, tokenizer, test):
     top_k=1,
     num_return_sequences=1,
     eos_token_id=tokenizer.eos_token_id,
-    max_length=200,
+    max_length=1000, # controls the maximum number of tokens (words or subwords) in the generated text.
   )
   llama2_response = sequences[0]['generated_text']
+  # substring llama2_response by removing the prompt in the beginning
+  llama2_response = llama2_response[len(prompt):]
+  
   return llama2_response
-
-def query_gpt(prompt, gpt_version, test, print_output = False):
-  logging.debug(f'querying gpt {gpt_version}')
-  if test:
-    return prompt + '.test.response'
-  
-  openai.api_key = config.OPENAI_API_KEY
-  completions = openai.ChatCompletion.create( #a method that allows you to generate text-based chatbot responses using a pre-trained GPT language model.
-      model=gpt_version, 
-      temperature = 0, #controls the level of randomness or creativity in the generated text; . A higher temperature value will result in a more diverse and creative output, as it increases the probability of sampling lower probability tokens. 
-#         max_tokens = 2000, #controls the maximum number of tokens (words or subwords) in the generated text.
-#         stop = ['###'], #specifies a sequence of tokens that the GPT model should stop generating text when it encounters
-      n = 1, #the number of possible chat completions or responses that the GPT model should generate in response to a given prompt
-      messages=[
-        {'role':'user', 'content': prompt},
-        ])
-  
-  # return status code
-
-  # Displaying the output can be helpful if things go wrong
-  if print_output:
-      logging.debug(completions)
-
-  gpt_response = completions.choices[0]['message']['content']
-  # Return the first choice's text
-  return gpt_response
 
 def get_file_name(output_dir, sample,top_n, prompt, gpt_version, input_type, iteration):
   logging.debug(f'getting file name for {sample}')
@@ -91,6 +63,11 @@ def get_prompts(top_n, prompt, sample):
   if prompt == 'd':
     # Original + Role + Instruction
     content = f'Consider you are a genetic counselor. The phenotype description of the patient is {clinical_description}. Can you suggest a list of {top_n} possible genes to test? Please consider the phenotype gene relationship, and use the knowledge you have trained on. No need to access the real-time database to generate outcomes. Please return gene symbols as a comma-separated list. Example: "ABC1, BRAC2, BRAC1" or "Not Applicable" if you can not provide the result.'
+  
+  if prompt == 'e':
+    # prompt for llama2
+    content = f'The phenotype description of the patient is {clinical_description}. Can you suggest a list of {top_n} possible genes to test? Please return gene symbols as a comma-separated list. Example: "ABC1, BRAC2, BRAC1" or "Not Applicable" if you can not provide the result. The predicted gene list is: '
+  
   return content
 
 
@@ -142,20 +119,7 @@ def get_sample_list(input_type):
       sample_list_free_text.append({"sample_id": sample_id, "true_gene": true_gene, 'content': free_text})
     return sample_list_free_text
   
-def gpt_master(file_list):
-  mypool = pool.Pool(processes=8)
-  results = mypool.map(gpt_worker, file_list)
-    # forcefully close all worker processes
-  mypool.close()
-  # wait a moment
-  mypool.join()
-  # report a message
-  logging.info('Main all done.')
-  # report the number of child processes that are still active
-  children = active_children()
-  logging.info(f'Active children: {len(children)}')
-  
-def gpt_worker(file):
+def gpt_worker(file, pipeline, tokenizer):
   file_name = file['file_name']
   sample = file['sample']
   # get file name from a file path.
@@ -176,18 +140,33 @@ def gpt_worker(file):
       f.write(str(e))
       logging.error(f'writing error to {file_name}.err')
 
-if __name__ == '__main__':
-  pipeline, tokenizer = get_llama2_pipeline('llama2-7b')
+if __name__ == '__main__':  # parse argument
+  parser = argparse.ArgumentParser()
+  parser.add_argument('--probability_of_1', type=float, default=0.1, help='sample rate of the files to be processed. 1.0 means all files will be processed. 0.5 means 50% of the files will be processed.')
+  parser.add_argument('--output_dir', type=str, default='./Experiment_004subset', help='output directory')
+  parser.add_argument('--previous_dir', type=str, default='./Experiment_003subset', help='# change this to your previous output directory. The program will check if the file exists in the previous directory. If it does, it will skip the file.')
+  parser.add_argument('--log_file_name', type=str, default='experiment_gpt.log', help='log file name')
+  parser.add_argument('--llama2_model_path', type=str, default='llama2-7b', help='llama2 model path')
+  args = parser.parse_args()
+  
+  
+  # add time stamp to logging
+  logging.basicConfig(level=logging.INFO,
+                    filename=args['log_file_name'],
+                    format='%(asctime)s %(levelname)s %(message)s',
+                    datefmt='%Y-%m-%d %H:%M:%S')
+  # load base llama2 model.
+  pipeline, tokenizer = get_llama2_pipeline(args['llama2_model_path']) # add your model path here.
   # # Probability of getting 1
-  probability_of_1 = 1
-
+  probability_of_1 = args['probability_of_1'] # change this to control sample rate (1 means all samples are processed)
+  
   # List of choices (1 or 0)
   choices = [1, 0]
   file_list = []
-  output_dir = './Experiment_004subset'
-  previous_dir = './Experiment_003subset'
+  output_dir = args['output_dir']
+  previous_dir = args['previous_dir']
   top_n_list = ['10', '50']
-  prompt_list = ['a', 'b', 'c','d']
+  prompt_list = ['e']
   gpt_version_list = ['llama2-7b']
   iteration_list = ['1','2','3']
   input_type_list = ['hpo_concepts', 'free_text']
@@ -209,10 +188,9 @@ if __name__ == '__main__':
                 file_list.append({"file_name": file_name, "sample": sample})
 
   logging.info(f'number of files to be processed: {len(file_list)}')
-  gpt_master(file_list)
-  # prompt = "tell me something"
-  # response = query_llama2(prompt, test=False)
-  # print(response)
+  # gpt_master(file_list)
+  for file in file_list:
+    gpt_worker(file, pipeline, tokenizer)
                 
                 
   

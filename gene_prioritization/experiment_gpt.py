@@ -7,11 +7,9 @@ import config
 import re
 from multiprocessing import pool, active_children
 import time 
-# add time stamp to logging
-logging.basicConfig(level=logging.INFO,
-                    filename='experiment_gpt.log',
-                    format='%(asctime)s %(levelname)s %(message)s',
-                    datefmt='%Y-%m-%d %H:%M:%S')
+import argparse
+
+
 
 def query_gpt(prompt, gpt_version, test, print_output = False):
   logging.debug(f'querying gpt {gpt_version}')
@@ -113,8 +111,8 @@ def get_sample_list(input_type):
       sample_list_free_text.append({"sample_id": sample_id, "true_gene": true_gene, 'content': free_text})
     return sample_list_free_text
   
-def gpt_master(file_list):
-  mypool = pool.Pool(processes=16)
+def gpt_master(file_list, processes = 16):
+  mypool = pool.Pool(processes=processes)
   results = mypool.map(gpt_worker, file_list)
     # forcefully close all worker processes
   mypool.close()
@@ -147,14 +145,30 @@ def gpt_worker(file):
       logging.error(f'writing error to {file_name}.err')
 
 if __name__ == '__main__':
+  # parse argument
+  parser = argparse.ArgumentParser()
+  parser.add_argument('--probability_of_1', type=float, default=1.0, help='sample rate of the files to be processed. 1.0 means all files will be processed. 0.5 means 50% of the files will be processed.')
+  parser.add_argument('--output_dir', type=str, default='./Experiment_004subset', help='output directory')
+  parser.add_argument('--previous_dir', type=str, default='./Experiment_003subset', help='# change this to your previous output directory. The program will check if the file exists in the previous directory. If it does, it will skip the file.')
+  parser.add_argument('--cpu_number', type=int, default=16, help='number of cpu cores to use')
+  parser.add_argument('--log_file_name', type=str, default='experiment_gpt.log', help='log file name')
+  args = parser.parse_args()
+  
+  
+  # add time stamp to logging
+  logging.basicConfig(level=logging.INFO,
+                    filename=args['log_file_name'],
+                    format='%(asctime)s %(levelname)s %(message)s',
+                    datefmt='%Y-%m-%d %H:%M:%S')
+  
   # Probability of getting 1
-  probability_of_1 = 1
+  probability_of_1 = args['probability_of_1']
 
   # List of choices (1 or 0)
   choices = [1, 0]
   file_list = []
-  output_dir = './Experiment_004subset'
-  previous_dir = './Experiment_003subset'
+  output_dir = args['output_dir']
+  previous_dir = args['previous_dir']
   top_n_list = ['10', '50']
   prompt_list = ['a', 'b', 'c','d']
   gpt_version_list = ['gpt-3.5-turbo', 'gpt-4']
@@ -178,7 +192,7 @@ if __name__ == '__main__':
                 file_list.append({"file_name": file_name, "sample": sample})
 
   logging.info(f'number of files to be processed: {len(file_list)}')
-  gpt_master(file_list)
+  gpt_master(file_list, processes = args['cpu_number'])
                 
                 
   
