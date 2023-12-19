@@ -5,6 +5,12 @@ date: "2023-10-06"
 output: html_document
 ---
 
+# Setup R Virtual Env
+```{r setup, include=FALSE}
+install.packages("renv")
+renv::init()
+```
+
 ```{r, include=FALSE}
 library(Hmisc)
 library(prettyR)
@@ -17,7 +23,8 @@ library(tidyr)
 
 # Statistical Test
 ```{r}
-df <- read.csv('C:/Users/cptas/Downloads/Experiment_003subset_eval_table.csv')
+eval_table = './Experiment_003subset_eval_table.csv'
+df <- read.csv(eval_table)
 head(df)
 ```
 
@@ -225,7 +232,7 @@ or
 tr_or <- or %>%
   select(true_gene, OR)
 head(tr_or)
-write.csv(tr_or,file="supplementary.csv")
+write.csv(tr_or,file="gene_odds_ratio_analysis_supplementary.csv")
 
 # number of genes that larger than 2
 dim(or%>%filter(OR > 2))[1]

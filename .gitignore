@@ -12,6 +12,7 @@ gene_prioritization/Experiment_*
 gene_prioritization/Experiment_test/
 *.vscode/
 *__future/
+renv/
 
 *key*
 # google sheet API key

@@ -157,18 +157,18 @@ if __name__ == '__main__':
   
   # add time stamp to logging
   logging.basicConfig(level=logging.INFO,
-                    filename=args['log_file_name'],
+                    filename=args.log_file_name,
                     format='%(asctime)s %(levelname)s %(message)s',
                     datefmt='%Y-%m-%d %H:%M:%S')
   
   # Probability of getting 1
-  probability_of_1 = args['probability_of_1']
+  probability_of_1 = args.probability_of_1
 
   # List of choices (1 or 0)
   choices = [1, 0]
   file_list = []
-  output_dir = args['output_dir']
-  previous_dir = args['previous_dir']
+  output_dir = args.output_dir
+  previous_dir = args.previous_dir
   top_n_list = ['10', '50']
   prompt_list = ['a', 'b', 'c','d']
   gpt_version_list = ['gpt-3.5-turbo', 'gpt-4']
@@ -192,7 +192,7 @@ if __name__ == '__main__':
                 file_list.append({"file_name": file_name, "sample": sample})
 
   logging.info(f'number of files to be processed: {len(file_list)}')
-  gpt_master(file_list, processes = args['cpu_number'])
+  gpt_master(file_list, processes = args.cpu_number)
                 
                 
   

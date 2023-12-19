@@ -152,19 +152,19 @@ if __name__ == '__main__':  # parse argument
   
   # add time stamp to logging
   logging.basicConfig(level=logging.INFO,
-                    filename=args['log_file_name'],
+                    filename=args.log_file_name,
                     format='%(asctime)s %(levelname)s %(message)s',
                     datefmt='%Y-%m-%d %H:%M:%S')
   # load base llama2 model.
-  pipeline, tokenizer = get_llama2_pipeline(args['llama2_model_path']) # add your model path here.
+  pipeline, tokenizer = get_llama2_pipeline(args.llama2_model_path) # add your model path here.
   # # Probability of getting 1
-  probability_of_1 = args['probability_of_1'] # change this to control sample rate (1 means all samples are processed)
+  probability_of_1 = args.probability_of_1 # change this to control sample rate (1 means all samples are processed)
   
   # List of choices (1 or 0)
   choices = [1, 0]
   file_list = []
-  output_dir = args['output_dir']
-  previous_dir = args['previous_dir']
+  output_dir = args.output_dir
+  previous_dir = args.previous_dir
   top_n_list = ['10', '50']
   prompt_list = ['e']
   gpt_version_list = ['llama2-7b']
