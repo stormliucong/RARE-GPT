@@ -636,7 +636,174 @@ ggplot(gene_data_long, aes(x = gene, y = count, fill = count_type)) +
   labs(y = NULL)
 ```
 
+# Llama2
+## Statistical Test
+```{r}
+df <- read.csv('C:/Users/cptas/Downloads/Experiment_004subset/Experiment_004subset/Experiment_004subset_eval_table.csv')
+head(df)
+```
 
+## total accuracy rate
+```{r}
+df %>% filter(completeness == 1) %>%
+  select(accuracy) %>%
+  summarise(n = n(),
+            acc = sum(accuracy == 1, na.rm = TRUE),
+            acc_ratio = acc/n)
+```
+
+## total completeness rate
+```{r}
+df %>% summarise(n = n(),
+            complt = sum(completeness == 1, na.rm = TRUE),
+            complt_ratio = complt/n)
+```
+
+## total compliance rate
+```{r}
+df %>% summarise(n = n(),
+            str = sum(structural_compliance == 1, na.rm = TRUE),
+            str_ratio = str/n)
+```
+
+## Test for top_k and completeness
+```{r}
+# Create a contingency table
+tc_contingency <- table(df$top_n, df$completeness)
+
+tc_contingency
+tc_contingency_proportions <- prop.table(tc_contingency, margin = 1)
+tc_contingency_proportions
+# Perform the chi-squared test
+tc_result <- chisq.test(tc_contingency)
+print(tc_result)
+```
+
+## Test for top_k and structural_compliance
+```{r}
+# Create a contingency table
+ts_contingency <- table(df$top_n, df$structural_compliance)
+
+ts_contingency
+ts_contingency_proportions <- prop.table(ts_contingency, margin = 1)
+ts_contingency_proportions
+# Perform the chi-squared test
+ts_result <- chisq.test(ts_contingency)
+print(ts_result)
+```
+
+## Test for top_k and accuracy
+```{r}
+df_comp1 <- df %>% filter(completeness == 1)
+ta <- df_comp1 %>% select(top_n, accuracy) %>%
+  group_by(top_n) %>%
+  summarise(n = n(),
+            acc = sum(accuracy == 1, na.rm = TRUE),
+            acc_ratio = acc/n)
+ta
+prop.test(ta$acc, ta$n)
+```
+
+
+
+
+## Test for input and completeness
+```{r}
+# Create a contingency table
+ic_contingency <- table(df$input_type, df$completeness)
+
+ic_contingency
+ic_contingency_proportions <- prop.table(ic_contingency, margin = 1)
+ic_contingency_proportions
+# Perform the chi-squared test
+ic_result <- chisq.test(ic_contingency)
+print(ic_result)
+```
+
+
+## Test for input and structural_compliance
+```{r}
+# Create a contingency table
+is_contingency <- table(df$input_type, df$structural_compliance)
+
+is_contingency
+is_contingency_proportions <- prop.table(is_contingency, margin = 1)
+is_contingency_proportions
+# Perform the chi-squared test
+is_result <- chisq.test(is_contingency)
+print(is_result)
+```
+
+
+## Test for input and accuracy
+```{r}
+ia <- df_comp1 %>% select(input_type, accuracy) %>%
+  group_by(input_type) %>%
+  summarise(n = n(),
+            acc = sum(accuracy == 1, na.rm = TRUE),
+            acc_ratio = acc/n)
+ia
+prop.test(ia$acc, ia$n)
+```
+
+
+## Institution
+
+```{r}
+df$institution <- sub('\\..*', '', df$sample_id)
+
+group_completeness <- df %>% filter(input_type == 'hpo_concepts') %>%
+  select(institution, completeness) %>%
+  group_by(institution) %>%
+  summarise(n = n(),
+            rate = sum(completeness == 1) / n)
+
+group_compliance <- df %>% filter(input_type == 'hpo_concepts') %>%
+  select(institution, structural_compliance) %>%
+  group_by(institution) %>%
+  summarise(n = n(),
+            rate = sum(structural_compliance == 1) / n)
+
+group_accuracy <- df %>% filter(input_type == 'hpo_concepts'& completeness == 1) %>% 
+  select(institution, accuracy) %>%
+  group_by(institution) %>%
+  summarise(n = n(),
+            rate = sum(accuracy == 1,na.rm = TRUE) / sum(!is.na(accuracy)))
+
+group_completeness
+group_compliance
+group_accuracy
+```
+
+## Test for institution and completeness
+```{r}
+df_inst <- df %>% filter(input_type == 'hpo_concepts')
+# Create a contingency table
+ic_contingency <- table(df_inst$institution, df_inst$completeness)
+
+ic_contingency
+ic_contingency_proportions <- prop.table(ic_contingency, margin = 2)
+ic_contingency_proportions
+
+# Perform the chi-squared test
+ic_result <- chisq.test(ic_contingency)
+print(ic_result)
+```
+
+
+
+## Test for institution and stuctural_compliance
+```{r}
+# Create a contingency table
+is_contingency <- table(df_inst$institution, df_inst$structural_compliance)
+
+is_contingency
+is_contingency_proportions <- prop.table(is_contingency, margin = 1)
+is_contingency_proportions
+# Perform the chi-squared test
+is_result <- chisq.test(is_contingency)
+print(is_result)
+```
 
 
 
