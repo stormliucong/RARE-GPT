@@ -1,0 +1,899 @@
+[
+  {
+    "hp_id": "HP_0006580",
+    "name": "Portal fibrosis",
+    "synonyms": [
+      "Portal fibrosis shown on biopsy"
+    ],
+    "gpt_response": "[\"Liver fibrosis\", \"Hepatic fibrosis\", \"Portal tract fibrosis\", \"Fibrosis of the liver\", \"Fibrotic liver disease\"]"
+  },
+  {
+    "hp_id": "HP_0040233",
+    "name": "Factor XIII subunit A deficiency",
+    "synonyms": [
+      "Reduced factor XIII, subunit A"
+    ],
+    "gpt_response": "[\"FXIII A deficiency\", \"Factor 13A deficiency\", \"Coagulation factor XIII A chain deficiency\", \"Fibrin stabilizing factor A subunit deficiency\", \"Factor XIII-A deficiency\"]"
+  },
+  {
+    "hp_id": "HP_0011720",
+    "name": "Cardiac total anomalous pulmonary venous connection",
+    "synonyms": [
+      "Cardiac total anomalous pulmonary venous connexion",
+      "Total anomalous pulmonary venous connection, intracardiac",
+      "Type 2 total anomalous pulmonary venous connection"
+    ],
+    "gpt_response": "1. \"Total Anomalous Pulmonary Venous Return\"\n2. \"Total Anomalous Pulmonary Venous Drainage\"\n3. \"Total Anomalous Pulmonary Venous Connection to the Heart\"\n4. \"Complete Anomalous Pulmonary Venous Connection\"\n5. \"Total Anomalous Pulmonary Venous Connection Disorder\""
+  },
+  {
+    "hp_id": "HP_0001473",
+    "name": "Metatarsal osteolysis",
+    "synonyms": [
+      "Osteolysis involving metatarsal bones"
+    ],
+    "gpt_response": "[\"Metatarsal bone dissolution\", \"Metatarsal bone resorption\", \"Osteolysis of metatarsal bones\", \"Metatarsal bone degeneration\", \"Dissolution of metatarsal bones\"]"
+  },
+  {
+    "hp_id": "HP_0009347",
+    "name": "Bracket epiphysis of the proximal phalanx of the 3rd finger",
+    "synonyms": [
+      "Bracket shaped end part of innermost long bone of the middle finger"
+    ],
+    "gpt_response": "1. \"Bracket-shaped epiphysis of the proximal phalanx of the third finger\"\n2. \"Abnormal epiphysis of the proximal phalanx of the 3rd digit\"\n3. \"Bracket epiphysis of the proximal bone segment of the third finger\"\n4. \"Bracket-shaped end of the proximal phalanx of the 3rd finger\"\n5. \"Abnormal growth plate of the proximal phalanx of the third finger\""
+  },
+  {
+    "hp_id": "HP_0006414",
+    "name": "Distal tibial bowing",
+    "synonyms": [
+      "Bowing of the distal tibia",
+      "Tibial bowing at ankle"
+    ],
+    "gpt_response": "[\"Curvature of the distal tibia\", \"Bowing of the lower tibia\", \"Distal tibial curvature\", \"Lower tibial bowing\", \"Bent distal tibia\"]"
+  },
+  {
+    "hp_id": "HP_0011755",
+    "name": "Ectopic posterior pituitary",
+    "synonyms": [
+      "Ectopic neurohypophysis",
+      "Ectopic posterior pituitary lobe"
+    ],
+    "gpt_response": "[\"Abnormal posterior pituitary location\", \"Misplaced posterior pituitary\", \"Dislocated posterior pituitary\", \"Erroneously positioned posterior pituitary\", \"Posterior pituitary in incorrect location\"]"
+  },
+  {
+    "hp_id": "HP_0031722",
+    "name": "Near esotropia",
+    "synonyms": [
+      "Non-accomodative convergence excess esotropia"
+    ],
+    "gpt_response": "[\"Close esotropia\", \"Proximate esotropia\", \"Adjacent esotropia\", \"Immediate esotropia\", \"Neighboring esotropia\"]"
+  },
+  {
+    "hp_id": "HP_0008518",
+    "name": "Aplasia/Hypoplasia involving the vertebral column",
+    "synonyms": [
+      "Absent/small backbone",
+      "Absent/small spine",
+      "Absent/small vertebral column",
+      "Absent/underdeveloped backbone",
+      "Absent/underdeveloped spine",
+      "Absent/underdeveloped vertebral column"
+    ],
+    "gpt_response": "1. \"Underdevelopment/absence of the spinal column\"\n2. \"Vertebral column aplasia/hypoplasia\"\n3. \"Spine aplasia or hypoplasia\"\n4. \"Underdeveloped or absent vertebral column\"\n5. \"Aplasia or hypoplasia of the spine\""
+  },
+  {
+    "hp_id": "HP_0009063",
+    "name": "Progressive distal muscle weakness",
+    "synonyms": [
+      "Muscle weakness, distal, progressive",
+      "Muscle weakness, progressive, distal"
+    ],
+    "gpt_response": "1. \"Advancing peripheral muscle weakness\"\n2. \"Gradual weakening of distal muscles\"\n3. \"Progressive weakening of outer muscles\"\n4. \"Continual distal muscle fatigue\"\n5. \"Ongoing weakness in extremity muscles\""
+  },
+  {
+    "hp_id": "HP_0002208",
+    "name": "Coarse hair",
+    "synonyms": [
+      "Rough hair texture",
+      "Coarse hair",
+      "Coarse hair texture"
+    ],
+    "gpt_response": "[\"Rough hair\", \"Thick hair\", \"Unrefined hair\", \"Crude hair\", \"Brutish hair\"]"
+  },
+  {
+    "hp_id": "HP_0012399",
+    "name": "Pressure ulcer",
+    "synonyms": [
+      "Bedsore",
+      "Decubitus Ulcer",
+      "Pressure Sore",
+      "Pressure ulcer"
+    ],
+    "gpt_response": "[\"Bedsores\", \"Decubitus ulcers\", \"Pressure sores\", \"Skin ulcers\", \"Pressure injuries\"]"
+  },
+  {
+    "hp_id": "HP_0100449",
+    "name": "Curved distal phalanx of the 3rd toe",
+    "synonyms": [
+      "Curved outermost bone of the 3rd toe"
+    ],
+    "gpt_response": "1. \"Bent end bone of the third toe\"\n2. \"Curved terminal phalanx of the third toe\"\n3. \"Bowed distal phalanx of the 3rd toe\"\n4. \"Distorted distal phalanx of the third toe\"\n5. \"Twisted end bone of the 3rd toe\""
+  },
+  {
+    "hp_id": "HP_0002579",
+    "name": "Gastrointestinal dysmotility",
+    "synonyms": [
+      "GI dysmotility"
+    ],
+    "gpt_response": "[\"Digestive tract motility disorder\", \"Impaired gastrointestinal motility\", \"Abnormal gut motility\", \"Gastrointestinal motility dysfunction\", \"Disordered gastrointestinal movement\"]"
+  },
+  {
+    "hp_id": "HP_0030935",
+    "name": "Abnormal intestinal smooth muscle morphology",
+    "synonyms": [
+      "Abnormality of intestinal smooth muscle morphology"
+    ],
+    "gpt_response": "1. \"Irregular intestinal smooth muscle structure\"\n2. \"Unusual intestinal smooth muscle formation\"\n3. \"Atypical intestinal smooth muscle anatomy\"\n4. \"Aberrant intestinal smooth muscle configuration\"\n5. \"Non-standard intestinal smooth muscle shape\""
+  },
+  {
+    "hp_id": "HP_0033566",
+    "name": "Abnormal ventricular axis",
+    "synonyms": [
+      "Abnormal QRS axis"
+    ],
+    "gpt_response": "[\"Irregular ventricular axis\", \"Unusual ventricular axis\", \"Atypical ventricular axis\", \"Non-standard ventricular axis\", \"Aberrant ventricular axis\"]"
+  },
+  {
+    "hp_id": "HP_0012474",
+    "name": "Carotid artery occlusion",
+    "synonyms": [
+      "Obstructed carotid artery"
+    ],
+    "gpt_response": "[\"Blockage of carotid artery\", \"Carotid artery blockage\", \"Obstruction of carotid artery\", \"Carotid artery stenosis\", \"Carotid artery thrombosis\"]"
+  },
+  {
+    "hp_id": "HP_0030274",
+    "name": "Accessory scrotum",
+    "synonyms": [
+      "Extra scrotum"
+    ],
+    "gpt_response": "[\"Supernumerary scrotum\", \"Extra scrotum\", \"Additional scrotum\", \"Secondary scrotum\", \"Tertiary scrotum\"]"
+  },
+  {
+    "hp_id": "HP_0033484",
+    "name": "Elevated circulating linoleylcarnitine concentration",
+    "synonyms": [
+      "Elevated circulating C18:2 acylcarnitine concentration",
+      "Elevated plasma linoleylcarnitine, C18:2"
+    ],
+    "gpt_response": "[\"Increased blood linoleylcarnitine levels\", \"High circulating linoleylcarnitine concentration\", \"Raised linoleylcarnitine levels in the bloodstream\", \"Elevated blood linoleylcarnitine concentration\", \"High serum linoleylcarnitine levels\"]"
+  },
+  {
+    "hp_id": "HP_0033036",
+    "name": "Decreased nasal nitric oxide",
+    "synonyms": [
+      "Low nasal nitric oxide level"
+    ],
+    "gpt_response": "[\"Reduced nasal nitric oxide\", \"Lowered nasal nitric oxide\", \"Diminished nasal nitric oxide\", \"Decreased NO in nose\", \"Reduced nitric oxide in nasal cavity\"]"
+  },
+  {
+    "hp_id": "HP_0005506",
+    "name": "Chronic myelogenous leukemia",
+    "synonyms": [
+      "Chronic myelocytic leukaemia",
+      "Chronic myelocytic leukemia",
+      "Chronic myelogenous leukaemia",
+      "Chronic myeloid leukaemia",
+      "Chronic myeloid leukemia"
+    ],
+    "gpt_response": "[\"Chronic myeloid leukemia\", \"CML\", \"Chronic granulocytic leukemia\", \"Chronic myelocytic leukemia\", \"Chronic myelosis\"]"
+  },
+  {
+    "hp_id": "HP_0410017",
+    "name": "Otitis externa",
+    "synonyms": [
+      "Swimmer's ear"
+    ],
+    "gpt_response": "[\"Swimmer's ear\", \"External ear infection\", \"Outer ear inflammation\", \"Ear canal infection\", \"Infective otitis externa\"]"
+  },
+  {
+    "hp_id": "HP_0003375",
+    "name": "Narrow greater sciatic notch",
+    "synonyms": [
+      "Narrow greater sacrosciatic notches",
+      "Narrow sacroiliac notch",
+      "Narrow sacrosciatic notch",
+      "Narrow sciatic notches",
+      "Narrowed greater sciatic notch",
+      "Narrowed sacrosciatic notch",
+      "Small sacrosciatic notch",
+      "Small sacrosciatic notches"
+    ],
+    "gpt_response": "[\"Reduced width of greater sciatic notch\", \"Constricted greater sciatic notch\", \"Small greater sciatic notch\", \"Diminished greater sciatic notch\", \"Tight greater sciatic notch\"]"
+  },
+  {
+    "hp_id": "HP_0005912",
+    "name": "Biliary atresia",
+    "synonyms": [
+      "Biliary duct atresia"
+    ],
+    "gpt_response": "[\"Obstructive jaundice\", \"Biliary obstruction\", \"Cholestatic liver disease\", \"Congenital biliary atresia\", \"Hepatic ductular hypoplasia\"]"
+  },
+  {
+    "hp_id": "HP_0012099",
+    "name": "Abnormality of circulating catecholamine level",
+    "synonyms": [
+      "Catecholamine levels abnormal"
+    ],
+    "gpt_response": "1. \"Irregularity in blood catecholamine level\"\n2. \"Disorder of circulating catecholamine concentration\"\n3. \"Anomaly in blood catecholamine level\"\n4. \"Aberration of circulating catecholamine amount\"\n5. \"Disturbance in blood catecholamine concentration\""
+  },
+  {
+    "hp_id": "HP_0010579",
+    "name": "Cone-shaped epiphysis",
+    "synonyms": [
+      "Cone-shaped end part of bone",
+      "Cone-shaped epiphyses",
+      "Coned epiphyses"
+    ],
+    "gpt_response": "[\"Conical epiphysis\", \"Cone-like epiphysis\", \"Epiphysis with conical shape\", \"Epiphysis cone-shaped\", \"Cone form epiphysis\"]"
+  },
+  {
+    "hp_id": "HP_0009526",
+    "name": "Cone-shaped epiphysis of the proximal phalanx of the 2nd finger",
+    "synonyms": [
+      "Cone-shaped end part of innermost long bone of index finger",
+      "Cone-shaped epiphysis of proximal index finger phalanx"
+    ],
+    "gpt_response": "1. \"Conical epiphysis of the proximal phalanx of the second finger\"\n2. \"Cone-like epiphysis of the proximal phalanx of the 2nd digit\"\n3. \"Tapered epiphysis of the proximal phalanx of the second finger\"\n4. \"Pointed epiphysis of the proximal phalanx of the 2nd finger\"\n5. \"Pyramidal epiphysis of the proximal phalanx of the second digit\""
+  },
+  {
+    "hp_id": "HP_0100166",
+    "name": "Stippling of the epiphysis of the proximal phalanx of the 3rd toe",
+    "synonyms": [
+      "Speckled calcifications in of the end part of the innermost bone of the 3rd toe"
+    ],
+    "gpt_response": "1. \"Speckling of the epiphysis of the proximal phalanx of the third toe\"\n2. \"Dotted pattern on the epiphysis of the proximal phalanx of the 3rd toe\"\n3. \"Punctate appearance of the epiphysis of the proximal phalanx of the third toe\"\n4. \"Spotted epiphysis of the proximal phalanx of the 3rd toe\"\n5. \"Freckling of the epiphysis of the proximal phalanx of the third toe\""
+  },
+  {
+    "hp_id": "HP_0000297",
+    "name": "Facial hypotonia",
+    "synonyms": [
+      "Decreased facial muscle tone",
+      "Hypotonic facies",
+      "Low facial muscle tone",
+      "Reduced facial muscle tone",
+      "Atony of facial musculature"
+    ],
+    "gpt_response": "[\"Decreased facial muscle tone\", \"Reduced facial muscle tension\", \"Facial muscle weakness\", \"Low facial muscle tone\", \"Weak facial muscle tone\"]"
+  },
+  {
+    "hp_id": "HP_0011063",
+    "name": "Abnormal incisor morphology",
+    "synonyms": [
+      "Abnormality of incisor morphology",
+      "Abnormality of shape of incisor"
+    ],
+    "gpt_response": "[\"Irregular incisor shape\", \"Unusual incisor structure\", \"Abnormal incisor form\", \"Atypical incisor configuration\", \"Abnormality in incisor shape\"]"
+  },
+  {
+    "hp_id": "HP_0004392",
+    "name": "Prune belly",
+    "synonyms": [
+      "Prune belly"
+    ],
+    "gpt_response": "[\"Eagle-Barrett syndrome\", \"Triad syndrome\", \"Obrinsky syndrome\", \"Fr\u00f6hlich syndrome\", \"Abdominal muscle deficiency syndrome\"]"
+  },
+  {
+    "hp_id": "HP_0002300",
+    "name": "Mutism",
+    "synonyms": [
+      "Inability to speak",
+      "Muteness"
+    ],
+    "gpt_response": "[\"Speechlessness\", \"Aphasia\", \"Silence\", \"Nonvocal\", \"Voicelessness\"]"
+  },
+  {
+    "hp_id": "HP_0031249",
+    "name": "Parageusia",
+    "synonyms": [
+      "Altered sense of taste",
+      "Dysgeusia",
+      "Metallic taste",
+      "Metallic taste in mouth"
+    ],
+    "gpt_response": "[\"Distorted taste\", \"Taste perversion\", \"Abnormal taste sensation\", \"Altered taste perception\", \"Taste distortion\"]"
+  },
+  {
+    "hp_id": "HP_0031396",
+    "name": "Abnormal proportion of naive T cells",
+    "synonyms": [
+      "Abnormal naive T cell proportion",
+      "Abnormal proportion of naive thymus-derived, alpha-beta T cells"
+    ],
+    "gpt_response": "[\"Irregular ratio of naive T cells\", \"Unusual proportion of naive T cells\", \"Atypical percentage of naive T cells\", \"Non-standard distribution of naive T cells\", \"Aberrant count of naive T cells\"]"
+  },
+  {
+    "hp_id": "HP_0008064",
+    "name": "Ichthyosis",
+    "synonyms": [
+      "Ichthyosiform abnormality of the skin",
+      "Ichthyotic skin",
+      "Hypertrophic ichthyosis"
+    ],
+    "gpt_response": "[\"Fish scale disease\", \"Scaly skin condition\", \"Ichthyosis vulgaris\", \"Xeroderma\", \"Epidermal scaling\"]"
+  },
+  {
+    "hp_id": "HP_0000533",
+    "name": "Chorioretinal atrophy",
+    "synonyms": [
+      "Chorioretinal thinning"
+    ],
+    "gpt_response": "[\"Retinal degeneration\", \"Chorioretinal degeneration\", \"Atrophy of the retina and choroid\", \"Retinochoroidal atrophy\", \"Degenerative retinopathy\"]"
+  },
+  {
+    "hp_id": "HP_0000125",
+    "name": "Pelvic kidney",
+    "synonyms": [
+      "Sacral kidney"
+    ],
+    "gpt_response": "[\"Ectopic kidney\", \"Renal ectopia\", \"Kidney malposition\", \"Abnormal kidney location\", \"Misplaced kidney\"]"
+  },
+  {
+    "hp_id": "HP_0011218",
+    "name": "Abnormal shape of the frontal region",
+    "synonyms": [
+      "Abnormal morphology of the frontal region",
+      "Abnormal shape of the forehead",
+      "Dysmorphic forehead",
+      "Dysmorphic frontal region"
+    ],
+    "gpt_response": "[\"Irregular frontal region shape\", \"Unusual shape of the frontal area\", \"Deformed frontal region\", \"Atypical frontal region shape\", \"Abnormal frontal area form\"]"
+  },
+  {
+    "hp_id": "HP_0001709",
+    "name": "Third degree atrioventricular block",
+    "synonyms": [
+      "Complete heart block",
+      "Third-degree heart block"
+    ],
+    "gpt_response": "[\"Complete heart block\", \"Complete AV block\", \"Third degree heart block\", \"Total atrioventricular block\", \"Full atrioventricular block\"]"
+  },
+  {
+    "hp_id": "HP_0001829",
+    "name": "Foot polydactyly",
+    "synonyms": [
+      "Duplication of bones of the toes",
+      "Polydactyly of feet",
+      "Polydactyly of the foot"
+    ],
+    "gpt_response": "[\"Extra toes\", \"Supernumerary toes\", \"Additional digits on foot\", \"Excess toes\", \"Multidactyly of foot\"]"
+  },
+  {
+    "hp_id": "HP_0010360",
+    "name": "Broad phalanges of the 3rd toe",
+    "synonyms": [
+      "Wide bones of 3rd toe"
+    ],
+    "gpt_response": "[\"Wide 3rd toe phalanges\", \"Expanded phalanges of the third toe\", \"Broadened third toe phalanges\", \"Wide bones of the third toe\", \"Enlarged phalanges of the 3rd toe\"]"
+  },
+  {
+    "hp_id": "HP_0005943",
+    "name": "Respiratory arrest",
+    "synonyms": [
+      "Breathing cessation"
+    ],
+    "gpt_response": "[\"Breathing cessation\", \"Respiratory failure\", \"Respiratory stoppage\", \"Apnea\", \"Asphyxiation\"]"
+  },
+  {
+    "hp_id": "HP_0012885",
+    "name": "Fallopian tube duplication",
+    "synonyms": [
+      "Accessory fallopian tube"
+    ],
+    "gpt_response": "[\"Double Fallopian tubes\", \"Duplication of Fallopian tubes\", \"Twin Fallopian tubes\", \"Fallopian tube twinning\", \"Bilateral Fallopian tubes\"]"
+  },
+  {
+    "hp_id": "HP_0032083",
+    "name": "Aortic elastic fiber fragmentation",
+    "synonyms": [
+      "Aortic elastic fibre fragmentation"
+    ],
+    "gpt_response": "[\"Aortic elastin fiber breakdown\", \"Disintegration of aortic elastic fibers\", \"Fragmentation of aortic elastin fibers\", \"Aortic elastic fiber disarray\", \"Aortic elastic fiber degeneration\"]"
+  },
+  {
+    "hp_id": "HP_0003189",
+    "name": "Long nose",
+    "synonyms": [
+      "Elongated nose",
+      "Increased height of nose",
+      "Increased length of nose",
+      "Increased nasal height",
+      "Increased nasal length",
+      "Long nose",
+      "Nasal elongation"
+    ],
+    "gpt_response": "[\"Extended nose\", \"Elongated nose\", \"Lengthy nose\", \"Protracted nose\", \"Longitudinal nose\"]"
+  },
+  {
+    "hp_id": "HP_0001325",
+    "name": "Hypoglycemic coma",
+    "synonyms": [
+      "Coma caused by low blood sugar",
+      "Coma, hypoglycemic",
+      "Hypoglycaemic coma",
+      "Hypoglycemic coma",
+      "Loss of consciousness due to hypoglycemia"
+    ],
+    "gpt_response": "[\"Low blood sugar coma\", \"Insulin shock\", \"Diabetic coma\", \"Severe hypoglycemia coma\", \"Glucose deficiency coma\"]"
+  },
+  {
+    "hp_id": "HP_0000876",
+    "name": "Oligomenorrhea",
+    "synonyms": [
+      "Light or infrequent menstrual periods"
+    ],
+    "gpt_response": "[\"Infrequent menstruation\", \"Scanty periods\", \"Irregular menstrual cycles\", \"Reduced menstrual frequency\", \"Sparse menstruation\"]"
+  },
+  {
+    "hp_id": "HP_0012797",
+    "name": "Lymphatic vessel neoplasm",
+    "synonyms": [
+      "Lymphatic vessel tumor",
+      "Lymphatic vessel tumour"
+    ],
+    "gpt_response": "[\"Lymphatic cancer\", \"Lymphatic tumor\", \"Lymphatic vessel cancer\", \"Lymphatic vessel tumor\", \"Lymphatic neoplasm\"]"
+  },
+  {
+    "hp_id": "HP_0002875",
+    "name": "Exertional dyspnea",
+    "synonyms": [
+      "Exertional breathlessness",
+      "Exertional dyspnoea",
+      "Shortness of breathing upon physical activity"
+    ],
+    "gpt_response": "[\"Exercise-induced shortness of breath\", \"Exertional breathlessness\", \"Exercise intolerance\", \"Difficulty breathing during exercise\", \"Breathlessness on exertion\"]"
+  },
+  {
+    "hp_id": "HP_0011704",
+    "name": "Sick sinus syndrome",
+    "synonyms": [
+      "Sinoatrial node disease"
+    ],
+    "gpt_response": "[\"Sinus node dysfunction\", \"Sinoatrial node disease\", \"Sinus node disease\", \"Sinoatrial block\", \"Bradycardia-tachycardia syndrome\"]"
+  },
+  {
+    "hp_id": "HP_0004916",
+    "name": "Generalized distal tubular acidosis",
+    "synonyms": [
+      "Generalised distal tubular acidosis"
+    ],
+    "gpt_response": "1. \"Widespread distal renal tubular acidosis\"\n2. \"Generalized distal renal tubular acidosis\"\n3. \"Systemic distal tubular acidosis\"\n4. \"Generalized distal RTA\"\n5. \"Widespread distal RTA\""
+  },
+  {
+    "hp_id": "HP_0033655",
+    "name": "Pulmonary cavity",
+    "synonyms": [
+      "Pulmonary cavern"
+    ],
+    "gpt_response": "[\"Lung cavity\", \"Pulmonary hollow\", \"Lung hollow\", \"Pulmonary lesion\", \"Lung lesion\"]"
+  },
+  {
+    "hp_id": "HP_0009148",
+    "name": "Small epiphysis of the distal phalanx of the 5th finger",
+    "synonyms": [
+      "Small end part of the outermost bone of little finger",
+      "Small end part of the outermost bone of pinkie finger",
+      "Small end part of the outermost bone of pinky finger"
+    ],
+    "gpt_response": "1. \"Reduced size of the end part of the last bone of the fifth finger\"\n2. \"Diminished epiphysis of the distal phalanx of the pinky finger\"\n3. \"Underdeveloped end segment of the smallest finger's last bone\"\n4. \"Small end part of the last bone of the little finger\"\n5. \"Miniature epiphysis of the distal phalanx of the 5th digit\""
+  },
+  {
+    "hp_id": "HP_0001384",
+    "name": "Abnormal hip joint morphology",
+    "synonyms": [
+      "Abnormality of the hip joint",
+      "Abnormality of the hip joints"
+    ],
+    "gpt_response": "[\"Irregular hip joint structure\", \"Unusual hip joint form\", \"Atypical hip joint shape\", \"Abnormal hip joint anatomy\", \"Deformed hip joint configuration\"]"
+  },
+  {
+    "hp_id": "HP_0002024",
+    "name": "Malabsorption",
+    "synonyms": [
+      "Intestinal malabsorption",
+      "Malabsorption"
+    ],
+    "gpt_response": "[\"Poor nutrient absorption\", \"Impaired digestion\", \"Inadequate absorption of nutrients\", \"Digestive insufficiency\", \"Inefficient nutrient absorption\"]"
+  },
+  {
+    "hp_id": "HP_0100249",
+    "name": "Calcification of muscles",
+    "synonyms": [
+      "Skeletal muscle calcinosis"
+    ],
+    "gpt_response": "[\"Muscle Calcification\", \"Muscular Calcification\", \"Calcified Muscles\", \"Muscle Mineralization\", \"Mineral Deposition in Muscles\"]"
+  },
+  {
+    "hp_id": "HP_3000060",
+    "name": "Abnormal infraorbital artery morphology",
+    "synonyms": [
+      "Abnormality of infraorbital artery"
+    ],
+    "gpt_response": "[\"Irregular infraorbital artery structure\", \"Unusual infraorbital artery form\", \"Atypical infraorbital artery shape\", \"Aberrant infraorbital artery configuration\", \"Non-standard infraorbital artery anatomy\"]"
+  },
+  {
+    "hp_id": "HP_0030226",
+    "name": "Abnormal muscle fiber myotilin",
+    "synonyms": [
+      "Abnormal muscle fibre myotilin"
+    ],
+    "gpt_response": "[\"Unusual myotilin in muscle fibers\", \"Atypical myotilin in muscle fibers\", \"Irregular muscle fiber myotilin\", \"Aberrant myotilin in muscle fibers\", \"Non-standard muscle fiber myotilin\"]"
+  },
+  {
+    "hp_id": "HP_0011909",
+    "name": "Flattened metacarpal heads",
+    "synonyms": [
+      "Flattened head of long bone of hand"
+    ],
+    "gpt_response": "[\"Flat metacarpal heads\", \"Compressed metacarpal heads\", \"Depressed metacarpal heads\", \"Squashed metacarpal heads\", \"Crushed metacarpal heads\"]"
+  },
+  {
+    "hp_id": "HP_0012714",
+    "name": "Severe hearing impairment",
+    "synonyms": [
+      "Severe deafness",
+      "Severe hearing impairment",
+      "Severe hearing loss"
+    ],
+    "gpt_response": "[\"Profound deafness\", \"Significant hearing loss\", \"Major auditory impairment\", \"Severe hearing deficiency\", \"Extreme hearing disorder\"]"
+  },
+  {
+    "hp_id": "HP_0009427",
+    "name": "Triangular shaped distal phalanx of the 3rd finger",
+    "synonyms": [
+      "Triangular shaped outermost bone of the middle finger"
+    ],
+    "gpt_response": "1. \"Triangular form of the end bone of the third finger\"\n2. \"Third finger's distal phalanx with triangular shape\"\n3. \"Triangular end bone of the third digit\"\n4. \"Triangular distal phalanx of the third finger\"\n5. \"Triangular shaped end segment of the 3rd finger\""
+  },
+  {
+    "hp_id": "HP_0012741",
+    "name": "Unilateral cryptorchidism",
+    "synonyms": [
+      "Cryptorchidism, unilateral"
+    ],
+    "gpt_response": "[\"One-sided undescended testicle\", \"Single-sided cryptorchidism\", \"Unilateral undescended testis\", \"One-sided testicular maldescent\", \"Unilateral testis nondescent\"]"
+  },
+  {
+    "hp_id": "HP_0011574",
+    "name": "Imperforate atrioventricular valve",
+    "synonyms": [
+      "Unopened atrioventricular valve"
+    ],
+    "gpt_response": "[\"Atrioventricular valve atresia\", \"Atrioventricular valve closure\", \"Blocked atrioventricular valve\", \"Sealed atrioventricular valve\", \"Atrioventricular valve occlusion\"]"
+  },
+  {
+    "hp_id": "HP_0002340",
+    "name": "Caudate atrophy",
+    "synonyms": [
+      "Caudate degeneration"
+    ],
+    "gpt_response": "[\"Shrinkage of Caudate\", \"Caudate Degeneration\", \"Atrophy of Caudate Nucleus\", \"Caudate Nucleus Atrophy\", \"Degenerative Caudate\"]"
+  },
+  {
+    "hp_id": "HP_0001653",
+    "name": "Mitral regurgitation",
+    "synonyms": [
+      "Mitral incompetence",
+      "Mitral insufficiency",
+      "Mitral valve insufficiency",
+      "Mitral valve regurgitation",
+      "Mitral regurgitation, mild"
+    ],
+    "gpt_response": "[\"Mitral valve insufficiency\", \"Mitral valve leakage\", \"Mitral valve regurgitation\", \"Mitral incompetence\", \"Leaky mitral valve\"]"
+  },
+  {
+    "hp_id": "HP_0000518",
+    "name": "Cataract",
+    "synonyms": [
+      "Cataracts",
+      "Clouding of the lens of the eye",
+      "Cloudy lens",
+      "Lens opacities",
+      "Lens opacity"
+    ],
+    "gpt_response": "[\"Eye cloudiness\", \"Lens opacity\", \"Clouded vision\", \"Visual impairment\", \"Opaque eye lens\"]"
+  },
+  {
+    "hp_id": "HP_3000036",
+    "name": "Abnormal head blood vessel morphology",
+    "synonyms": [
+      "Abnormality of blood vessel of head",
+      "Abnormality of head blood vessel",
+      "Abnormality of vasculature of head"
+    ],
+    "gpt_response": "1. \"Irregular cranial vascular structure\"\n2. \"Unusual head blood vessel formation\"\n3. \"Atypical head vascular morphology\"\n4. \"Aberrant head blood vessel structure\"\n5. \"Non-standard cranial blood vessel configuration\""
+  },
+  {
+    "hp_id": "HP_0410073",
+    "name": "Increased level of ribose in CSF",
+    "synonyms": [
+      "Increased level of ribose in cerebrospinal fluid"
+    ],
+    "gpt_response": "1. \"Elevated ribose concentration in cerebrospinal fluid\"\n2. \"High ribose levels in CSF\"\n3. \"Raised ribose in cerebrospinal fluid\"\n4. \"Augmented ribose concentration in CSF\"\n5. \"Excessive ribose in cerebrospinal fluid\""
+  },
+  {
+    "hp_id": "HP_0011610",
+    "name": "Type IV truncus arteriosus",
+    "synonyms": [
+      "Persistent truncus arteriosus type IV",
+      "Type 4 truncus arteriosus"
+    ],
+    "gpt_response": "[\"Type 4 truncus arteriosus\", \"Truncus arteriosus type IV\", \"Type IV arteriosus truncus\", \"Type 4 arteriosus truncus\", \"Arteriosus truncus type IV\"]"
+  },
+  {
+    "hp_id": "HP_0000963",
+    "name": "Thin skin",
+    "synonyms": [
+      "Thin skin"
+    ],
+    "gpt_response": "[\"Fragile skin\", \"Delicate skin\", \"Fine skin\", \"Paper-thin skin\", \"Weak skin\"]"
+  },
+  {
+    "hp_id": "HP_0009207",
+    "name": "Fragmentation of the epiphysis of the middle phalanx of the 5th finger",
+    "synonyms": [
+      "Fragmentation of end part of the middle bone of the little finger",
+      "Fragmentation of end part of the middle bone of the pinkie finger",
+      "Fragmentation of end part of the middle bone of the pinky finger"
+    ],
+    "gpt_response": "1. \"Breakdown of the epiphysis of the middle phalanx of the 5th digit\"\n2. \"Disintegration of the epiphysis of the middle phalanx of the little finger\"\n3. \"Shattering of the epiphysis of the middle phalanx of the pinky finger\"\n4. \"Fracturing of the epiphysis of the middle phalanx of the 5th finger\"\n5. \"Splintering of the epiphysis of the middle phalanx of the 5th digit\""
+  },
+  {
+    "hp_id": "HP_0009348",
+    "name": "Cone-shaped epiphysis of the proximal phalanx of the 3rd finger",
+    "synonyms": [
+      "Cone-shaped end part of the innermost bone of the middle finger"
+    ],
+    "gpt_response": "1. \"Conical epiphysis of the proximal phalanx of the third finger\"\n2. \"Cone-like epiphysis of the proximal phalanx of the 3rd digit\"\n3. \"Tapered epiphysis of the proximal phalanx of the third finger\"\n4. \"Pointed epiphysis of the proximal phalanx of the 3rd finger\"\n5. \"Pyramidal epiphysis of the proximal phalanx of the third digit\""
+  },
+  {
+    "hp_id": "HP_0100059",
+    "name": "Fragmentation of the epiphyses of the 3rd toe",
+    "synonyms": [
+      "Fragmentation of the end part of the 3rd toe bone"
+    ],
+    "gpt_response": "1. \"Breakdown of the 3rd toe's epiphyses\"\n2. \"Disintegration of the epiphyses in the third toe\"\n3. \"Shattering of the 3rd toe's epiphyses\"\n4. \"Fracturing of the epiphyses of the third toe\"\n5. \"Splintering of the 3rd toe's epiphyses\""
+  },
+  {
+    "hp_id": "HP_0007018",
+    "name": "Attention deficit hyperactivity disorder",
+    "synonyms": [
+      "ADHD",
+      "Attention deficit",
+      "Attention deficit disorder",
+      "Attention deficit-hyperactivity disorder",
+      "Attention deficits",
+      "Childhood attention deficit/hyperactivity disorder"
+    ],
+    "gpt_response": "[\"ADHD\", \"Hyperkinetic disorder\", \"Attention deficit disorder\", \"ADD\", \"Hyperactivity disorder\"]"
+  },
+  {
+    "hp_id": "HP_0001063",
+    "name": "Acrocyanosis",
+    "synonyms": [
+      "Persistent blue color of hands or feet",
+      "Persistent blue colour of hands or feet"
+    ],
+    "gpt_response": "[\"Peripheral cyanosis\", \"Blue extremities\", \"Cyanosis of the extremities\", \"Bluish discoloration of extremities\", \"Blue skin discoloration\"]"
+  },
+  {
+    "hp_id": "HP_0009817",
+    "name": "Aplasia involving bones of the lower limbs",
+    "synonyms": [
+      "Absent bones of the lower limbs"
+    ],
+    "gpt_response": "[\"Lower limb bone aplasia\", \"Absence of bone formation in lower limbs\", \"Lower extremity bone aplasia\", \"Agenesis of bones in lower limbs\", \"Lower limb bone agenesis\"]"
+  },
+  {
+    "hp_id": "HP_0000024",
+    "name": "Prostatitis",
+    "synonyms": [
+      "Inflammation of the prostate"
+    ],
+    "gpt_response": "[\"Inflammation of the prostate\", \"Prostate inflammation\", \"Prostate infection\", \"Swollen prostate\", \"Infected prostate\"]"
+  },
+  {
+    "hp_id": "HP_0001969",
+    "name": "Abnormal tubulointerstitial morphology",
+    "synonyms": [
+      "Tubulointerstitial abnormality",
+      "Tubulointerstitial nephropathy"
+    ],
+    "gpt_response": "1. \"Irregular tubulointerstitial structure\"\n2. \"Unusual tubulointerstitial form\"\n3. \"Atypical tubulointerstitial shape\"\n4. \"Non-standard tubulointerstitial configuration\"\n5. \"Aberrant tubulointerstitial anatomy\""
+  },
+  {
+    "hp_id": "HP_0500197",
+    "name": "Increased CSF glutamine concentration",
+    "synonyms": [
+      "High glutamine levels in cerebrospinal fluid"
+    ],
+    "gpt_response": "1. \"Elevated cerebrospinal fluid glutamine levels\"\n2. \"High glutamine concentration in CSF\"\n3. \"Raised glutamine levels in cerebrospinal fluid\"\n4. \"Increased glutamine in CSF\"\n5. \"Augmented cerebrospinal fluid glutamine concentration\""
+  },
+  {
+    "hp_id": "HP_0009286",
+    "name": "Curved distal phalanx of the 4th finger",
+    "synonyms": [
+      "Curved outermost ring finger bone"
+    ],
+    "gpt_response": "1. \"Bent end bone of the fourth finger\"\n2. \"Curved outermost bone of the fourth digit\"\n3. \"Bowed distal phalanx of the 4th digit\"\n4. \"Curvature of the end bone of the fourth finger\"\n5. \"Distorted distal phalanx of the 4th finger\""
+  },
+  {
+    "hp_id": "HP_0034151",
+    "name": "Anti-asparaginyl-tRNA synthetase antibody positivity",
+    "synonyms": [
+      "Anti-KS antibody positivity"
+    ],
+    "gpt_response": "1. \"Presence of anti-asparaginyl-tRNA synthetase antibodies\"\n2. \"Positive for anti-asparaginyl-tRNA synthetase antibodies\"\n3. \"Detection of anti-asparaginyl-tRNA synthetase antibodies\"\n4. \"Anti-asparaginyl-tRNA synthetase antibody detection\"\n5. \"Existence of anti-asparaginyl-tRNA synthetase antibodies\""
+  },
+  {
+    "hp_id": "HP_0002673",
+    "name": "Coxa valga",
+    "synonyms": [
+      "Valgus hip",
+      "Coxa valga deformity"
+    ],
+    "gpt_response": "[\"Increased hip angle\", \"Widened hip angle\", \"Hip deformity\", \"Abnormal hip joint angle\", \"Deformed hip joint\"]"
+  },
+  {
+    "hp_id": "HP_0500242",
+    "name": "Increased CSF homocarnosine concentration",
+    "synonyms": [
+      "High homocarnosine levels in cerebrospinal fluid"
+    ],
+    "gpt_response": "[\"Elevated cerebrospinal fluid homocarnosine levels\", \"High homocarnosine concentration in CSF\", \"Raised CSF homocarnosine levels\", \"Increased homocarnosine in cerebrospinal fluid\", \"High cerebrospinal fluid concentration of homocarnosine\"]"
+  },
+  {
+    "hp_id": "HP_0003991",
+    "name": "Osteosclerosis of the ulna",
+    "synonyms": [
+      "Sclerotic ulna"
+    ],
+    "gpt_response": "1. \"Ulna bone hardening\"\n2. \"Increased bone density of the ulna\"\n3. \"Ulnar bone sclerosis\"\n4. \"Hardening of the ulna bone\"\n5. \"Ulna osteosclerosis\""
+  },
+  {
+    "hp_id": "HP_0006707",
+    "name": "Abnormality of the hepatic vasculature",
+    "synonyms": [
+      "Abnormality of liver blood vessels",
+      "Abnormality of the liver vasculature"
+    ],
+    "gpt_response": "1. \"Liver vasculature abnormality\"\n2. \"Hepatic blood vessel irregularity\"\n3. \"Abnormal liver blood vessels\"\n4. \"Irregularity of the liver vasculature\"\n5. \"Dysfunction of hepatic blood vessels\""
+  },
+  {
+    "hp_id": "HP_0009005",
+    "name": "Weakness of the intrinsic hand muscles",
+    "synonyms": [
+      "Intrinsic hand muscle weakness"
+    ],
+    "gpt_response": "[\"Intrinsic hand muscle debility\", \"Impaired hand muscle strength\", \"Weakness in hand's intrinsic muscles\", \"Intrinsic hand muscle weakness\", \"Hand muscle strength deficiency\"]"
+  },
+  {
+    "hp_id": "HP_0010220",
+    "name": "Abnormality of the epiphysis of the 2nd metacarpal",
+    "synonyms": [
+      "Abnormality of the end part of the 2nd long bone of hand"
+    ],
+    "gpt_response": "1. \"Irregularity of the epiphysis of the second metacarpal\"\n2. \"Anomaly of the 2nd metacarpal epiphysis\"\n3. \"Deformity of the epiphysis of the second metacarpal\"\n4. \"Aberration of the 2nd metacarpal's epiphysis\"\n5. \"Unusual condition of the epiphysis of the 2nd metacarpal\""
+  },
+  {
+    "hp_id": "HP_0005268",
+    "name": "Miscarriage",
+    "synonyms": [
+      "Early fetal demise",
+      "Early foetal demise",
+      "Spontaneous abortion"
+    ],
+    "gpt_response": "[\"Spontaneous abortion\", \"Pregnancy loss\", \"Early pregnancy loss\", \"Fetal loss\", \"Pregnancy failure\"]"
+  },
+  {
+    "hp_id": "HP_0004443",
+    "name": "Lambdoidal craniosynostosis",
+    "synonyms": [
+      "Lambdoid suture craniosynostosis",
+      "Lambdoid suture synostosis"
+    ],
+    "gpt_response": "[\"Lambdoid suture craniosynostosis\", \"Lambdoid synostosis\", \"Posterior cranial suture synostosis\", \"Lambdoidal suture fusion\", \"Posterior skull suture fusion\"]"
+  },
+  {
+    "hp_id": "HP_0010839",
+    "name": "Increased urinary copper concentration",
+    "synonyms": [
+      "Increased urinary copper concentration"
+    ],
+    "gpt_response": "1. \"Elevated copper levels in urine\"\n2. \"High urinary copper content\"\n3. \"Raised copper concentration in urine\"\n4. \"Excessive copper in urine\"\n5. \"Abnormally high urinary copper levels\""
+  },
+  {
+    "hp_id": "HP_0034270",
+    "name": "Serrated incisors",
+    "synonyms": [
+      "Jagged incisors"
+    ],
+    "gpt_response": "[\"Notched incisors\", \"Scalloped incisors\", \"Jagged incisors\", \"Grooved incisors\", \"Rough-edged incisors\"]"
+  },
+  {
+    "hp_id": "HP_0010933",
+    "name": "Hyperxanthinemia",
+    "synonyms": [
+      "Increased circulating xanthine concentration"
+    ],
+    "gpt_response": "[\"Elevated Xanthine Levels\", \"High Xanthine in Blood\", \"Increased Xanthine Concentration\", \"Abnormally High Xanthine\", \"Excessive Xanthine in Bloodstream\"]"
+  },
+  {
+    "hp_id": "HP_0010364",
+    "name": "Patchy sclerosis of 3rd toe phalanx",
+    "synonyms": [
+      "Patchy sclerosis of the phalanges of the 3rd toe",
+      "Uneven increase in bone density in 3rd toe bone"
+    ],
+    "gpt_response": "1. \"Intermittent sclerosis of third toe phalanx\"\n2. \"Irregular hardening of 3rd toe bone\"\n3. \"Uneven sclerosis of third toe phalanx\"\n4. \"Sporadic hardening of 3rd toe phalanx\"\n5. \"Patchy hardening of third toe bone\""
+  },
+  {
+    "hp_id": "HP_0030032",
+    "name": "Partial absence of foot",
+    "synonyms": [
+      "Partial absence of foot"
+    ],
+    "gpt_response": "[\"Incomplete foot\", \"Partial foot absence\", \"Partial foot loss\", \"Incomplete development of foot\", \"Partial foot deficiency\"]"
+  },
+  {
+    "hp_id": "HP_5200298",
+    "name": "Abnormal sleep architecture",
+    "synonyms": [
+      "Sleep architecture disturbances",
+      "Sleep stage disturbances"
+    ],
+    "gpt_response": "[\"Disrupted sleep pattern\", \"Irregular sleep structure\", \"Disturbed sleep architecture\", \"Unusual sleep pattern\", \"Atypical sleep structure\"]"
+  },
+  {
+    "hp_id": "HP_0033936",
+    "name": "Cortical radial artery intima/media liquefactive necrosis",
+    "synonyms": [
+      "Liquefactive necrosis within interlobular arterial intima/media"
+    ],
+    "gpt_response": "1. \"Cortical radial artery inner/outer layer liquefactive cell death\"\n2. \"Liquefactive necrosis in cortical radial artery intima/media\"\n3. \"Cortical radial artery intima/media softening necrosis\"\n4. \"Cortical radial artery intima/media liquid necrosis\"\n5. \"Cortical radial artery intima/media dissolution necrosis\""
+  },
+  {
+    "hp_id": "HP_0008460",
+    "name": "Hypoplastic spinal processes",
+    "synonyms": [
+      "Underdeveloped spinal processes"
+    ],
+    "gpt_response": "[\"Underdeveloped spinal processes\", \"Inadequate development of spinal processes\", \"Spinal processes hypoplasia\", \"Insufficiently developed spinal processes\", \"Spinal processes underdevelopment\"]"
+  },
+  {
+    "hp_id": "HP_0040324",
+    "name": "Heliotrope rash",
+    "synonyms": [
+      "Heliotrope erythema"
+    ],
+    "gpt_response": "[\"Purple rash\", \"Violet rash\", \"Heliotrope erythema\", \"Heliotropic rash\", \"Lilac rash\"]"
+  },
+  {
+    "hp_id": "HP_0003762",
+    "name": "Uterus didelphys",
+    "synonyms": [
+      "Double uterus"
+    ],
+    "gpt_response": "[\"Double uterus\", \"Didelphic uterus\", \"Bicornuate uterus\", \"Duplex uterus\", \"Bifid uterus\"]"
+  },
+  {
+    "hp_id": "HP_0100327",
+    "name": "Cow milk allergy",
+    "synonyms": [
+      "Cow milk allergy",
+      "IgE-mediated cow milk allergy",
+      "Immunoglobulin E-mediated cow milk allergy",
+      "Milk allergy"
+    ],
+    "gpt_response": "[\"Bovine milk hypersensitivity\", \"Dairy allergy\", \"Allergy to cow's milk\", \"Milk protein allergy\", \"Lactose intolerance\"]"
+  }
+]

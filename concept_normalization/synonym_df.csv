@@ -1,0 +1,499 @@
+synonym,name,hp_id
+Liver fibrosis,Portal fibrosis,HP_0006580
+Hepatic fibrosis,Portal fibrosis,HP_0006580
+Portal tract fibrosis,Portal fibrosis,HP_0006580
+Fibrosis of the liver,Portal fibrosis,HP_0006580
+Fibrotic liver disease,Portal fibrosis,HP_0006580
+FXIII A deficiency,Factor XIII subunit A deficiency,HP_0040233
+Factor 13A deficiency,Factor XIII subunit A deficiency,HP_0040233
+Coagulation factor XIII A chain deficiency,Factor XIII subunit A deficiency,HP_0040233
+Fibrin stabilizing factor A subunit deficiency,Factor XIII subunit A deficiency,HP_0040233
+Factor XIII-A deficiency,Factor XIII subunit A deficiency,HP_0040233
+Total Anomalous Pulmonary Venous Return,Cardiac total anomalous pulmonary venous connection,HP_0011720
+Total Anomalous Pulmonary Venous Drainage,Cardiac total anomalous pulmonary venous connection,HP_0011720
+Total Anomalous Pulmonary Venous Connection to the Heart,Cardiac total anomalous pulmonary venous connection,HP_0011720
+Complete Anomalous Pulmonary Venous Connection,Cardiac total anomalous pulmonary venous connection,HP_0011720
+Total Anomalous Pulmonary Venous Connection Disorder,Cardiac total anomalous pulmonary venous connection,HP_0011720
+Metatarsal bone dissolution,Metatarsal osteolysis,HP_0001473
+Metatarsal bone resorption,Metatarsal osteolysis,HP_0001473
+Osteolysis of metatarsal bones,Metatarsal osteolysis,HP_0001473
+Metatarsal bone degeneration,Metatarsal osteolysis,HP_0001473
+Dissolution of metatarsal bones,Metatarsal osteolysis,HP_0001473
+Bracket-shaped epiphysis of the proximal phalanx of the third finger,Bracket epiphysis of the proximal phalanx of the 3rd finger,HP_0009347
+Abnormal epiphysis of the proximal phalanx of the 3rd digit,Bracket epiphysis of the proximal phalanx of the 3rd finger,HP_0009347
+Bracket epiphysis of the proximal bone segment of the third finger,Bracket epiphysis of the proximal phalanx of the 3rd finger,HP_0009347
+Bracket-shaped end of the proximal phalanx of the 3rd finger,Bracket epiphysis of the proximal phalanx of the 3rd finger,HP_0009347
+Abnormal growth plate of the proximal phalanx of the third finger,Bracket epiphysis of the proximal phalanx of the 3rd finger,HP_0009347
+Curvature of the distal tibia,Distal tibial bowing,HP_0006414
+Bowing of the lower tibia,Distal tibial bowing,HP_0006414
+Distal tibial curvature,Distal tibial bowing,HP_0006414
+Lower tibial bowing,Distal tibial bowing,HP_0006414
+Bent distal tibia,Distal tibial bowing,HP_0006414
+Abnormal posterior pituitary location,Ectopic posterior pituitary,HP_0011755
+Misplaced posterior pituitary,Ectopic posterior pituitary,HP_0011755
+Dislocated posterior pituitary,Ectopic posterior pituitary,HP_0011755
+Erroneously positioned posterior pituitary,Ectopic posterior pituitary,HP_0011755
+Posterior pituitary in incorrect location,Ectopic posterior pituitary,HP_0011755
+Close esotropia,Near esotropia,HP_0031722
+Proximate esotropia,Near esotropia,HP_0031722
+Adjacent esotropia,Near esotropia,HP_0031722
+Immediate esotropia,Near esotropia,HP_0031722
+Neighboring esotropia,Near esotropia,HP_0031722
+Underdevelopment/absence of the spinal column,Aplasia/Hypoplasia involving the vertebral column,HP_0008518
+Vertebral column aplasia/hypoplasia,Aplasia/Hypoplasia involving the vertebral column,HP_0008518
+Spine aplasia or hypoplasia,Aplasia/Hypoplasia involving the vertebral column,HP_0008518
+Underdeveloped or absent vertebral column,Aplasia/Hypoplasia involving the vertebral column,HP_0008518
+Aplasia or hypoplasia of the spine,Aplasia/Hypoplasia involving the vertebral column,HP_0008518
+Advancing peripheral muscle weakness,Progressive distal muscle weakness,HP_0009063
+Gradual weakening of distal muscles,Progressive distal muscle weakness,HP_0009063
+Progressive weakening of outer muscles,Progressive distal muscle weakness,HP_0009063
+Continual distal muscle fatigue,Progressive distal muscle weakness,HP_0009063
+Ongoing weakness in extremity muscles,Progressive distal muscle weakness,HP_0009063
+Rough hair,Coarse hair,HP_0002208
+Thick hair,Coarse hair,HP_0002208
+Unrefined hair,Coarse hair,HP_0002208
+Crude hair,Coarse hair,HP_0002208
+Brutish hair,Coarse hair,HP_0002208
+Bedsores,Pressure ulcer,HP_0012399
+Decubitus ulcers,Pressure ulcer,HP_0012399
+Pressure sores,Pressure ulcer,HP_0012399
+Skin ulcers,Pressure ulcer,HP_0012399
+Pressure injuries,Pressure ulcer,HP_0012399
+Bent end bone of the third toe,Curved distal phalanx of the 3rd toe,HP_0100449
+Curved terminal phalanx of the third toe,Curved distal phalanx of the 3rd toe,HP_0100449
+Bowed distal phalanx of the 3rd toe,Curved distal phalanx of the 3rd toe,HP_0100449
+Distorted distal phalanx of the third toe,Curved distal phalanx of the 3rd toe,HP_0100449
+Twisted end bone of the 3rd toe,Curved distal phalanx of the 3rd toe,HP_0100449
+Digestive tract motility disorder,Gastrointestinal dysmotility,HP_0002579
+Impaired gastrointestinal motility,Gastrointestinal dysmotility,HP_0002579
+Abnormal gut motility,Gastrointestinal dysmotility,HP_0002579
+Gastrointestinal motility dysfunction,Gastrointestinal dysmotility,HP_0002579
+Disordered gastrointestinal movement,Gastrointestinal dysmotility,HP_0002579
+Irregular intestinal smooth muscle structure,Abnormal intestinal smooth muscle morphology,HP_0030935
+Unusual intestinal smooth muscle formation,Abnormal intestinal smooth muscle morphology,HP_0030935
+Atypical intestinal smooth muscle anatomy,Abnormal intestinal smooth muscle morphology,HP_0030935
+Aberrant intestinal smooth muscle configuration,Abnormal intestinal smooth muscle morphology,HP_0030935
+Non-standard intestinal smooth muscle shape,Abnormal intestinal smooth muscle morphology,HP_0030935
+Irregular ventricular axis,Abnormal ventricular axis,HP_0033566
+Unusual ventricular axis,Abnormal ventricular axis,HP_0033566
+Atypical ventricular axis,Abnormal ventricular axis,HP_0033566
+Non-standard ventricular axis,Abnormal ventricular axis,HP_0033566
+Aberrant ventricular axis,Abnormal ventricular axis,HP_0033566
+Blockage of carotid artery,Carotid artery occlusion,HP_0012474
+Carotid artery blockage,Carotid artery occlusion,HP_0012474
+Obstruction of carotid artery,Carotid artery occlusion,HP_0012474
+Carotid artery stenosis,Carotid artery occlusion,HP_0012474
+Carotid artery thrombosis,Carotid artery occlusion,HP_0012474
+Supernumerary scrotum,Accessory scrotum,HP_0030274
+Extra scrotum,Accessory scrotum,HP_0030274
+Additional scrotum,Accessory scrotum,HP_0030274
+Secondary scrotum,Accessory scrotum,HP_0030274
+Tertiary scrotum,Accessory scrotum,HP_0030274
+Increased blood linoleylcarnitine levels,Elevated circulating linoleylcarnitine concentration,HP_0033484
+High circulating linoleylcarnitine concentration,Elevated circulating linoleylcarnitine concentration,HP_0033484
+Raised linoleylcarnitine levels in the bloodstream,Elevated circulating linoleylcarnitine concentration,HP_0033484
+Elevated blood linoleylcarnitine concentration,Elevated circulating linoleylcarnitine concentration,HP_0033484
+High serum linoleylcarnitine levels,Elevated circulating linoleylcarnitine concentration,HP_0033484
+Reduced nasal nitric oxide,Decreased nasal nitric oxide,HP_0033036
+Lowered nasal nitric oxide,Decreased nasal nitric oxide,HP_0033036
+Diminished nasal nitric oxide,Decreased nasal nitric oxide,HP_0033036
+Decreased NO in nose,Decreased nasal nitric oxide,HP_0033036
+Reduced nitric oxide in nasal cavity,Decreased nasal nitric oxide,HP_0033036
+Chronic myeloid leukemia,Chronic myelogenous leukemia,HP_0005506
+Chronic granulocytic leukemia,Chronic myelogenous leukemia,HP_0005506
+Chronic myelocytic leukemia,Chronic myelogenous leukemia,HP_0005506
+Chronic myelosis,Chronic myelogenous leukemia,HP_0005506
+Swimmer's ear,Otitis externa,HP_0410017
+External ear infection,Otitis externa,HP_0410017
+Outer ear inflammation,Otitis externa,HP_0410017
+Ear canal infection,Otitis externa,HP_0410017
+Infective otitis externa,Otitis externa,HP_0410017
+Reduced width of greater sciatic notch,Narrow greater sciatic notch,HP_0003375
+Constricted greater sciatic notch,Narrow greater sciatic notch,HP_0003375
+Small greater sciatic notch,Narrow greater sciatic notch,HP_0003375
+Diminished greater sciatic notch,Narrow greater sciatic notch,HP_0003375
+Tight greater sciatic notch,Narrow greater sciatic notch,HP_0003375
+Obstructive jaundice,Biliary atresia,HP_0005912
+Biliary obstruction,Biliary atresia,HP_0005912
+Cholestatic liver disease,Biliary atresia,HP_0005912
+Congenital biliary atresia,Biliary atresia,HP_0005912
+Hepatic ductular hypoplasia,Biliary atresia,HP_0005912
+Irregularity in blood catecholamine level,Abnormality of circulating catecholamine level,HP_0012099
+Disorder of circulating catecholamine concentration,Abnormality of circulating catecholamine level,HP_0012099
+Anomaly in blood catecholamine level,Abnormality of circulating catecholamine level,HP_0012099
+Aberration of circulating catecholamine amount,Abnormality of circulating catecholamine level,HP_0012099
+Disturbance in blood catecholamine concentration,Abnormality of circulating catecholamine level,HP_0012099
+Conical epiphysis,Cone-shaped epiphysis,HP_0010579
+Cone-like epiphysis,Cone-shaped epiphysis,HP_0010579
+Epiphysis with conical shape,Cone-shaped epiphysis,HP_0010579
+Epiphysis cone-shaped,Cone-shaped epiphysis,HP_0010579
+Cone form epiphysis,Cone-shaped epiphysis,HP_0010579
+Conical epiphysis of the proximal phalanx of the second finger,Cone-shaped epiphysis of the proximal phalanx of the 2nd finger,HP_0009526
+Cone-like epiphysis of the proximal phalanx of the 2nd digit,Cone-shaped epiphysis of the proximal phalanx of the 2nd finger,HP_0009526
+Tapered epiphysis of the proximal phalanx of the second finger,Cone-shaped epiphysis of the proximal phalanx of the 2nd finger,HP_0009526
+Pointed epiphysis of the proximal phalanx of the 2nd finger,Cone-shaped epiphysis of the proximal phalanx of the 2nd finger,HP_0009526
+Pyramidal epiphysis of the proximal phalanx of the second digit,Cone-shaped epiphysis of the proximal phalanx of the 2nd finger,HP_0009526
+Speckling of the epiphysis of the proximal phalanx of the third toe,Stippling of the epiphysis of the proximal phalanx of the 3rd toe,HP_0100166
+Dotted pattern on the epiphysis of the proximal phalanx of the 3rd toe,Stippling of the epiphysis of the proximal phalanx of the 3rd toe,HP_0100166
+Punctate appearance of the epiphysis of the proximal phalanx of the third toe,Stippling of the epiphysis of the proximal phalanx of the 3rd toe,HP_0100166
+Spotted epiphysis of the proximal phalanx of the 3rd toe,Stippling of the epiphysis of the proximal phalanx of the 3rd toe,HP_0100166
+Freckling of the epiphysis of the proximal phalanx of the third toe,Stippling of the epiphysis of the proximal phalanx of the 3rd toe,HP_0100166
+Decreased facial muscle tone,Facial hypotonia,HP_0000297
+Reduced facial muscle tension,Facial hypotonia,HP_0000297
+Facial muscle weakness,Facial hypotonia,HP_0000297
+Low facial muscle tone,Facial hypotonia,HP_0000297
+Weak facial muscle tone,Facial hypotonia,HP_0000297
+Irregular incisor shape,Abnormal incisor morphology,HP_0011063
+Unusual incisor structure,Abnormal incisor morphology,HP_0011063
+Abnormal incisor form,Abnormal incisor morphology,HP_0011063
+Atypical incisor configuration,Abnormal incisor morphology,HP_0011063
+Abnormality in incisor shape,Abnormal incisor morphology,HP_0011063
+Eagle-Barrett syndrome,Prune belly,HP_0004392
+Triad syndrome,Prune belly,HP_0004392
+Obrinsky syndrome,Prune belly,HP_0004392
+Fröhlich syndrome,Prune belly,HP_0004392
+Abdominal muscle deficiency syndrome,Prune belly,HP_0004392
+Speechlessness,Mutism,HP_0002300
+Aphasia,Mutism,HP_0002300
+Silence,Mutism,HP_0002300
+Nonvocal,Mutism,HP_0002300
+Voicelessness,Mutism,HP_0002300
+Distorted taste,Parageusia,HP_0031249
+Taste perversion,Parageusia,HP_0031249
+Abnormal taste sensation,Parageusia,HP_0031249
+Altered taste perception,Parageusia,HP_0031249
+Taste distortion,Parageusia,HP_0031249
+Irregular ratio of naive T cells,Abnormal proportion of naive T cells,HP_0031396
+Unusual proportion of naive T cells,Abnormal proportion of naive T cells,HP_0031396
+Atypical percentage of naive T cells,Abnormal proportion of naive T cells,HP_0031396
+Non-standard distribution of naive T cells,Abnormal proportion of naive T cells,HP_0031396
+Aberrant count of naive T cells,Abnormal proportion of naive T cells,HP_0031396
+Fish scale disease,Ichthyosis,HP_0008064
+Scaly skin condition,Ichthyosis,HP_0008064
+Ichthyosis vulgaris,Ichthyosis,HP_0008064
+Xeroderma,Ichthyosis,HP_0008064
+Epidermal scaling,Ichthyosis,HP_0008064
+Retinal degeneration,Chorioretinal atrophy,HP_0000533
+Chorioretinal degeneration,Chorioretinal atrophy,HP_0000533
+Atrophy of the retina and choroid,Chorioretinal atrophy,HP_0000533
+Retinochoroidal atrophy,Chorioretinal atrophy,HP_0000533
+Degenerative retinopathy,Chorioretinal atrophy,HP_0000533
+Ectopic kidney,Pelvic kidney,HP_0000125
+Renal ectopia,Pelvic kidney,HP_0000125
+Kidney malposition,Pelvic kidney,HP_0000125
+Abnormal kidney location,Pelvic kidney,HP_0000125
+Misplaced kidney,Pelvic kidney,HP_0000125
+Irregular frontal region shape,Abnormal shape of the frontal region,HP_0011218
+Unusual shape of the frontal area,Abnormal shape of the frontal region,HP_0011218
+Deformed frontal region,Abnormal shape of the frontal region,HP_0011218
+Atypical frontal region shape,Abnormal shape of the frontal region,HP_0011218
+Abnormal frontal area form,Abnormal shape of the frontal region,HP_0011218
+Complete heart block,Third degree atrioventricular block,HP_0001709
+Complete AV block,Third degree atrioventricular block,HP_0001709
+Third degree heart block,Third degree atrioventricular block,HP_0001709
+Total atrioventricular block,Third degree atrioventricular block,HP_0001709
+Full atrioventricular block,Third degree atrioventricular block,HP_0001709
+Extra toes,Foot polydactyly,HP_0001829
+Supernumerary toes,Foot polydactyly,HP_0001829
+Additional digits on foot,Foot polydactyly,HP_0001829
+Excess toes,Foot polydactyly,HP_0001829
+Multidactyly of foot,Foot polydactyly,HP_0001829
+Wide 3rd toe phalanges,Broad phalanges of the 3rd toe,HP_0010360
+Expanded phalanges of the third toe,Broad phalanges of the 3rd toe,HP_0010360
+Broadened third toe phalanges,Broad phalanges of the 3rd toe,HP_0010360
+Wide bones of the third toe,Broad phalanges of the 3rd toe,HP_0010360
+Enlarged phalanges of the 3rd toe,Broad phalanges of the 3rd toe,HP_0010360
+Breathing cessation,Respiratory arrest,HP_0005943
+Respiratory failure,Respiratory arrest,HP_0005943
+Respiratory stoppage,Respiratory arrest,HP_0005943
+Apnea,Respiratory arrest,HP_0005943
+Asphyxiation,Respiratory arrest,HP_0005943
+Double Fallopian tubes,Fallopian tube duplication,HP_0012885
+Duplication of Fallopian tubes,Fallopian tube duplication,HP_0012885
+Twin Fallopian tubes,Fallopian tube duplication,HP_0012885
+Fallopian tube twinning,Fallopian tube duplication,HP_0012885
+Bilateral Fallopian tubes,Fallopian tube duplication,HP_0012885
+Aortic elastin fiber breakdown,Aortic elastic fiber fragmentation,HP_0032083
+Disintegration of aortic elastic fibers,Aortic elastic fiber fragmentation,HP_0032083
+Fragmentation of aortic elastin fibers,Aortic elastic fiber fragmentation,HP_0032083
+Aortic elastic fiber disarray,Aortic elastic fiber fragmentation,HP_0032083
+Aortic elastic fiber degeneration,Aortic elastic fiber fragmentation,HP_0032083
+Extended nose,Long nose,HP_0003189
+Elongated nose,Long nose,HP_0003189
+Lengthy nose,Long nose,HP_0003189
+Protracted nose,Long nose,HP_0003189
+Longitudinal nose,Long nose,HP_0003189
+Low blood sugar coma,Hypoglycemic coma,HP_0001325
+Insulin shock,Hypoglycemic coma,HP_0001325
+Diabetic coma,Hypoglycemic coma,HP_0001325
+Severe hypoglycemia coma,Hypoglycemic coma,HP_0001325
+Glucose deficiency coma,Hypoglycemic coma,HP_0001325
+Infrequent menstruation,Oligomenorrhea,HP_0000876
+Scanty periods,Oligomenorrhea,HP_0000876
+Irregular menstrual cycles,Oligomenorrhea,HP_0000876
+Reduced menstrual frequency,Oligomenorrhea,HP_0000876
+Sparse menstruation,Oligomenorrhea,HP_0000876
+Lymphatic cancer,Lymphatic vessel neoplasm,HP_0012797
+Lymphatic tumor,Lymphatic vessel neoplasm,HP_0012797
+Lymphatic vessel cancer,Lymphatic vessel neoplasm,HP_0012797
+Lymphatic vessel tumor,Lymphatic vessel neoplasm,HP_0012797
+Lymphatic neoplasm,Lymphatic vessel neoplasm,HP_0012797
+Exercise-induced shortness of breath,Exertional dyspnea,HP_0002875
+Exertional breathlessness,Exertional dyspnea,HP_0002875
+Exercise intolerance,Exertional dyspnea,HP_0002875
+Difficulty breathing during exercise,Exertional dyspnea,HP_0002875
+Breathlessness on exertion,Exertional dyspnea,HP_0002875
+Sinus node dysfunction,Sick sinus syndrome,HP_0011704
+Sinoatrial node disease,Sick sinus syndrome,HP_0011704
+Sinus node disease,Sick sinus syndrome,HP_0011704
+Sinoatrial block,Sick sinus syndrome,HP_0011704
+Bradycardia-tachycardia syndrome,Sick sinus syndrome,HP_0011704
+Widespread distal renal tubular acidosis,Generalized distal tubular acidosis,HP_0004916
+Generalized distal renal tubular acidosis,Generalized distal tubular acidosis,HP_0004916
+Systemic distal tubular acidosis,Generalized distal tubular acidosis,HP_0004916
+Generalized distal RTA,Generalized distal tubular acidosis,HP_0004916
+Widespread distal RTA,Generalized distal tubular acidosis,HP_0004916
+Lung cavity,Pulmonary cavity,HP_0033655
+Pulmonary hollow,Pulmonary cavity,HP_0033655
+Lung hollow,Pulmonary cavity,HP_0033655
+Pulmonary lesion,Pulmonary cavity,HP_0033655
+Lung lesion,Pulmonary cavity,HP_0033655
+Reduced size of the end part of the last bone of the fifth finger,Small epiphysis of the distal phalanx of the 5th finger,HP_0009148
+Diminished epiphysis of the distal phalanx of the pinky finger,Small epiphysis of the distal phalanx of the 5th finger,HP_0009148
+Underdeveloped end segment of the smallest finger's last bone,Small epiphysis of the distal phalanx of the 5th finger,HP_0009148
+Small end part of the last bone of the little finger,Small epiphysis of the distal phalanx of the 5th finger,HP_0009148
+Miniature epiphysis of the distal phalanx of the 5th digit,Small epiphysis of the distal phalanx of the 5th finger,HP_0009148
+Irregular hip joint structure,Abnormal hip joint morphology,HP_0001384
+Unusual hip joint form,Abnormal hip joint morphology,HP_0001384
+Atypical hip joint shape,Abnormal hip joint morphology,HP_0001384
+Abnormal hip joint anatomy,Abnormal hip joint morphology,HP_0001384
+Deformed hip joint configuration,Abnormal hip joint morphology,HP_0001384
+Poor nutrient absorption,Malabsorption,HP_0002024
+Impaired digestion,Malabsorption,HP_0002024
+Inadequate absorption of nutrients,Malabsorption,HP_0002024
+Digestive insufficiency,Malabsorption,HP_0002024
+Inefficient nutrient absorption,Malabsorption,HP_0002024
+Muscle Calcification,Calcification of muscles,HP_0100249
+Muscular Calcification,Calcification of muscles,HP_0100249
+Calcified Muscles,Calcification of muscles,HP_0100249
+Muscle Mineralization,Calcification of muscles,HP_0100249
+Mineral Deposition in Muscles,Calcification of muscles,HP_0100249
+Irregular infraorbital artery structure,Abnormal infraorbital artery morphology,HP_3000060
+Unusual infraorbital artery form,Abnormal infraorbital artery morphology,HP_3000060
+Atypical infraorbital artery shape,Abnormal infraorbital artery morphology,HP_3000060
+Aberrant infraorbital artery configuration,Abnormal infraorbital artery morphology,HP_3000060
+Non-standard infraorbital artery anatomy,Abnormal infraorbital artery morphology,HP_3000060
+Unusual myotilin in muscle fibers,Abnormal muscle fiber myotilin,HP_0030226
+Atypical myotilin in muscle fibers,Abnormal muscle fiber myotilin,HP_0030226
+Irregular muscle fiber myotilin,Abnormal muscle fiber myotilin,HP_0030226
+Aberrant myotilin in muscle fibers,Abnormal muscle fiber myotilin,HP_0030226
+Non-standard muscle fiber myotilin,Abnormal muscle fiber myotilin,HP_0030226
+Flat metacarpal heads,Flattened metacarpal heads,HP_0011909
+Compressed metacarpal heads,Flattened metacarpal heads,HP_0011909
+Depressed metacarpal heads,Flattened metacarpal heads,HP_0011909
+Squashed metacarpal heads,Flattened metacarpal heads,HP_0011909
+Crushed metacarpal heads,Flattened metacarpal heads,HP_0011909
+Profound deafness,Severe hearing impairment,HP_0012714
+Significant hearing loss,Severe hearing impairment,HP_0012714
+Major auditory impairment,Severe hearing impairment,HP_0012714
+Severe hearing deficiency,Severe hearing impairment,HP_0012714
+Extreme hearing disorder,Severe hearing impairment,HP_0012714
+Triangular form of the end bone of the third finger,Triangular shaped distal phalanx of the 3rd finger,HP_0009427
+Third finger's distal phalanx with triangular shape,Triangular shaped distal phalanx of the 3rd finger,HP_0009427
+Triangular end bone of the third digit,Triangular shaped distal phalanx of the 3rd finger,HP_0009427
+Triangular distal phalanx of the third finger,Triangular shaped distal phalanx of the 3rd finger,HP_0009427
+Triangular shaped end segment of the 3rd finger,Triangular shaped distal phalanx of the 3rd finger,HP_0009427
+One-sided undescended testicle,Unilateral cryptorchidism,HP_0012741
+Single-sided cryptorchidism,Unilateral cryptorchidism,HP_0012741
+Unilateral undescended testis,Unilateral cryptorchidism,HP_0012741
+One-sided testicular maldescent,Unilateral cryptorchidism,HP_0012741
+Unilateral testis nondescent,Unilateral cryptorchidism,HP_0012741
+Atrioventricular valve atresia,Imperforate atrioventricular valve,HP_0011574
+Atrioventricular valve closure,Imperforate atrioventricular valve,HP_0011574
+Blocked atrioventricular valve,Imperforate atrioventricular valve,HP_0011574
+Sealed atrioventricular valve,Imperforate atrioventricular valve,HP_0011574
+Atrioventricular valve occlusion,Imperforate atrioventricular valve,HP_0011574
+Shrinkage of Caudate,Caudate atrophy,HP_0002340
+Caudate Degeneration,Caudate atrophy,HP_0002340
+Atrophy of Caudate Nucleus,Caudate atrophy,HP_0002340
+Caudate Nucleus Atrophy,Caudate atrophy,HP_0002340
+Degenerative Caudate,Caudate atrophy,HP_0002340
+Mitral valve insufficiency,Mitral regurgitation,HP_0001653
+Mitral valve leakage,Mitral regurgitation,HP_0001653
+Mitral valve regurgitation,Mitral regurgitation,HP_0001653
+Mitral incompetence,Mitral regurgitation,HP_0001653
+Leaky mitral valve,Mitral regurgitation,HP_0001653
+Eye cloudiness,Cataract,HP_0000518
+Lens opacity,Cataract,HP_0000518
+Clouded vision,Cataract,HP_0000518
+Visual impairment,Cataract,HP_0000518
+Opaque eye lens,Cataract,HP_0000518
+Irregular cranial vascular structure,Abnormal head blood vessel morphology,HP_3000036
+Unusual head blood vessel formation,Abnormal head blood vessel morphology,HP_3000036
+Atypical head vascular morphology,Abnormal head blood vessel morphology,HP_3000036
+Aberrant head blood vessel structure,Abnormal head blood vessel morphology,HP_3000036
+Non-standard cranial blood vessel configuration,Abnormal head blood vessel morphology,HP_3000036
+Elevated ribose concentration in cerebrospinal fluid,Increased level of ribose in CSF,HP_0410073
+High ribose levels in CSF,Increased level of ribose in CSF,HP_0410073
+Raised ribose in cerebrospinal fluid,Increased level of ribose in CSF,HP_0410073
+Augmented ribose concentration in CSF,Increased level of ribose in CSF,HP_0410073
+Excessive ribose in cerebrospinal fluid,Increased level of ribose in CSF,HP_0410073
+Type 4 truncus arteriosus,Type IV truncus arteriosus,HP_0011610
+Truncus arteriosus type IV,Type IV truncus arteriosus,HP_0011610
+Type IV arteriosus truncus,Type IV truncus arteriosus,HP_0011610
+Type 4 arteriosus truncus,Type IV truncus arteriosus,HP_0011610
+Arteriosus truncus type IV,Type IV truncus arteriosus,HP_0011610
+Fragile skin,Thin skin,HP_0000963
+Delicate skin,Thin skin,HP_0000963
+Fine skin,Thin skin,HP_0000963
+Paper-thin skin,Thin skin,HP_0000963
+Weak skin,Thin skin,HP_0000963
+Breakdown of the epiphysis of the middle phalanx of the 5th digit,Fragmentation of the epiphysis of the middle phalanx of the 5th finger,HP_0009207
+Disintegration of the epiphysis of the middle phalanx of the little finger,Fragmentation of the epiphysis of the middle phalanx of the 5th finger,HP_0009207
+Shattering of the epiphysis of the middle phalanx of the pinky finger,Fragmentation of the epiphysis of the middle phalanx of the 5th finger,HP_0009207
+Fracturing of the epiphysis of the middle phalanx of the 5th finger,Fragmentation of the epiphysis of the middle phalanx of the 5th finger,HP_0009207
+Splintering of the epiphysis of the middle phalanx of the 5th digit,Fragmentation of the epiphysis of the middle phalanx of the 5th finger,HP_0009207
+Conical epiphysis of the proximal phalanx of the third finger,Cone-shaped epiphysis of the proximal phalanx of the 3rd finger,HP_0009348
+Cone-like epiphysis of the proximal phalanx of the 3rd digit,Cone-shaped epiphysis of the proximal phalanx of the 3rd finger,HP_0009348
+Tapered epiphysis of the proximal phalanx of the third finger,Cone-shaped epiphysis of the proximal phalanx of the 3rd finger,HP_0009348
+Pointed epiphysis of the proximal phalanx of the 3rd finger,Cone-shaped epiphysis of the proximal phalanx of the 3rd finger,HP_0009348
+Pyramidal epiphysis of the proximal phalanx of the third digit,Cone-shaped epiphysis of the proximal phalanx of the 3rd finger,HP_0009348
+Breakdown of the 3rd toe's epiphyses,Fragmentation of the epiphyses of the 3rd toe,HP_0100059
+Disintegration of the epiphyses in the third toe,Fragmentation of the epiphyses of the 3rd toe,HP_0100059
+Shattering of the 3rd toe's epiphyses,Fragmentation of the epiphyses of the 3rd toe,HP_0100059
+Fracturing of the epiphyses of the third toe,Fragmentation of the epiphyses of the 3rd toe,HP_0100059
+Splintering of the 3rd toe's epiphyses,Fragmentation of the epiphyses of the 3rd toe,HP_0100059
+ADHD,Attention deficit hyperactivity disorder,HP_0007018
+Hyperkinetic disorder,Attention deficit hyperactivity disorder,HP_0007018
+Attention deficit disorder,Attention deficit hyperactivity disorder,HP_0007018
+Hyperactivity disorder,Attention deficit hyperactivity disorder,HP_0007018
+Peripheral cyanosis,Acrocyanosis,HP_0001063
+Blue extremities,Acrocyanosis,HP_0001063
+Cyanosis of the extremities,Acrocyanosis,HP_0001063
+Bluish discoloration of extremities,Acrocyanosis,HP_0001063
+Blue skin discoloration,Acrocyanosis,HP_0001063
+Lower limb bone aplasia,Aplasia involving bones of the lower limbs,HP_0009817
+Absence of bone formation in lower limbs,Aplasia involving bones of the lower limbs,HP_0009817
+Lower extremity bone aplasia,Aplasia involving bones of the lower limbs,HP_0009817
+Agenesis of bones in lower limbs,Aplasia involving bones of the lower limbs,HP_0009817
+Lower limb bone agenesis,Aplasia involving bones of the lower limbs,HP_0009817
+Inflammation of the prostate,Prostatitis,HP_0000024
+Prostate inflammation,Prostatitis,HP_0000024
+Prostate infection,Prostatitis,HP_0000024
+Swollen prostate,Prostatitis,HP_0000024
+Infected prostate,Prostatitis,HP_0000024
+Irregular tubulointerstitial structure,Abnormal tubulointerstitial morphology,HP_0001969
+Unusual tubulointerstitial form,Abnormal tubulointerstitial morphology,HP_0001969
+Atypical tubulointerstitial shape,Abnormal tubulointerstitial morphology,HP_0001969
+Non-standard tubulointerstitial configuration,Abnormal tubulointerstitial morphology,HP_0001969
+Aberrant tubulointerstitial anatomy,Abnormal tubulointerstitial morphology,HP_0001969
+Elevated cerebrospinal fluid glutamine levels,Increased CSF glutamine concentration,HP_0500197
+High glutamine concentration in CSF,Increased CSF glutamine concentration,HP_0500197
+Raised glutamine levels in cerebrospinal fluid,Increased CSF glutamine concentration,HP_0500197
+Increased glutamine in CSF,Increased CSF glutamine concentration,HP_0500197
+Augmented cerebrospinal fluid glutamine concentration,Increased CSF glutamine concentration,HP_0500197
+Bent end bone of the fourth finger,Curved distal phalanx of the 4th finger,HP_0009286
+Curved outermost bone of the fourth digit,Curved distal phalanx of the 4th finger,HP_0009286
+Bowed distal phalanx of the 4th digit,Curved distal phalanx of the 4th finger,HP_0009286
+Curvature of the end bone of the fourth finger,Curved distal phalanx of the 4th finger,HP_0009286
+Distorted distal phalanx of the 4th finger,Curved distal phalanx of the 4th finger,HP_0009286
+Presence of anti-asparaginyl-tRNA synthetase antibodies,Anti-asparaginyl-tRNA synthetase antibody positivity,HP_0034151
+Positive for anti-asparaginyl-tRNA synthetase antibodies,Anti-asparaginyl-tRNA synthetase antibody positivity,HP_0034151
+Detection of anti-asparaginyl-tRNA synthetase antibodies,Anti-asparaginyl-tRNA synthetase antibody positivity,HP_0034151
+Anti-asparaginyl-tRNA synthetase antibody detection,Anti-asparaginyl-tRNA synthetase antibody positivity,HP_0034151
+Existence of anti-asparaginyl-tRNA synthetase antibodies,Anti-asparaginyl-tRNA synthetase antibody positivity,HP_0034151
+Increased hip angle,Coxa valga,HP_0002673
+Widened hip angle,Coxa valga,HP_0002673
+Hip deformity,Coxa valga,HP_0002673
+Abnormal hip joint angle,Coxa valga,HP_0002673
+Deformed hip joint,Coxa valga,HP_0002673
+Elevated cerebrospinal fluid homocarnosine levels,Increased CSF homocarnosine concentration,HP_0500242
+High homocarnosine concentration in CSF,Increased CSF homocarnosine concentration,HP_0500242
+Raised CSF homocarnosine levels,Increased CSF homocarnosine concentration,HP_0500242
+Increased homocarnosine in cerebrospinal fluid,Increased CSF homocarnosine concentration,HP_0500242
+High cerebrospinal fluid concentration of homocarnosine,Increased CSF homocarnosine concentration,HP_0500242
+Ulna bone hardening,Osteosclerosis of the ulna,HP_0003991
+Increased bone density of the ulna,Osteosclerosis of the ulna,HP_0003991
+Ulnar bone sclerosis,Osteosclerosis of the ulna,HP_0003991
+Hardening of the ulna bone,Osteosclerosis of the ulna,HP_0003991
+Ulna osteosclerosis,Osteosclerosis of the ulna,HP_0003991
+Liver vasculature abnormality,Abnormality of the hepatic vasculature,HP_0006707
+Hepatic blood vessel irregularity,Abnormality of the hepatic vasculature,HP_0006707
+Abnormal liver blood vessels,Abnormality of the hepatic vasculature,HP_0006707
+Irregularity of the liver vasculature,Abnormality of the hepatic vasculature,HP_0006707
+Dysfunction of hepatic blood vessels,Abnormality of the hepatic vasculature,HP_0006707
+Intrinsic hand muscle debility,Weakness of the intrinsic hand muscles,HP_0009005
+Impaired hand muscle strength,Weakness of the intrinsic hand muscles,HP_0009005
+Weakness in hand's intrinsic muscles,Weakness of the intrinsic hand muscles,HP_0009005
+Intrinsic hand muscle weakness,Weakness of the intrinsic hand muscles,HP_0009005
+Hand muscle strength deficiency,Weakness of the intrinsic hand muscles,HP_0009005
+Irregularity of the epiphysis of the second metacarpal,Abnormality of the epiphysis of the 2nd metacarpal,HP_0010220
+Anomaly of the 2nd metacarpal epiphysis,Abnormality of the epiphysis of the 2nd metacarpal,HP_0010220
+Deformity of the epiphysis of the second metacarpal,Abnormality of the epiphysis of the 2nd metacarpal,HP_0010220
+Aberration of the 2nd metacarpal's epiphysis,Abnormality of the epiphysis of the 2nd metacarpal,HP_0010220
+Unusual condition of the epiphysis of the 2nd metacarpal,Abnormality of the epiphysis of the 2nd metacarpal,HP_0010220
+Spontaneous abortion,Miscarriage,HP_0005268
+Pregnancy loss,Miscarriage,HP_0005268
+Early pregnancy loss,Miscarriage,HP_0005268
+Fetal loss,Miscarriage,HP_0005268
+Pregnancy failure,Miscarriage,HP_0005268
+Lambdoid suture craniosynostosis,Lambdoidal craniosynostosis,HP_0004443
+Lambdoid synostosis,Lambdoidal craniosynostosis,HP_0004443
+Posterior cranial suture synostosis,Lambdoidal craniosynostosis,HP_0004443
+Lambdoidal suture fusion,Lambdoidal craniosynostosis,HP_0004443
+Posterior skull suture fusion,Lambdoidal craniosynostosis,HP_0004443
+Elevated copper levels in urine,Increased urinary copper concentration,HP_0010839
+High urinary copper content,Increased urinary copper concentration,HP_0010839
+Raised copper concentration in urine,Increased urinary copper concentration,HP_0010839
+Excessive copper in urine,Increased urinary copper concentration,HP_0010839
+Abnormally high urinary copper levels,Increased urinary copper concentration,HP_0010839
+Notched incisors,Serrated incisors,HP_0034270
+Scalloped incisors,Serrated incisors,HP_0034270
+Jagged incisors,Serrated incisors,HP_0034270
+Grooved incisors,Serrated incisors,HP_0034270
+Rough-edged incisors,Serrated incisors,HP_0034270
+Elevated Xanthine Levels,Hyperxanthinemia,HP_0010933
+High Xanthine in Blood,Hyperxanthinemia,HP_0010933
+Increased Xanthine Concentration,Hyperxanthinemia,HP_0010933
+Abnormally High Xanthine,Hyperxanthinemia,HP_0010933
+Excessive Xanthine in Bloodstream,Hyperxanthinemia,HP_0010933
+Intermittent sclerosis of third toe phalanx,Patchy sclerosis of 3rd toe phalanx,HP_0010364
+Irregular hardening of 3rd toe bone,Patchy sclerosis of 3rd toe phalanx,HP_0010364
+Uneven sclerosis of third toe phalanx,Patchy sclerosis of 3rd toe phalanx,HP_0010364
+Sporadic hardening of 3rd toe phalanx,Patchy sclerosis of 3rd toe phalanx,HP_0010364
+Patchy hardening of third toe bone,Patchy sclerosis of 3rd toe phalanx,HP_0010364
+Incomplete foot,Partial absence of foot,HP_0030032
+Partial foot absence,Partial absence of foot,HP_0030032
+Partial foot loss,Partial absence of foot,HP_0030032
+Incomplete development of foot,Partial absence of foot,HP_0030032
+Partial foot deficiency,Partial absence of foot,HP_0030032
+Disrupted sleep pattern,Abnormal sleep architecture,HP_5200298
+Irregular sleep structure,Abnormal sleep architecture,HP_5200298
+Disturbed sleep architecture,Abnormal sleep architecture,HP_5200298
+Unusual sleep pattern,Abnormal sleep architecture,HP_5200298
+Atypical sleep structure,Abnormal sleep architecture,HP_5200298
+Cortical radial artery inner/outer layer liquefactive cell death,Cortical radial artery intima/media liquefactive necrosis,HP_0033936
+Liquefactive necrosis in cortical radial artery intima/media,Cortical radial artery intima/media liquefactive necrosis,HP_0033936
+Cortical radial artery intima/media softening necrosis,Cortical radial artery intima/media liquefactive necrosis,HP_0033936
+Cortical radial artery intima/media liquid necrosis,Cortical radial artery intima/media liquefactive necrosis,HP_0033936
+Cortical radial artery intima/media dissolution necrosis,Cortical radial artery intima/media liquefactive necrosis,HP_0033936
+Underdeveloped spinal processes,Hypoplastic spinal processes,HP_0008460
+Inadequate development of spinal processes,Hypoplastic spinal processes,HP_0008460
+Spinal processes hypoplasia,Hypoplastic spinal processes,HP_0008460
+Insufficiently developed spinal processes,Hypoplastic spinal processes,HP_0008460
+Spinal processes underdevelopment,Hypoplastic spinal processes,HP_0008460
+Purple rash,Heliotrope rash,HP_0040324
+Violet rash,Heliotrope rash,HP_0040324
+Heliotrope erythema,Heliotrope rash,HP_0040324
+Heliotropic rash,Heliotrope rash,HP_0040324
+Lilac rash,Heliotrope rash,HP_0040324
+Double uterus,Uterus didelphys,HP_0003762
+Didelphic uterus,Uterus didelphys,HP_0003762
+Bicornuate uterus,Uterus didelphys,HP_0003762
+Duplex uterus,Uterus didelphys,HP_0003762
+Bifid uterus,Uterus didelphys,HP_0003762
+Bovine milk hypersensitivity,Cow milk allergy,HP_0100327
+Dairy allergy,Cow milk allergy,HP_0100327
+Allergy to cow's milk,Cow milk allergy,HP_0100327
+Milk protein allergy,Cow milk allergy,HP_0100327
+Lactose intolerance,Cow milk allergy,HP_0100327
