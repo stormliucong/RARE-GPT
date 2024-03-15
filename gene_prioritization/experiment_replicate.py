@@ -26,14 +26,13 @@ def query_replicate(prompt, gpt_version, test, print_output = False):
         "debug": False,
         "top_p": 1,
         "prompt": prompt,
-        "temperature": 0,
+        "temperature": 0.01,
         "max_new_tokens": 500,
         "min_new_tokens": -1
     },
   ):
-    response += print(str(event), end="")
+    response += str(event)
   
-   
   if print_output:
       logging.debug(str(response))
 
@@ -71,7 +70,7 @@ def get_sample_list(input_type):
   # sample_list = [{"sample_id": 123, "true_gene": "ABC", "content": "patient diagnosed with muscular dystropy"}]
   if input_type == 'hpo_concepts':
     # get sample list for hpo input
-    data_folder = './gene_prioritization/Data/HPO_input/Original_data'
+    data_folder = './Data/HPO_input/Original_data'
     sample_list_hpo = []
     with open(os.path.join(data_folder, 'probe_info')) as f:
       for line in f:
@@ -92,7 +91,7 @@ def get_sample_list(input_type):
 
     for sample in sample_list_hpo:
       folder_name, file_name = sample['sample_id'].split('.')
-      input_path = os.path.join('.', 'gene_prioritization','Data', 'HPO_input', 'HPO_names', folder_name, file_name)
+      input_path = os.path.join('.','Data', 'HPO_input', 'HPO_names', folder_name, file_name)
       with open(input_path) as f:
         hpo_content = f.read()
         sample['content'] = hpo_content.replace('\n',';')
@@ -100,7 +99,7 @@ def get_sample_list(input_type):
   
   if input_type == 'free_text':
     # get sample list for free text input
-    data_folder = './gene_prioritization/Data/free_text_input'
+    data_folder = './Data/free_text_input'
 
     free_text_df = pd.read_csv(os.path.join(data_folder, 'free_text_pmid_input.csv'))
     sample_list_free_text = []
@@ -172,11 +171,15 @@ if __name__ == '__main__':
   choices = [1, 0]
   file_list = []
   output_dir = args.output_dir
+  if not os.path.exists(output_dir):
+    os.makedirs(output_dir)
   previous_dir = args.previous_dir
-  top_n_list = ['10']
+  if not os.path.exists(previous_dir):
+    os.makedirs(previous_dir)
+  top_n_list = ['10','50']
   prompt_list = ['d']
-  gpt_version_list = ['llama-2-7b-chat', 'llama-2-70b-chat']
-  iteration_list = ['1','2','3']
+  gpt_version_list = ['llama-2-7b-chat', 'llama-2-13b-chat', 'llama-2-70b-chat']
+  iteration_list = ['1']
   input_type_list = ['hpo_concepts', 'free_text']
   for iteration in iteration_list:
     for input_type in input_type_list:

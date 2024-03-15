@@ -181,3 +181,4 @@ concept_normalization/config.py
 concept_normalization/woosh_index/_MAIN_1.toc
 concept_normalization/woosh_index/MAIN_dnt1gr3ti3hstdsa.seg
 concept_normalization/woosh_index/MAIN_WRITELOCK
+gene_prioritization/config.py

@@ -1,24 +1,30 @@
 import os
 import replicate
-import config
-os.environ['REPLICATE_API_TOKEN'] = config.REPLICATE_API_KEY
-gpt_version = "llama-2-7b-chat"
-response = ""
-prompt = '''
- Consider you are a genetic counselor. The phenotype description of the patient is Patient 2, complained with visual problems and voice understanding problems also at 13 years. She had audiological and ophthalmologic examinations in Tunisia at 38 years. ABR showed a bilateral absence of responses at 105 dB. Her vocal audiogram confirmed a bilateral severe defect contrasting with a 30 dB defect at the tonal audiometry. Visual evoked potentials (VEP) were present but with a small amplitude and expanded latencies (P100=145ms). Her metabolic and neurological examinations were normal.. Can you suggest a list of 10 possible genes to test? Please consider the phenotype gene relationship, and use the knowledge you have trained on. No need to access the real-time database to generate outcomes. Please return gene symbols as a comma-separated list. Example: "ABC1, BRAC2, BRAC1" or "Not Applicable" if you can not provide the result.
-'''
-# The meta/llama-2-7b-chat model can stream output as it's running.
-for event in replicate.stream(
-'meta/' + gpt_version,
-input={
-    "debug": False,
-    "top_p": 1,
-    "prompt": prompt,
-    "temperature": 0,
-    "max_new_tokens": 500,
-    "min_new_tokens": -1
-},
-):
-    response += print(str(event), end="")
+os.environ['REPLICATE_API_TOKEN'] = "r8_8T3jTxY6V53J4GtCfQNWg5tCnDmEfUA3RKw19"
+# # The meta/llama-2-13b-chat model can stream output as it's running.
+# replicate.run(
+#         "stability-ai/stable-diffusion:27b93a2413e7f36cd83da926f3656280b2931564ff050bf9575f1fdf9bcd7478",
+#         input={"prompt": "a 19th century portrait of a wombat gentleman"}
+#     )
 
-print(response)
+
+output = replicate.run(
+    "stability-ai/stable-diffusion:db21e45d3f7023abc2a46ee38a23973f6dce16bb082a930b0c49861f96d1e5bf",
+    input={"text": "an astronaut riding a horse"}
+)
+print(output)
+
+# for event in replicate.stream(
+#     "meta/llama-2-13b-chat",
+#     input={
+#         "debug": False,
+#         "top_k": 50,
+#         "top_p": 1,
+#         "prompt": "Write a story in the style of James Joyce. The story should be about a trip to the Irish countryside in 2083, to see the beautiful scenery and robots.",
+#         "temperature": 0.75,
+#         "system_prompt": "You are a helpful, respectful and honest assistant. Always answer as helpfully as possible, while being safe. Your answers should not include any harmful, unethical, racist, sexist, toxic, dangerous, or illegal content. Please ensure that your responses are socially unbiased and positive in nature.\n\nIf a question does not make any sense, or is not factually coherent, explain why instead of answering something not correct. If you don't know the answer to a question, please don't share false information.",
+#         "max_new_tokens": 500,
+#         "min_new_tokens": -1
+#     },
+# ):
+#     print(str(event), end="")
