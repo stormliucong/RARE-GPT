@@ -1,0 +1,231 @@
+---
+title: "llama2"
+author: "JK4529"
+date: "2024-01-18"
+output: html_document
+---
+
+```{r, include=FALSE}
+library(Hmisc)
+library(prettyR)
+library(rcompanion)
+library(dplyr)
+library(ggplot2)
+library(TukeyC)
+library(tidyr)
+```
+
+# Statistical Test
+```{r}
+df <- read.csv('C:/Users/cptas/Downloads/Experiment_replicate_0215_prev_eval_table.csv')
+head(df)
+```
+
+## total accuracy rate
+```{r}
+df %>% filter(completeness == 1) %>%
+  select(accuracy) %>%
+  summarise(n = n(),
+            acc = sum(accuracy == 1, na.rm = TRUE),
+            acc_ratio = acc/n)
+```
+Overall acc_ratio is 0.073 (7.3%)  
+
+
+## total completeness rate
+```{r}
+df %>% summarise(n = n(),
+            complt = sum(completeness == 1, na.rm = TRUE),
+            complt_ratio = complt/n)
+```
+Overall completeness ratio is 0.6635 (66.35%) 
+
+
+## total compliance rate
+```{r}
+df %>% summarise(n = n(),
+            str = sum(structural_compliance == 1, na.rm = TRUE),
+            str_ratio = str/n)
+```
+Overall structural compliance ratio is 0.0042 (0.42%) 
+
+
+## Test for top_k and completeness
+```{r}
+# Create a contingency table
+tc_contingency <- table(df$top_n, df$completeness)
+
+tc_contingency
+tc_contingency_proportions <- prop.table(tc_contingency, margin = 1)
+tc_contingency_proportions
+# Perform the chi-squared test
+tc_result <- chisq.test(tc_contingency)
+print(tc_result)
+```
+top_10: 77.52%, top_50: 54.83%  
+
+
+## Test for top_k and structural_compliance
+```{r}
+# Create a contingency table
+ts_contingency <- table(df$top_n, df$structural_compliance)
+
+ts_contingency
+ts_contingency_proportions <- prop.table(ts_contingency, margin = 1)
+ts_contingency_proportions
+# Perform the chi-squared test
+ts_result <- chisq.test(ts_contingency)
+print(ts_result)
+```
+Not significant  
+
+
+## Test for top_k and accuracy
+```{r}
+df_comp1 <- df %>% filter(completeness == 1)
+ta <- df_comp1 %>% select(top_n, accuracy) %>%
+  group_by(top_n) %>%
+  summarise(n = n(),
+            acc = sum(accuracy == 1, na.rm = TRUE),
+            acc_ratio = acc/n)
+ta
+prop.test(ta$acc, ta$n)
+```
+Not significant  
+
+
+
+## Test for input and completeness
+```{r}
+# Create a contingency table
+ic_contingency <- table(df$input_type, df$completeness)
+
+ic_contingency
+ic_contingency_proportions <- prop.table(ic_contingency, margin = 1)
+ic_contingency_proportions
+# Perform the chi-squared test
+ic_result <- chisq.test(ic_contingency)
+print(ic_result)
+```
+free_text: 72.23%, hpo_concept: 64.36% (P = 0.004)   
+
+## Test for input and structural_compliance
+```{r}
+# Create a contingency table
+is_contingency <- table(df$input_type, df$structural_compliance)
+
+is_contingency
+is_contingency_proportions <- prop.table(is_contingency, margin = 1)
+is_contingency_proportions
+# Perform the chi-squared test
+is_result <- chisq.test(is_contingency)
+print(is_result)
+```
+Not significant
+
+## Test for input and accuracy
+```{r}
+ia <- df_comp1 %>% select(input_type, accuracy) %>%
+  group_by(input_type) %>%
+  summarise(n = n(),
+            acc = sum(accuracy == 1, na.rm = TRUE),
+            acc_ratio = acc/n)
+ia
+prop.test(ia$acc, ia$n)
+```
+free_text: 6.19%, hpo_concept: 7.66% (P = 0.4772)  
+
+
+
+## Test for gpt_version and completeness
+```{r}
+# Create a contingency table
+gc_contingency <- table(df$gpt_version, df$completeness)
+
+gc_contingency
+gc_contingency_proportions <- prop.table(gc_contingency, margin = 1)
+gc_contingency_proportions
+# Perform the chi-squared test
+gc_result <- chisq.test(gc_contingency)
+print(gc_result)
+```
+13b:60.88%, 70b: 77.00%, 7b: 64.93%  
+
+## pairwise(post-hoc)
+```{r}
+gc_pairwise <- pairwiseNominalIndependence(gc_contingency, fisher = FALSE, gtest  = FALSE, chisq  = TRUE, method = "bonferroni")
+print(gc_pairwise)
+```
+All significant.  
+
+## Test for gpt_version and structural_compliance
+```{r}
+# Create a contingency table
+gs_contingency <- table(df$gpt_version, df$structural_compliance)
+
+gs_contingency
+gs_contingency_proportions <- prop.table(gs_contingency, margin = 1)
+gs_contingency_proportions
+# Perform the chi-squared test
+gs_result <- chisq.test(gs_contingency)
+print(gs_result)
+```
+
+
+## Test for gpt_version and accuracy
+```{r}
+ga <- df_comp1 %>% select(gpt_version, accuracy) %>%
+  group_by(gpt_version) %>%
+  summarise(n = n(),
+            acc = sum(accuracy == 1, na.rm = TRUE),
+            acc_ratio = acc/n)
+ga
+prop.test(ga$acc, ga$n)
+```
+13b:8.72%, 70b: 9.06%, 7b: 5.06%  
+  
+## pairwise(post-hoc)
+```{r}
+ga_contingency <- table(df_comp1$gpt_version, df_comp1$acc)
+ga_contingency
+ga_pairwise <- pairwiseNominalIndependence(ga_contingency, fisher = FALSE, gtest  = FALSE, chisq  = TRUE, method = "bonferroni")
+print(ga_pairwise)
+```
+Not significant.  
+
+  
+# Gene analysis
+## Odds Ratio
+```{r}
+# gene number
+length(sort(unique(df$true_gene)))
+
+# Odds Ratio
+M <- dim(df)[1]
+K <- dim(df %>% filter(accuracy == 1))[1]
+or <- df %>% group_by(true_gene) %>%
+  summarise(m = n(),
+            k = sum(accuracy == 1, na.rm = TRUE),
+            K = K,
+            M = M,
+            OR = (k / K) / (m / M)) %>%
+  arrange(desc(OR))
+  
+or
+
+# Supplementary table
+tr_or <- or %>%
+  select(true_gene, OR)
+head(tr_or)
+```
+
+
+## gene appearance
+```{r}
+zero_accuracy_genes <- or %>% filter(k == 0)
+zero_accuracy_genelist <- zero_accuracy_genes$true_gene
+zero_accuracy_genenumber <- length(zero_accuracy_genelist)
+zero_accuracy_genenumber
+zero_accuracy_genelist
+```
+
