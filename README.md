@@ -5,7 +5,7 @@ RARE-GPT is based on the GPT architecture by OpenAI, which provides support for 
 ## Features
 
 - We evaluated different zero-short prompts for phenotypic-driven gene ranking tasks using ChatGPT 
-- ChatGPT3.5-turbo and ChatGPT4 were evaluated
+- ChatGPT3.5-turbo, ChatGPT4, LLama2-Chat-7B, LLama2-Chat-13B, LLama2-Chat-70B were evaluated
 - Different input clinical features - HPO names and free-text were evaluated
 - Top 10 and Top 50 results were evaluated
 - We evaluated the variablity of ChatGPT by repeating the experiment three times
